@@ -2,4 +2,16 @@ extends layouts/default
 
 block content
   h1= title
-  p Welcome to #{title}
+  .game-box
+    .box.box-50
+      .game-board
+        img(src='../images/boards/snakes-and-ladders-board.jpg')
+        .game-player
+    .box.box-50
+      p Welcome to #{title}
+
+block js
+  script(src='js/jquery.min.js')
+  script(src='js/bootstrap.min.js')
+  script(src='js/jquery-ui.min.js')
+  script(src='js/game.js')

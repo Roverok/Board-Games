@@ -1,7 +1,286 @@
+/*
+@bg-color-high-int : rgba(173,50,35,0.1);
+@bg-color-med-int : rgba(243,117,32,0.1);
+@bg-color-low-int : rgba(216,145,21,0.1);
+@bg-color-lil-int : rgba(80,183,72,0.1);
+@bg-color-gen-int : rgba(0,154,236,0.1);
+@bg-color-no-int : rgba(141,141,141,0.1);
+*/
+@-ms-viewport {
+  width: auto;
+}
 body {
-  padding: 50px;
+  color: #666666;
+  min-height: 300px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-a {
-  color: #00B7FF;
+h1 {
+  font-size: 21px;
+  margin-bottom: 5px;
+  font-weight: 400;
+}
+h2 {
+  font-size: 18px;
+}
+h3 {
+  font-size: 14px;
+}
+h4 {
+  font-size: 12px;
+}
+h5,
+h6 {
+  font-size: 10px;
+}
+h6 {
+  font-style: italic;
+}
+h2,
+h3,
+h4 {
+  color: #1a1a1a;
+  font-weight: 400;
+}
+a,
+a:visited {
+  text-decoration: none;
+  color: #00adef;
+}
+img {
+  max-width: 100%;
+}
+.text-caps {
+  text-transform: uppercase;
+}
+.text-title {
+  text-transform: capitalize;
+}
+.text-sentence::first-letter {
+  text-transform: uppercase;
+}
+.text-light {
+  color: #8c8c8c;
+}
+.text-lighter {
+  color: #b3b3b3;
+}
+.text-dark {
+  color: #404040;
+}
+.text-darker {
+  color: #1a1a1a;
+}
+.text-blue {
+  color: #00adef;
+}
+.text-high-int {
+  color: #ad3223;
+}
+.text-med-int {
+  color: #f37520;
+}
+.text-low-int {
+  color: #d89115;
+}
+.text-lil-int {
+  color: #71bf00;
+}
+.text-no-int {
+  color: #8d8d8d;
+}
+.text-white {
+  color: #ffffff;
+}
+.text-err {
+  color: #ff5a00;
+}
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.display-inline {
+  display: inline-block;
+}
+.display-block {
+  display: block;
+}
+.text-bold {
+  font-weight: bold;
+}
+.text-normal {
+  font-weight: normal;
+}
+.text-xsmall {
+  font-size: 10px;
+}
+.text-small {
+  font-size: 12px;
+}
+.text-base {
+  font-size: 14px;
+}
+.text-medium {
+  font-size: 16px;
+}
+.text-large {
+  font-size: 18px;
+}
+.text-xlarge {
+  font-size: 21px;
+}
+/*
+.nowrap{
+  .ellipsis()
+}
+*/
+.hide {
+  display: none;
+}
+.row {
+  margin-top: 10px;
+}
+.err-txt {
+  color: #ff5a00;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.err-brdr {
+  border: 1px solid #ff5a00 !important;
+}
+/*
+.brdr-base{
+  .border-base();
+}
+*/
+.srch-rslt-brdr {
+  border: 1px solid #00adef !important;
+}
+.brdr-bottom-base {
+  border-bottom: 1px #dddddd solid;
+}
+.description {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  line-height: 1.2em;
+}
+.description.jstfy {
+  text-align: justify;
+}
+.description.lft {
+  text-align: left;
+}
+.description a {
+  margin: 0 5px;
+}
+.block-center {
+  margin: 0px auto;
+}
+/*class to group a set of elements*/
+.content-block {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.content-block.bordered {
+  border-top: 1px #dddddd solid;
+  border-bottom: 1px #dddddd solid;
+  padding: 10px 0;
+}
+.main-content {
+  min-height: 600px;
+}
+.main-content > .content {
+  width: 1200px;
+  margin: 0px auto;
+}
+.bkgrnd-high-int {
+  background-color: #ad3223;
+}
+.bkgrnd-med-int {
+  background-color: #f37520;
+}
+.bkgrnd-low-int {
+  background-color: #d89115;
+}
+.bkgrnd-lil-int {
+  background-color: #71bf00;
+}
+.bkground-light {
+  background-color: #fafafa;
+}
+.bkground-lighter {
+  background-color: #fcfcfc;
+}
+.bkground-dark {
+  background-color: #c7c7c7;
+}
+.bkground-darker {
+  background-color: #949494;
+}
+.bkground-white {
+  background-color: #ffffff;
+}
+/*
+.bkgrnd-gen-int{
+  background-color: @bg-color-gen-int;
+}
+.bkgrnd-no-int{
+  background-color: @bg-color-no-int;
+}*/
+ol {
+  font-size: 12px;
+  counter-reset: item;
+  padding-left: 10px;
+  font-weight: bold;
+}
+ol > li {
+  display: block;
+  margin: 5px 0;
+}
+ol > li:before {
+  content: counters(item, ".") " ";
+  counter-increment: item;
+}
+ol.sub-norm {
+  font-weight: normal;
+}
+ul {
+  font-weight: normal;
+}
+ul.feature {
+  padding-left: 20px;
+}
+ul.alpha {
+  list-style-type: lower-alpha;
+}
+ul.roman {
+  list-style-type: lower-roman;
+}
+.pad0 {
+  padding: 0;
+}
+.game-box {
+  width: 100%;
+  font-size: 0;
+}
+.game-box .box {
+  font-size: 14px;
+  display: inline-block;
+}
+.game-box .box.box-50 {
+  width: 50%;
+}
+.game-board {
+  position: relative;
+}
+.game-board .game-player {
+  position: absolute;
+  border: 3px solid #ffffff;
+  top: 0;
+  left: 0;
 }
