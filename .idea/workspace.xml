@@ -2,22 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f3573a7-2240-4b21-99bc-e63127740861" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/boards/ludo-board.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/boards/ludo-board2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/icons/snake-and-ladders-logo4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/banners/snakes-and-ladders-banner.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/banners/snakes-and-ladders-banner2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/banners/snakes-and-ladders-banner3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/boards/snakes-and-ladders-board.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/boards/snakes-and-ladders-board2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/icons/snakes-and-ladders-logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/icons/snakes-and-ladders-logo2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/icons/snakes-and-ladders-logo3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/home.jade" />
-      <change type="MOVED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\views\layout.jade" afterPath="$PROJECT_DIR$/views/layouts/default.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/runConfigurations/NodeJS.xml" afterPath="$PROJECT_DIR$/.idea/runConfigurations/NodeJS.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.jade" afterPath="$PROJECT_DIR$/views/index.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/less/style.less" />
+      <change type="MOVED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\stylesheets\style.css" afterPath="$PROJECT_DIR$/public/css/style.css" />
+      <change type="MOVED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\stylesheets\style.less" afterPath="$PROJECT_DIR$/public/less/style.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layouts/default.jade" afterPath="$PROJECT_DIR$/views/layouts/default.jade" />
     </list>
     <ignored path="Board-Games.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -90,10 +78,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="snakes-and-ladders-banner3.png" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="snakes-and-ladders-banner3.png" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/images/banners/snakes-and-ladders-banner3.png">
           <provider selected="true" editor-type-id="images">
             <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="default.jade" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/layouts/default.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="37" selection-start="79" selection-end="79" vertical-scroll-proportion="0.121212125" vertical-offset="0" max-vertical-offset="561">
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -112,6 +109,7 @@
       <list>
         <option value="$PROJECT_DIR$/views/home.jade" />
         <option value="$PROJECT_DIR$/views/index.jade" />
+        <option value="$PROJECT_DIR$/views/layouts/default.jade" />
       </list>
     </option>
   </component>
@@ -214,26 +212,8 @@
               <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Board-Games" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Board-Games" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="icons" />
+              <option name="myItemId" value="less" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -248,14 +228,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="boards" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -273,11 +245,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="banners" />
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -298,6 +266,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public" />
       <recent name="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images" />
       <recent name="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\icons" />
       <recent name="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\views" />
@@ -541,12 +510,12 @@
       <created>1409303755129</created>
       <updated>1409303755129</updated>
       <workItem from="1409303828794" duration="700000" />
-      <workItem from="1409465044333" duration="3398000" />
+      <workItem from="1409465044333" duration="4079000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4098000" />
+    <option name="totallyTimeSpent" value="4779000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -572,7 +541,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3339012" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3339012" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -596,13 +565,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/views/layouts/default.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="365">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/index.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="23" selection-start="23" selection-end="23" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
@@ -664,6 +626,13 @@
     <entry file="file://$PROJECT_DIR$/public/images/banners/snakes-and-ladders-banner3.png">
       <provider selected="true" editor-type-id="images">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/layouts/default.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="37" selection-start="79" selection-end="79" vertical-scroll-proportion="0.121212125" vertical-offset="0" max-vertical-offset="561">
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
