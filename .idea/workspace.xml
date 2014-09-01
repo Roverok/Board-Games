@@ -2,31 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f3573a7-2240-4b21-99bc-e63127740861" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/fonts/glyphicons-halflings-regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/fonts/glyphicons-halflings-regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/less/base.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/css/bootstrap-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/css/bootstrap-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/css/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/game.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/less/game.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/fonts/glyphicons-halflings-regular.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/jquery-ui.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/jquery.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/less/variables.less" />
-      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\routes\index.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\routes\user.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/boards/snakes-and-ladders-board.jpg" afterPath="$PROJECT_DIR$/public/images/boards/snakes-and-ladders-board.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layouts/default.jade" afterPath="$PROJECT_DIR$/views/layouts/default.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/less/game.less" afterPath="$PROJECT_DIR$/public/less/game.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/home.jade" afterPath="$PROJECT_DIR$/views/home.jade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/style.css" afterPath="$PROJECT_DIR$/public/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/less/style.less" afterPath="$PROJECT_DIR$/public/less/style.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/user.js" afterPath="$PROJECT_DIR$/app/controllers/user.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Board-Games.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -90,23 +68,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="home.jade" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="home.jade" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/home.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="21" selection-start="363" selection-end="363" vertical-scroll-proportion="0.8634921" vertical-offset="0" max-vertical-offset="391">
-              <folding />
+            <state line="9" column="24" selection-start="207" selection-end="207" vertical-scroll-proportion="-3.06" vertical-offset="0" max-vertical-offset="408">
+              <folding>
+                <marker date="1409515268625" expanded="true" signature="30:251" placeholder="..." />
+                <marker date="1409515268625" expanded="true" signature="258:394" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="game.less" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="game.less" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/less/game.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="1" selection-start="268" selection-end="268" vertical-scroll-proportion="-9.115385" vertical-offset="103" max-vertical-offset="442">
-              <folding>
-                <marker date="1409492560295" expanded="true" signature="9:130" placeholder="{...}" />
-                <marker date="1409492560295" expanded="true" signature="48:128" placeholder="{...}" />
-              </folding>
+            <state line="25" column="24" selection-start="491" selection-end="491" vertical-scroll-proportion="0.59882003" vertical-offset="222" max-vertical-offset="612">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -114,9 +92,10 @@
       <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="286" column="0" selection-start="4038" selection-end="4038" vertical-scroll-proportion="0.0" vertical-offset="4403" max-vertical-offset="4964">
+            <state line="296" column="0" selection-start="4315" selection-end="4315" vertical-scroll-proportion="0.0" vertical-offset="4573" max-vertical-offset="5134">
               <folding>
-                <marker date="1409492842057" expanded="true" signature="2706:2746" placeholder="{...}" />
+                <marker date="1409516736142" expanded="true" signature="2706:2746" placeholder="{...}" />
+                <marker date="1409516736142" expanded="true" signature="4167:4314" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -197,12 +176,12 @@
         <option value="$PROJECT_DIR$/app/controllers/user.js" />
         <option value="$PROJECT_DIR$/public/less/variables.less" />
         <option value="$PROJECT_DIR$/public/less/style.less" />
-        <option value="$PROJECT_DIR$/public/less/game.less" />
         <option value="$PROJECT_DIR$/public/less/base.less" />
         <option value="$PROJECT_DIR$/views/layouts/default.jade" />
         <option value="$PROJECT_DIR$/public/js/user.js" />
         <option value="$PROJECT_DIR$/public/js/game.js" />
         <option value="$PROJECT_DIR$/views/home.jade" />
+        <option value="$PROJECT_DIR$/public/less/game.less" />
       </list>
     </option>
   </component>
@@ -343,6 +322,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Board-Games" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Board-Games" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="avatars" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -675,12 +676,12 @@
       <created>1409303755129</created>
       <updated>1409303755129</updated>
       <workItem from="1409303828794" duration="700000" />
-      <workItem from="1409465044333" duration="14136000" />
+      <workItem from="1409465044333" duration="16996000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14836000" />
+    <option name="totallyTimeSpent" value="17696000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -821,21 +822,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/less/game.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="1" selection-start="268" selection-end="268" vertical-scroll-proportion="-9.115385" vertical-offset="103" max-vertical-offset="442">
-          <folding>
-            <marker date="1409492560295" expanded="true" signature="9:130" placeholder="{...}" />
-            <marker date="1409492560295" expanded="true" signature="48:128" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="286" column="0" selection-start="4038" selection-end="4038" vertical-scroll-proportion="0.0" vertical-offset="4403" max-vertical-offset="4964">
+        <state line="296" column="0" selection-start="4315" selection-end="4315" vertical-scroll-proportion="0.0" vertical-offset="4573" max-vertical-offset="5134">
           <folding>
-            <marker date="1409492842057" expanded="true" signature="2706:2746" placeholder="{...}" />
+            <marker date="1409516736142" expanded="true" signature="2706:2746" placeholder="{...}" />
+            <marker date="1409516736142" expanded="true" signature="4167:4314" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -874,7 +866,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/home.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="21" selection-start="363" selection-end="363" vertical-scroll-proportion="0.8634921" vertical-offset="0" max-vertical-offset="391">
+        <state line="9" column="24" selection-start="207" selection-end="207" vertical-scroll-proportion="-3.06" vertical-offset="0" max-vertical-offset="408">
+          <folding>
+            <marker date="1409515268625" expanded="true" signature="30:251" placeholder="..." />
+            <marker date="1409515268625" expanded="true" signature="258:394" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/less/game.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="24" selection-start="491" selection-end="491" vertical-scroll-proportion="0.59882003" vertical-offset="222" max-vertical-offset="612">
           <folding />
         </state>
       </provider>
