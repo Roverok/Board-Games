@@ -14,18 +14,42 @@
   position: relative;
   .game-player{
     position: absolute;
-    border: 3px solid #ffffff;
-    bottom: 25px;
-    left: 20px;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
+    &.p-1{
+      border: 3px solid #ff0000;
+      bottom: 25px;
+      left: 20px;
+      .player-avatar{
+        background: url('../images/avatars/ashish-avatar.png') no-repeat center;
+        background-size: 400%;
+      }
+    }
+    &.p-2{
+      border: 3px solid #0000ff;
+      bottom: 45px;
+      left: 40px;
+      .player-avatar{
+        background: url('../images/avatars/ashish-avatar2.png') no-repeat center;
+        background-size: 400%;
+      }
+    }
     .player-avatar{
-      background: url('../images/avatars/ashish-avatar2.png') no-repeat center;
-      background-position: 0% -11px;
-      background-size: 400%;
-      height: 44px;
+      height: 34px;
       border-radius: 50%;
+      &.normal{
+        background-position: 0% -11px;
+      }
+      &.sad{
+        background-position: 33% -11px;
+      }
+      &.angry{
+        background-position: 67% -11px;
+      }
+      &.happy{
+        background-position: 100% -11px;
+      }
     }
   }
 }
