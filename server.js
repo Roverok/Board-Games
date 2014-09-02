@@ -11,6 +11,25 @@ var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 
+/*
+var mongoose = require('mongoose');
+var db = mongoose.connection;
+var conn = mongoose.connect('mongodb://localhost/testdb');
+db.on('error', console.error);
+db.once('open', function() {
+  // Create your schemas and models here.
+  var playaSchema = new mongoose.Schema({
+    firstName: String,
+    lastName: String
+  });
+  var collection = db.collection("playa");
+  var Playa = conn.model('Playa', playaSchema);
+  Playa.save({firstName: 'a', lastName: 'b'}, function(errr, data){
+    console.log(errr); console.log(data);
+  });
+});
+*/
+
 var app = express();
 
 // all environments
@@ -31,6 +50,7 @@ if ('development' == app.get('env')) {
 }
 
 require('./routes')(app);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
