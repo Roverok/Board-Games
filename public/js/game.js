@@ -34,7 +34,7 @@ var gamePlay = {
       distX = -distX;
     distY = (distY <0?'-':'+')+ '=' + (55*(distY > 0 ? distY : -distY)) + 'px';
     distX = (distX <0?'-':'+')+ '=' + (57*(distX > 0 ? distX : -distX)) + 'px';
-    $('.game-player.p-'+player).animate({bottom: distY , left: distX},speed,(typeof callback != undefined)?callback:null);
+    $('.game-board .game-player.p-'+player).animate({bottom: distY , left: distX},speed,(typeof callback != undefined)?callback:null);
   },
   snakeBite : function(player,snakeBody){
     $('.game-player.p-'+player+' .player-avatar').removeClass('normal').addClass('sad');
@@ -100,5 +100,27 @@ var gamePlay = {
       }
     }
     return;
+  },
+  generateMeme  : function(winner,loser){
+    $('.winner').addClass('p-'+winner);
+    $('.winner .player-avatar').addClass('happy');
+    $('.loser').addClass('p-'+loser);
+    $('.loser .player-avatar').addClass('happy');
+    $('#memeModal').addClass('image-result-1').modal('show');
+  },
+  initSnakeLadderGame : function(){
+    $('.js-rollDice').click(function(){
+      var player = $(this).attr('player');
+      var dice = Math.floor((Math.random() * 6) + 1);
+      $('.message').html(dice);
+      gamePlay.diceMove(player,dice);
+      $('.js-rollDice').attr('player',(dice == 6)?player:(player == 1)?2:1);
+      if(position['p-'+player] == 99){
+        gamePlay.generateMeme(player,(player == 1)?2:1);
+      }
+    });
+    $('body').click(function(){
+      $('#memeModal').modal('hide');
+    });
   }
 };

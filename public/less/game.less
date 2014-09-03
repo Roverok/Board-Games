@@ -4,52 +4,161 @@
   .box{
     .text-base;
     .display-inline;
-    &.box-50{
+    vertical-align: top;
+    &.half-box{
       width: 50%;
     }
   }
 }
 
+.game-player{
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid;
+  &.p-1{
+     color: @p-1color;
+    .player-avatar{
+      background: url('../images/avatars/ashish-avatar.png') no-repeat;
+    }
+  }
+  &.p-2{
+    color: @p-2color;
+    .player-avatar{
+      background: url('../images/avatars/ashish-avatar2.png') no-repeat;
+    }
+  }
+}
+
+.score-board{
+  padding: @padding-large;
+  width: 100%;
+  position: relative;
+  color: #fff;
+  font-size: 30px;
+  font-style: italic;
+  margin: @margin-xxlarge 0;
+  &.p-1{
+    .text-right;
+    background: @p-1color;
+  }
+  &.p-2{
+    .text-left;
+    background: @p-2color;
+  }
+  .game-player{
+    width: 150px;
+    height: 150px;
+    border: 6px solid;
+    &.p-1{
+      top: -55px;
+      left: 5px;
+    }
+    &.p-2{
+      top: -55px;
+      right: 5px;
+    }
+    .player-avatar{
+      background-position-y: -41px !important;
+    }
+  }
+}
+
+.dice-box{
+  height: 200px;
+}
+.score-box{
+  margin-top: @margin-large;
+  height: 175px;
+}
+
 .game-board{
   position: relative;
   .game-player{
-    position: absolute;
-    border-radius: 50%;
     width: 40px;
     height: 40px;
     &.p-1{
-      border: 3px solid #ff0000;
       bottom: 25px;
       left: 20px;
-      .player-avatar{
-        background: url('../images/avatars/ashish-avatar.png') no-repeat center;
-        background-size: 400%;
-      }
     }
     &.p-2{
-      border: 3px solid #0000ff;
       bottom: 45px;
       left: 40px;
-      .player-avatar{
-        background: url('../images/avatars/ashish-avatar2.png') no-repeat center;
-        background-size: 400%;
-      }
     }
     .player-avatar{
-      height: 34px;
-      border-radius: 50%;
-      &.normal{
-        background-position: 0% -11px;
+      background-position-y: -11px !important;
+    }
+  }
+}
+
+.player-avatar{
+  height: inherit;
+  background-size: 400% !important;
+  border-radius: 50%;
+  &.normal{
+    background-position-x: 0% !important;
+  }
+  &.sad{
+    background-position-x: 33% !important;
+  }
+  &.angry{
+    background-position-x: 67% !important;
+  }
+  &.happy{
+    background-position-x: 100% !important;
+  }
+}
+
+.mini-score-box{
+   display: none;
+}
+
+@media screen and (max-width: @min-screen-width){
+  .box.half-box:last-child{
+    display: none;
+  }
+  .box.half-box:first-child{
+    width: 100%;
+  }
+  .mini-score-box{
+    .display-block;
+    margin-top: @margin-xxlarge;
+    .mini-score-board{
+      .display-inline;
+      position: relative;
+      font-style: italic;
+      padding: @padding-base @padding-medium;
+      width: 260px;
+      margin: @margin-xxlarge 0;
+      font-size: 15px;
+      .text-white;
+      &:first-child{
+        background: @p-1color;
+        margin-left: @margin-large;
+        margin-right: @margin-base;
+        .text-right;
       }
-      &.sad{
-        background-position: 33% -11px;
+      &:last-child{
+        background: @p-2color;
+        margin-right: @margin-large;
+        margin-left: @margin-base;
+        .text-left;
       }
-      &.angry{
-        background-position: 67% -11px;
-      }
-      &.happy{
-        background-position: 100% -11px;
+      .game-player{
+        width: 60px;
+        height: 60px;
+        &.p-1{
+          top: -20px;
+          left: 5px;
+        }
+        &.p-2{
+          top: -20px;
+          right: 5px;
+        }
+        .player-avatar{
+          background-position-y: -16px !important;
+        }
       }
     }
   }
+
 }

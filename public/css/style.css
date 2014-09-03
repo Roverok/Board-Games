@@ -198,6 +198,11 @@ img {
   width: 1200px;
   margin: 0px auto;
 }
+@media screen and (max-width: 625px) {
+  .main-content > .content {
+    width: 600px;
+  }
+}
 .bkgrnd-high-int {
   background-color: #ad3223;
 }
@@ -271,50 +276,187 @@ ul.roman {
 .game-box .box {
   font-size: 14px;
   display: inline-block;
+  vertical-align: top;
 }
-.game-box .box.box-50 {
+.game-box .box.half-box {
   width: 50%;
+}
+.game-player {
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid;
+}
+.game-player.p-1 {
+  color: #ff0000;
+}
+.game-player.p-1 .player-avatar {
+  background: url('../images/avatars/ashish-avatar.png') no-repeat;
+}
+.game-player.p-2 {
+  color: #0000ff;
+}
+.game-player.p-2 .player-avatar {
+  background: url('../images/avatars/ashish-avatar2.png') no-repeat;
+}
+.score-board {
+  padding: 15px;
+  width: 100%;
+  position: relative;
+  color: #fff;
+  font-size: 30px;
+  font-style: italic;
+  margin: 25px 0;
+}
+.score-board.p-1 {
+  text-align: right;
+  background: #ff0000;
+}
+.score-board.p-2 {
+  text-align: left;
+  background: #0000ff;
+}
+.score-board .game-player {
+  width: 150px;
+  height: 150px;
+  border: 6px solid;
+}
+.score-board .game-player.p-1 {
+  top: -55px;
+  left: 5px;
+}
+.score-board .game-player.p-2 {
+  top: -55px;
+  right: 5px;
+}
+.score-board .game-player .player-avatar {
+  background-position-y: -41px !important;
+}
+.dice-box {
+  height: 200px;
+}
+.score-box {
+  margin-top: 15px;
+  height: 175px;
 }
 .game-board {
   position: relative;
 }
 .game-board .game-player {
-  position: absolute;
-  border-radius: 50%;
   width: 40px;
   height: 40px;
 }
 .game-board .game-player.p-1 {
-  border: 3px solid #ff0000;
   bottom: 25px;
   left: 20px;
 }
-.game-board .game-player.p-1 .player-avatar {
-  background: url('../images/avatars/ashish-avatar.png') no-repeat center;
-  background-size: 400%;
-}
 .game-board .game-player.p-2 {
-  border: 3px solid #0000ff;
   bottom: 45px;
   left: 40px;
 }
-.game-board .game-player.p-2 .player-avatar {
-  background: url('../images/avatars/ashish-avatar2.png') no-repeat center;
-  background-size: 400%;
-}
 .game-board .game-player .player-avatar {
-  height: 34px;
+  background-position-y: -11px !important;
+}
+.player-avatar {
+  height: inherit;
+  background-size: 400% !important;
   border-radius: 50%;
 }
-.game-board .game-player .player-avatar.normal {
-  background-position: 0% -11px;
+.player-avatar.normal {
+  background-position-x: 0% !important;
 }
-.game-board .game-player .player-avatar.sad {
-  background-position: 33% -11px;
+.player-avatar.sad {
+  background-position-x: 33% !important;
 }
-.game-board .game-player .player-avatar.angry {
-  background-position: 67% -11px;
+.player-avatar.angry {
+  background-position-x: 67% !important;
 }
-.game-board .game-player .player-avatar.happy {
-  background-position: 100% -11px;
+.player-avatar.happy {
+  background-position-x: 100% !important;
+}
+.mini-score-box {
+  display: none;
+}
+@media screen and (max-width: 625px) {
+  .box.half-box:last-child {
+    display: none;
+  }
+  .box.half-box:first-child {
+    width: 100%;
+  }
+  .mini-score-box {
+    display: block;
+    margin-top: 25px;
+  }
+  .mini-score-box .mini-score-board {
+    display: inline-block;
+    position: relative;
+    font-style: italic;
+    padding: 5px 10px;
+    width: 260px;
+    margin: 25px 0;
+    font-size: 15px;
+    color: #ffffff;
+  }
+  .mini-score-box .mini-score-board:first-child {
+    background: #ff0000;
+    margin-left: 15px;
+    margin-right: 5px;
+    text-align: right;
+  }
+  .mini-score-box .mini-score-board:last-child {
+    background: #0000ff;
+    margin-right: 15px;
+    margin-left: 5px;
+    text-align: left;
+  }
+  .mini-score-box .mini-score-board .game-player {
+    width: 60px;
+    height: 60px;
+  }
+  .mini-score-box .mini-score-board .game-player.p-1 {
+    top: -20px;
+    left: 5px;
+  }
+  .mini-score-box .mini-score-board .game-player.p-2 {
+    top: -20px;
+    right: 5px;
+  }
+  .mini-score-box .mini-score-board .game-player .player-avatar {
+    background-position-y: -16px !important;
+  }
+}
+#memeModal {
+  background: #52c9f4;
+}
+#memeModal .modal-body {
+  padding: 10px;
+}
+#memeModal .meme-image {
+  position: relative;
+  height: inherit;
+  background-size: cover;
+}
+#memeModal .meme-image .game-player {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 5px solid;
+}
+#memeModal .meme-image .game-player .player-avatar {
+  height: 100px;
+  background-position-y: -31px !important;
+}
+.image-result-1 .modal-body {
+  height: 430px;
+}
+.image-result-1 .modal-body .meme-image {
+  background: url('../images/memes/meme-result-1.jpg');
+}
+.image-result-1 .modal-body .meme-image .winner {
+  top: 75px;
+  left: 185px;
+}
+.image-result-1 .modal-body .meme-image .loser {
+  bottom: 130px;
+  right: 15px;
 }

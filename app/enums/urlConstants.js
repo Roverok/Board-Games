@@ -4,9 +4,7 @@ exports.urls = {
   API : {
   },
   WEB : {
-    USER_INDEX : '/',
-    USER_INDEX2 : '/index',
-    USER_GET : '/get',
+    SNAKES_N_LADDERS : '/snakes-n-ladders',
     TEST_INDEX : '/t',
     TEST_INDEX2 : '/t/index',
     TEST_GET : '/t/get'

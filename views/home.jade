@@ -1,20 +1,43 @@
 extends layouts/default
-
+block head
+  title Snakes and Ladders
+  include modals/memeModal
 block content
-  h1= title
   .game-box
-    .box.box-50
+    .box.half-box
+      .mini-score-box
+        .mini-score-board.p-1 AshBee
+          .game-player.p-1
+            .player-avatar.normal
+        .mini-score-board.p-1 AshBee
+          .game-player.p-2
+            .player-avatar.normal
+
       .game-board
         img(src='../images/boards/snakes-and-ladders-board.jpg')
         .game-player.p-1
           .player-avatar.normal
         .game-player.p-2
           .player-avatar.normal
-    .box.box-50
-      p Welcome to #{title}
+    .box.half-box
+      .dice-box
+        .btn.btn-primary.js-rollDice(player="1") Roll Dice
+        .message
+      .score-box
+        .score-board.p-1 AshBee
+          .game-player.p-1
+            .player-avatar.normal
+      .score-box
+        .score-board.p-2 Ashish
+          .game-player.p-2
+            .player-avatar.normal
 
 block js
   script(src='js/jquery.min.js')
   script(src='js/bootstrap.min.js')
   script(src='js/jquery-ui.min.js')
   script(src='js/game.js')
+  script(type='text/javascript').
+    $(document).ready(function(){
+      gamePlay.initSnakeLadderGame();
+    });

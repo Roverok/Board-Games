@@ -1,0 +1,39 @@
+#memeModal{
+  background: @bg-color-base-dark;
+  .modal-body{
+    padding: @padding-medium;
+  }
+  .meme-image{
+    position: relative;
+    height: inherit;
+    background-size: cover;
+
+    .game-player{
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: 5px solid;
+      .player-avatar{
+        height: 100px;
+        background-position-y: -31px !important;
+      }
+    }
+  }
+}
+
+.image-result-1{
+  .modal-body{
+    height: 430px;
+    .meme-image{
+      background: url('../images/memes/meme-result-1.jpg');
+      .winner{
+        top: 75px;
+        left: 185px;
+      }
+      .loser{
+        bottom: 130px;
+        right: 15px;
+      }
+    }
+  }
+}
