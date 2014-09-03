@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f3573a7-2240-4b21-99bc-e63127740861" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/game.js" afterPath="$PROJECT_DIR$/public/js/game.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/less/modals.less" afterPath="$PROJECT_DIR$/public/less/modals.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/style.css" afterPath="$PROJECT_DIR$/public/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Board-Games.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -84,8 +82,13 @@
       <file leaf-file-name="home.jade" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/home.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="16" selection-start="1091" selection-end="1091" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1003">
-              <folding />
+            <state line="58" column="16" selection-start="1694" selection-end="1694" vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="1343">
+              <folding>
+                <marker date="1409754809976" expanded="true" signature="29:88" placeholder="..." />
+                <marker date="1409754809976" expanded="true" signature="94:1173" placeholder="..." />
+                <marker date="1409754809976" expanded="true" signature="1180:2160" placeholder="..." />
+                <marker date="1409754809976" expanded="true" signature="1324:2160" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -741,12 +744,12 @@
       <workItem from="1409577528535" duration="8202000" />
       <workItem from="1409641618318" duration="10544000" />
       <workItem from="1409683414535" duration="8939000" />
-      <workItem from="1409718201735" duration="33233000" />
+      <workItem from="1409718201735" duration="33283000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78666000" />
+    <option name="totallyTimeSpent" value="78716000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -854,7 +857,12 @@
     <entry file="file://$PROJECT_DIR$/views/home.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="24" selection-start="207" selection-end="207" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="408">
-          <folding />
+          <folding>
+            <marker date="1409754809976" expanded="true" signature="29:88" placeholder="..." />
+            <marker date="1409754809976" expanded="true" signature="94:1173" placeholder="..." />
+            <marker date="1409754809976" expanded="true" signature="1180:2160" placeholder="..." />
+            <marker date="1409754809976" expanded="true" signature="1324:2160" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -953,11 +961,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="365" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/express/bin/express">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="300" column="28" selection-start="6338" selection-end="6338" vertical-scroll-proportion="0.21296297" vertical-offset="4985" max-vertical-offset="7293" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/jquery-ui.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="352">
@@ -968,13 +971,6 @@
     <entry file="file://$PROJECT_DIR$/views/index.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="23" selection-start="23" selection-end="23" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/mongoose/node_modules/ms/test/support/jquery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8338" column="2" selection-start="222752" selection-end="222752" vertical-scroll-proportion="0.0" vertical-offset="141398" max-vertical-offset="157386">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
@@ -1131,8 +1127,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/home.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="16" selection-start="1091" selection-end="1091" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1003">
-          <folding />
+        <state line="58" column="16" selection-start="1694" selection-end="1694" vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="1343">
+          <folding>
+            <marker date="1409754809976" expanded="true" signature="29:88" placeholder="..." />
+            <marker date="1409754809976" expanded="true" signature="94:1173" placeholder="..." />
+            <marker date="1409754809976" expanded="true" signature="1180:2160" placeholder="..." />
+            <marker date="1409754809976" expanded="true" signature="1324:2160" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
