@@ -8,7 +8,6 @@ var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
 */
-var http = require('http');
 var path = require('path');
 
 /*
@@ -31,6 +30,8 @@ db.once('open', function() {
 */
 
 var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -51,7 +52,21 @@ if ('development' == app.get('env')) {
 
 require('./routes')(app);
 
+io.on('connection', function(socket){
+    console.log("UserConnected");
+    socket.on('disconnect', function(){
+        console.log("DisCnctd");
+    });
+    socket.on('User select', function(msg){
+        io.emit('User select', msg);
+    });
+    socket.on('Dice points', function(msg){
+        io.emit('Dice points', msg);
+    });
 
-http.createServer(app).listen(app.get('port'), function(){
+});
+
+
+http.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
