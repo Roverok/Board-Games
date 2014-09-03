@@ -14,8 +14,34 @@ var ladders = [
 ];
 var position = {
   'p-1' : 0,
-  'p-2' : 0
+  'p-2' : 0,
+  'p-3' : 0,
+  'p-4' : 0
 }
+
+var characters = {
+  'p-1' : {
+            'name' : 'AshBee',
+            'position' : 0,
+            'selected'  : false
+          },
+  'p-2' : {
+            'name' : 'Ashish',
+            'position' : 0,
+            'selected'  : false
+          },
+  'p-3' : {
+            'name' : 'Troll Kid',
+            'position' : 0,
+            'selected'  : false
+          },
+  'p-4' : {
+            'name' : 'Trollmaster',
+            'position' : 0,
+            'selected'  : false
+          }
+};
+
 
 var gamePlay = {
   moveAvatar : function(player, from, to, speed, callback){
@@ -34,32 +60,32 @@ var gamePlay = {
       distX = -distX;
     distY = (distY <0?'-':'+')+ '=' + (55*(distY > 0 ? distY : -distY)) + 'px';
     distX = (distX <0?'-':'+')+ '=' + (57*(distX > 0 ? distX : -distX)) + 'px';
-    $('.game-board .game-player.p-'+player).animate({bottom: distY , left: distX},speed,(typeof callback != undefined)?callback:null);
+    $('.game-board .game-player.'+player).animate({bottom: distY , left: distX},speed,(typeof callback != undefined)?callback:null);
   },
   snakeBite : function(player,snakeBody){
-    $('.game-player.p-'+player+' .player-avatar').removeClass('normal').addClass('sad');
-    $('.game-player:not(.p-'+player+') .player-avatar').removeClass('normal').addClass('happy');
+    $('.game-player.'+player+' .player-avatar').removeClass('normal').addClass('sad');
+    $('.game-player:not(.'+player+') .player-avatar').removeClass('normal').addClass('happy');
     var callback = function(){
-      $('.game-player.p-'+player+' .player-avatar').addClass('normal').removeClass('sad');
-      $('.game-player:not(.p-'+player+') .player-avatar').addClass('normal').removeClass('happy');
+      $('.game-player.'+player+' .player-avatar').addClass('normal').removeClass('sad');
+      $('.game-player:not(.'+player+') .player-avatar').addClass('normal').removeClass('happy');
     }
     var length = snakeBody.length-1;
     for(var i=1;i<=length;i++)
       gamePlay.moveAvatar(player,snakeBody[i-1],snakeBody[i],300,(i==length)?callback:null);
-    position['p-'+player] = snakeBody[length];
+    characters[player].position = snakeBody[length];
   },
   ladderHit : function(player,ladder){
-    $('.game-player.p-'+player+' .player-avatar').removeClass('normal').addClass('happy');
-    $('.game-player:not(.p-'+player+') .player-avatar').removeClass('normal').addClass('angry');
+    $('.game-player.'+player+' .player-avatar').removeClass('normal').addClass('happy');
+    $('.game-player:not(.'+player+') .player-avatar').removeClass('normal').addClass('angry');
     var callback = function(){
-      $('.game-player.p-'+player+' .player-avatar').addClass('normal').removeClass('happy');
-      $('.game-player:not(.p-'+player+') .player-avatar').addClass('normal').removeClass('angry');
+      $('.game-player.'+player+' .player-avatar').addClass('normal').removeClass('happy');
+      $('.game-player:not(.'+player+') .player-avatar').addClass('normal').removeClass('angry');
     }
     gamePlay.moveAvatar(player,ladder[0],ladder[1],500,callback);
-    position['p-'+player] = ladder[1];
+    characters[player].position = ladder[1];
   },
   diceMove : function(player,dice){
-    var source = position['p-'+player];
+    var source = characters[player].position;
     var sourceX = parseInt(source%10);
     var delay = 0;
     if(source + dice <= 99){
@@ -75,7 +101,7 @@ var gamePlay = {
           delay += 500;
         }
       }
-      position['p-'+player] = source + dice;
+      characters[player].position = source + dice;
       setTimeout(function(){
         gamePlay.checkLadderHit(player);
         gamePlay.checkSnakeBite(player);
@@ -85,7 +111,7 @@ var gamePlay = {
   },
   checkLadderHit : function(player){
     for(var i in ladders){
-      if(ladders[i][0] == position['p-'+player]){
+      if(ladders[i][0] == characters[player].position){
         gamePlay.ladderHit(player,ladders[i]);
         return;
       }
@@ -94,19 +120,70 @@ var gamePlay = {
   },
   checkSnakeBite : function(player){
     for(var i in snakes){
-      if(snakes[i][0] == position['p-'+player]){
+      if(snakes[i][0] == characters[player].position){
         gamePlay.snakeBite(player,snakes[i]);
         return;
       }
     }
     return;
   },
+  /*animateAvatars  : function(){
+    $(function(){
+      $('#android-slide img:gt(0)').hide();
+      setInterval(function(){
+            $('#android-slide :first-child').fadeOut(500)
+                .next('img').fadeIn(500)
+                .end().appendTo('#android-slide');},
+          5000);
+      $('#ios-slide img:gt(0)').hide();
+      setInterval(function(){
+            $('#ios-slide :first-child').fadeOut(500)
+                .next('img').fadeIn(500)
+                .end().appendTo('#ios-slide');},
+          5000);
+      $('#windows-slide img:gt(0)').hide();
+      setInterval(function(){
+            $('#windows-slide :first-child').fadeOut(500)
+                .next('img').fadeIn(500)
+                .end().appendTo('#windows-slide');},
+          5000);
+    });
+  },*/
   generateMeme  : function(winner,loser){
-    $('.winner').addClass('p-'+winner);
+    $('.winner').addClass(winner);
     $('.winner .player-avatar').addClass('happy');
-    $('.loser').addClass('p-'+loser);
-    $('.loser .player-avatar').addClass('happy');
+    $('.loser').addClass(loser);
+    $('.loser .player-avatar').addClass('sad');
     $('#memeModal').addClass('image-result-1').modal('show');
+  },
+  initGameBox : function(){
+    $.each(characters, function(i,obj){
+       if(obj.selected){
+         var gameBoard = '<div class="game-player ' + i + '">' +
+                            '<div class="player-avatar normal"></div>' +
+                         '</div>';
+         var miniScoreBoard = '<div class="mini-score-board ' + i + '">' + obj.name + gameBoard + '</div>';
+         var scoreBoard = '<div class="score-box">' +
+                            '<div class="score-board ' + i + '">' + obj.name + gameBoard +'</div>' +
+                          '</div>';
+         $('.game-board').append(gameBoard);
+         $('.mini-score-box').append(miniScoreBoard);
+         $('.box.half-box:last-child').append(scoreBoard);
+         if($('.js-rollDice').attr('player') === undefined){
+           $('.js-rollDice').attr('player',i);
+         }
+
+       }
+    });
+  },
+  findNextOpponent : function(currentPlayer){
+    var nextPlayer;
+    $.each(characters,function(i,obj){
+       if(i !== currentPlayer && obj.selected === true){
+         nextPlayer = i;
+       }
+    });
+    return nextPlayer;
   },
   initSnakeLadderGame : function(){
     $('.js-rollDice').click(function(){
@@ -114,13 +191,45 @@ var gamePlay = {
       var dice = Math.floor((Math.random() * 6) + 1);
       $('.message').html(dice);
       gamePlay.diceMove(player,dice);
-      $('.js-rollDice').attr('player',(dice == 6)?player:(player == 1)?2:1);
-      if(position['p-'+player] == 99){
-        gamePlay.generateMeme(player,(player == 1)?2:1);
+      var player2 = gamePlay.findNextOpponent(player);
+      console.log(player2);
+      $('.js-rollDice').attr('player',(dice == 6)?player:player2);
+      if(characters[player].position == 99){
+        gamePlay.generateMeme(player,player2);
       }
     });
-    $('body').click(function(){
-      $('#memeModal').modal('hide');
+    $('.select-box').click(function(){
+      var player = $(this).attr('type');
+      if(!$(this).hasClass('selected')){
+        if($('.select-box.selected').length < 2){
+          $(this).addClass('selected');
+          $(this).find('.player-name').addClass('text-color-p'+player);
+          characters['p-'+player].selected = true;
+        }
+      }else{
+        $(this).removeClass('selected');
+        $(this).find('.player-name').removeClass('text-color-p'+player);
+        characters['p-'+player].selected = false;
+      }
+      if($('.select-box.selected').length == 2){
+        $('.continue-button').removeClass('hide');
+      }else{
+        $('.continue-button').addClass('hide');
+      }
+    });
+    $('.game-title').on('click','.continue-button',function(){
+      $('.game-title').fadeOut();
+      setTimeout(function(){
+        $('.game-select').fadeIn();
+      },500);
+
+    });
+    $('.game-select').on('click','.continue-button',function(){
+      $('.game-select').fadeOut();
+      setTimeout(function(){
+        gamePlay.initGameBox();
+        $('.game-box').fadeIn();
+      },500);
     });
   }
 };

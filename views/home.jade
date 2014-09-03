@@ -3,34 +3,44 @@ block head
   title Snakes and Ladders
   include modals/memeModal
 block content
-  .game-box
+  .container-fluid
+    .row
+      .col-xs-12
+        .game-title
+          .image-box
+          .continue-button Click Here to Continue
+      .col-xs-12
+        .game-select.hide
+          .select-title Select Two Players
+          .select-box(type='1')
+            .game-player.p-1
+              .player-avatar
+              .player-name AshBee
+          .select-box(type='2')
+            .game-player.p-2
+              .player-avatar
+              .player-name Ashish
+          .select-box(type='3')
+            .game-player.p-3
+              .player-avatar
+              .player-name Troller
+          .select-box(type='4')
+            .game-player.p-4
+              .player-avatar
+              .player-name Trollmaster
+          .continue-button.hide Click Here to Begin the Game
+  .game-box.hide
     .box.half-box
       .mini-score-box
-        .mini-score-board.p-1 AshBee
-          .game-player.p-1
-            .player-avatar.normal
-        .mini-score-board.p-1 AshBee
-          .game-player.p-2
-            .player-avatar.normal
-
       .game-board
         img(src='../images/boards/snakes-and-ladders-board.jpg')
-        .game-player.p-1
-          .player-avatar.normal
-        .game-player.p-2
-          .player-avatar.normal
+      .dice-box
+        .js-rollDice Roll Dice
+        .message
     .box.half-box
       .dice-box
-        .btn.btn-primary.js-rollDice(player="1") Roll Dice
+        .js-rollDice Roll Dice
         .message
-      .score-box
-        .score-board.p-1 AshBee
-          .game-player.p-1
-            .player-avatar.normal
-      .score-box
-        .score-board.p-2 Ashish
-          .game-player.p-2
-            .player-avatar.normal
 
 block js
   script(src='js/jquery.min.js')
