@@ -18,7 +18,8 @@ var position = {
   'p-3' : 0,
   'p-4' : 0
 }
-
+var randomNumber = 1;
+var competitors = [];
 var characters = {
   'p-1' : {
             'name' : 'AshBee',
@@ -149,12 +150,13 @@ var gamePlay = {
           5000);
     });
   },*/
-  generateMeme  : function(winner,loser){
+  generateMeme  : function(winner,loser,imageCase,number){
+    $('#memeModal').modal('hide');
     $('.winner').addClass(winner);
     $('.winner .player-avatar').addClass('happy');
     $('.loser').addClass(loser);
     $('.loser .player-avatar').addClass('sad');
-    $('#memeModal').addClass('image-result-1').modal('show');
+    $('#memeModal').addClass(imageCase+'-'+number).modal('show');
   },
   initGameBox : function(){
     $.each(characters, function(i,obj){
@@ -172,9 +174,13 @@ var gamePlay = {
          if($('.js-rollDice').attr('player') === undefined){
            $('.js-rollDice').attr('player',i);
          }
-
        }
     });
+    gamePlay.findCompetitors();
+    gamePlay.generateMeme(competitors[0],competitors[1],'image-battle',randomNumber);
+    setTimeout(function(){
+      $('#memeModal').modal('hide');
+    },5000);
   },
   findNextOpponent : function(currentPlayer){
     var nextPlayer;
@@ -185,7 +191,16 @@ var gamePlay = {
     });
     return nextPlayer;
   },
+  findCompetitors : function(){
+    $.each(characters,function(i,obj){
+      if(obj.selected == true){
+        console.log(i);
+        competitors.push(i);
+      }
+    });
+  },
   initSnakeLadderGame : function(){
+    randomNumber = Math.floor((Math.random() * 2) + 1);
     $('.js-rollDice').click(function(){
       var player = $(this).attr('player');
       var dice = Math.floor((Math.random() * 6) + 1);
@@ -195,7 +210,14 @@ var gamePlay = {
       console.log(player2);
       $('.js-rollDice').attr('player',(dice == 6)?player:player2);
       if(characters[player].position == 99){
-        gamePlay.generateMeme(player,player2);
+        gamePlay.generateMeme(player,player2,'image-result',randomNumber);
+        setTimeout(function(){
+          gamePlay.generateMeme(player,player2,'image-winner',randomNumber);
+        },5000);
+        setTimeout(function(){
+          gamePlay.generateMeme(player,player2,'image-loser',randomNumber);
+        },5000);
+        location.href = location.href;
       }
     });
     $('.select-box').click(function(){

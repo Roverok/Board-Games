@@ -590,3 +590,101 @@ ul.roman {
   bottom: 130px;
   right: 15px;
 }
+.image-result-2 .modal-body {
+  height: 430px;
+}
+.image-result-2 .modal-body .meme-image {
+  background: url('../images/memes/meme-result-2.jpg');
+}
+.image-result-2 .modal-body .meme-image .winner {
+  top: 75px;
+  left: 185px;
+}
+.image-result-2 .modal-body .meme-image .loser {
+  bottom: 130px;
+  right: 15px;
+}
+.image-winner-1 .modal-body {
+  height: 430px;
+}
+.image-winner-1 .modal-body .meme-image {
+  background: url('../images/memes/meme-winner-1.jpg');
+}
+.image-winner-1 .modal-body .meme-image .winner {
+  top: 75px;
+  left: 185px;
+}
+.image-winner-1 .modal-body .meme-image .loser {
+  bottom: 130px;
+  right: 15px;
+}
+.image-winner-2 .modal-body {
+  height: 430px;
+}
+.image-winner-2 .modal-body .meme-image {
+  background: url('../images/memes/meme-winner-2.jpg');
+}
+.image-winner-2 .modal-body .meme-image .winner {
+  top: 75px;
+  left: 185px;
+}
+.image-winner-2 .modal-body .meme-image .loser {
+  bottom: 130px;
+  right: 15px;
+}
+.image-loser-1 .modal-body {
+  height: 430px;
+}
+.image-loser-1 .modal-body .meme-image {
+  background: url('../images/memes/meme-loser-1.jpg');
+}
+.image-loser-1 .modal-body .meme-image .winner {
+  top: 75px;
+  left: 185px;
+}
+.image-loser-1 .modal-body .meme-image .loser {
+  bottom: 130px;
+  right: 15px;
+}
+.image-loser-2 .modal-body {
+  height: 430px;
+}
+.image-loser-2 .modal-body .meme-image {
+  background: url('../images/memes/meme-loser-2.jpg');
+}
+.image-loser-2 .modal-body .meme-image .winner {
+  top: 75px;
+  left: 185px;
+}
+.image-loser-2 .modal-body .meme-image .loser {
+  bottom: 130px;
+  right: 15px;
+}
+.image-battle-1 .modal-body {
+  height: 430px;
+}
+.image-battle-1 .modal-body .meme-image {
+  background: url('../images/memes/meme-battle-1.jpg');
+}
+.image-battle-1 .modal-body .meme-image .winner {
+  top: 75px;
+  left: 185px;
+}
+.image-battle-1 .modal-body .meme-image .loser {
+  bottom: 130px;
+  right: 15px;
+}
+.image-battle-2 .modal-body {
+  height: 430px;
+}
+.image-battle-2 .modal-body .meme-image {
+  background: url('../images/memes/meme-battle-2.jpg');
+}
+.image-battle-2 .modal-body .meme-image .winner {
+  top: 75px;
+  left: 185px;
+}
+.image-battle-2 .modal-body .meme-image .loser {
+  bottom: 130px;
+  right: 15px;
+}
