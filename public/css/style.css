@@ -12,7 +12,7 @@
 body {
   color: #666666;
   min-height: 300px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px Impact;
 }
 h1 {
   font-size: 21px;
@@ -281,24 +281,30 @@ ul.roman {
 .text-color-p4 {
   color: #ffdd00 !important;
 }
+.meme-font {
+  color: #ffffff;
+  text-transform: uppercase;
+  text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000;
+}
 .game-title {
+  border-radius: 25px;
   background: #52c9f4;
   padding: 15px;
 }
 .game-title .image-box {
-  margin: 25px 0;
   background: url('../images/banners/snakes-and-ladders-banner.png') no-repeat center;
   background-size: contain;
   height: 400px;
 }
 .game-select {
+  border-radius: 25px;
   background: #52c9f4;
   padding: 15px;
   text-align: center;
 }
 .game-select .select-title {
   margin: 25px 0;
-  font-size: 50px;
+  font-size: 75px;
 }
 .game-select .select-box {
   display: inline-block;
@@ -332,13 +338,13 @@ ul.roman {
 .game-select .select-box .game-player .player-name {
   color: #fff;
   margin: 15px 0;
-  font-size: 20px;
+  font-size: 30px;
 }
 .continue-button {
   text-align: center;
   color: #fafafa;
   margin: 40px 0;
-  font-size: 50px;
+  font-size: 75px;
   cursor: pointer;
 }
 .continue-button:hover {
@@ -390,6 +396,7 @@ ul.roman {
   width: 100%;
   position: relative;
   color: #fff;
+  border-radius: 10px;
   font-size: 30px;
   font-style: italic;
   margin: 25px 0;
@@ -470,28 +477,28 @@ ul.roman {
   background-size: 400% !important;
   border-radius: 50%;
 }
-.player-avatar.normal {
+.player-avatar[type=normal] {
   background-position-x: 0% !important;
 }
-.player-avatar.sad {
+.player-avatar[type=sad] {
   background-position-x: 33% !important;
 }
-.player-avatar.angry {
+.player-avatar[type=angry] {
   background-position-x: 67% !important;
 }
-.player-avatar.happy {
+.player-avatar[type=happy] {
   background-position-x: 100% !important;
 }
 .mini-score-box {
   display: none;
 }
 @media screen and (max-width: 625px) {
-  .image-box {
-    margin: 0;
-  }
   .continue-button {
     margin-bottom: 25px;
-    font-size: 30px;
+    font-size: 50px;
+  }
+  .select-title {
+    font-size: 60px;
   }
   .box.half-box:last-child {
     display: none;
@@ -505,6 +512,7 @@ ul.roman {
   }
   .mini-score-box .mini-score-board {
     display: inline-block;
+    border-radius: 10px;
     position: relative;
     font-style: italic;
     padding: 5px 10px;
@@ -565,6 +573,7 @@ ul.roman {
   position: relative;
   height: inherit;
   background-size: cover;
+  border-radius: 10px;
 }
 #memeModal .meme-image .game-player {
   position: absolute;
@@ -574,6 +583,21 @@ ul.roman {
 }
 #memeModal .meme-image .game-player .player-avatar {
   background-position-y: -31px !important;
+}
+#memeModal .meme-image .game-message {
+  text-align: center;
+  width: 100%;
+  font-size: 40px;
+  position: absolute;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000;
+}
+#memeModal .meme-image .game-message.top {
+  top: 10px;
+}
+#memeModal .meme-image .game-message.bottom {
+  bottom: 10px;
 }
 [type=image-result-1] .modal-body {
   height: 430px;
@@ -593,6 +617,9 @@ ul.roman {
   width: 130px !important;
   height: 130px !important;
 }
+[type=image-result-1] .modal-body .game-message {
+  font-size: 45px !important;
+}
 [type=image-result-2] .modal-body {
   height: 430px;
 }
@@ -611,6 +638,9 @@ ul.roman {
   width: 210px !important;
   height: 210px !important;
 }
+[type=image-result-2] .modal-body .game-message {
+  font-size: 50px !important;
+}
 [type=image-winner-1] .modal-body {
   height: 350px;
 }
@@ -624,6 +654,9 @@ ul.roman {
 [type=image-winner-1] .modal-body .meme-image .loser {
   display: none;
 }
+[type=image-winner-1] .modal-body .game-message {
+  font-size: 35px !important;
+}
 [type=image-winner-2] .modal-body {
   height: 275px;
 }
@@ -636,6 +669,9 @@ ul.roman {
 }
 [type=image-winner-2] .modal-body .meme-image .loser {
   display: none;
+}
+[type=image-winner-2] .modal-body .game-message {
+  font-size: 30px !important;
 }
 [type=image-loser-1] .modal-body {
   height: 380px;
@@ -667,6 +703,9 @@ ul.roman {
   left: 195px;
   width: 130px !important;
   height: 130px !important;
+}
+[type=image-loser-2] .modal-body .game-message {
+  font-size: 35px !important;
 }
 [type=image-battle-1] .modal-body {
   height: 350px;

@@ -18,29 +18,68 @@ var position = {
   'p-3' : 0,
   'p-4' : 0
 }
+var memeMessage = {
+  'image-battle' : [
+    {
+      'top': ' Vs ',
+      'bottom': 'Let the Battle Begin'
+    }
+  ],
+  'image-winner' : [
+    {
+      'top': 'My Client ',
+      'bottom': 'Has Conquered Snakes N\' Ladders'
+    },
+    {
+      'top': 'Congratulations ',
+      'bottom': 'Hail To The King Of Snakes N\' Ladders'
+    }
+  ],
+  'image-loser' : [
+    {
+      'top': 'Hard Luck ',
+      'bottom': 'Better Luck Next Time'
+    },
+    {
+      'top': 'Hard Luck ',
+      'bottom': 'Hey Maa!! Mata Ji!! You Lost'
+    }
+  ],
+
+  'image-result' : [
+    {
+      'top': 'Game Over',
+      'bottom': 'Eat Sleep Dominate Repeat'
+    },
+    {
+      'top': 'Game Over',
+      'bottom': 'Flawless Victory'
+    }
+  ]
+};
 var randomNumber = 1;
 var competitors = [];
 var characters = {
   'p-1' : {
-            'name' : 'AshBee',
-            'position' : 0,
-            'selected'  : false
-          },
+    'name' : 'AshBee',
+    'position' : 0,
+    'selected'  : false
+  },
   'p-2' : {
-            'name' : 'Ashish',
-            'position' : 0,
-            'selected'  : false
-          },
+    'name' : 'Ashish',
+    'position' : 0,
+    'selected'  : false
+  },
   'p-3' : {
-            'name' : 'Troll Kid',
-            'position' : 0,
-            'selected'  : false
-          },
+    'name' : 'Troll Kid',
+    'position' : 0,
+    'selected'  : false
+  },
   'p-4' : {
-            'name' : 'Trollmaster',
-            'position' : 0,
-            'selected'  : false
-          }
+    'name' : 'Trollmaster',
+    'position' : 0,
+    'selected'  : false
+  }
 };
 
 
@@ -64,25 +103,25 @@ var gamePlay = {
     $('.game-board .game-player[type='+player+']').animate({bottom: distY , left: distX},speed,(typeof callback != undefined)?callback:null);
   },
   snakeBite : function(player,snakeBody){
-    $('.game-player[type='+player+'] .player-avatar').removeClass('normal').addClass('sad');
-    $('.game-player:not([type='+player+']) .player-avatar').removeClass('normal').addClass('happy');
+    $('.game-player[type='+player+'] .player-avatar').attr('type','sad');
+    $('.game-player:not([type='+player+']) .player-avatar').attr('type','happy');
     var callback = function(){
-      $('.game-player[type='+player+'] .player-avatar').addClass('normal').removeClass('sad');
-      $('.game-player:not([type='+player+']) .player-avatar').addClass('normal').removeClass('happy');
+      $('.game-player[type='+player+'] .player-avatar').attr('type','normal');
+      $('.game-player:not([type='+player+']) .player-avatar').attr('type','normal');
     }
     var length = snakeBody.length-1;
     for(var i=1;i<=length;i++)
-      gamePlay.moveAvatar(player,snakeBody[i-1],snakeBody[i],300,(i==length)?callback:null);
+      gamePlay.moveAvatar(player,snakeBody[i-1],snakeBody[i],800,(i==length)?callback:null);
     characters[player].position = snakeBody[length];
   },
   ladderHit : function(player,ladder){
-    $('.game-player[type='+player+'] .player-avatar').removeClass('normal').addClass('happy');
-    $('.game-player:not([type='+player+']) .player-avatar').removeClass('normal').addClass('angry');
+    $('.game-player[type='+player+'] .player-avatar').attr('type','happy');
+    $('.game-player:not([type='+player+']) .player-avatar').attr('type','angry');
     var callback = function(){
-      $('.game-player[type='+player+'] .player-avatar').addClass('normal').removeClass('happy');
-      $('.game-player:not([type='+player+']) .player-avatar').addClass('normal').removeClass('angry');
+      $('.game-player[type='+player+'] .player-avatar').attr('type','normal');
+      $('.game-player:not([type='+player+']) .player-avatar').attr('type','normal');
     }
-    gamePlay.moveAvatar(player,ladder[0],ladder[1],500,callback);
+    gamePlay.moveAvatar(player,ladder[0],ladder[1],800,callback);
     characters[player].position = ladder[1];
   },
   diceMove : function(player,dice){
@@ -91,7 +130,7 @@ var gamePlay = {
     var delay = 0;
     if(source + dice <= 99){
       var dest = (sourceX+dice <= 9)? (source+dice) : (source+(9-sourceX));
-      gamePlay.moveAvatar(player,source,dest,500);
+      gamePlay.moveAvatar(player,source,dest,1000);
       delay += 500;
       if(source + dice > dest){
         gamePlay.moveAvatar(player,dest,dest+1,500);
@@ -150,19 +189,36 @@ var gamePlay = {
           5000);
     });
   },*/
-  generateMeme  : function(winner,loser,imageCase,number){
-    $('#memeModal').attr('type','').modal('hide');
+  generateMeme  : function(winner,loser,imageCase){
     $('.winner').attr('type',winner);
-    $('.winner .player-avatar').addClass('happy');
+    $('.winner .player-avatar').attr('type','happy');
     $('.loser').attr('type',loser);
-    $('.loser .player-avatar').addClass(imageCase=='image-battle'?'happy':'sad');
-    $('#memeModal').attr('type',imageCase+'-'+number).modal('show');
+    $('.loser .player-avatar').attr('type',imageCase=='image-battle'?'happy':'sad');
+    var topMemeMessage = '';
+    var bottomMemeMessage = '';
+    if(imageCase === 'image-battle'){
+      topMemeMessage = characters[winner].name + memeMessage[imageCase][0].top + characters[loser].name;
+      bottomMemeMessage = memeMessage[imageCase][0].bottom;
+    }else if(imageCase === 'image-result'){
+      topMemeMessage = memeMessage[imageCase][randomNumber-1].top;
+      bottomMemeMessage = memeMessage[imageCase][randomNumber-1].bottom;
+    }else{
+      topMemeMessage = memeMessage[imageCase][randomNumber-1].top + (imageCase==='image-winner'?characters[winner].name:characters[loser].name);
+      bottomMemeMessage = memeMessage[imageCase][randomNumber-1].bottom;
+    }
+    $('.game-message.top').html(topMemeMessage);
+    $('.game-message.bottom').html(bottomMemeMessage);
+    $('#memeModal').attr('type',imageCase+'-'+randomNumber).modal('show');
+    /*setTimeout(function(){
+      $('#memeModal').modal('hide');
+    },3000);*/
   },
   initGameBox : function(){
+    randomNumber = Math.floor((Math.random() * 2) + 1);
     $.each(characters, function(i,obj){
        if(obj.selected){
          var gameBoard = '<div class="game-player" type="' + i + '">' +
-                            '<div class="player-avatar normal"></div>' +
+                            '<div class="player-avatar"></div>' +
                          '</div>';
          var miniScoreBoard = '<div class="mini-score-board" type="' + i + '">' + obj.name + gameBoard + '</div>';
          var scoreBoard = '<div class="score-box">' +
@@ -177,10 +233,7 @@ var gamePlay = {
        }
     });
     gamePlay.findCompetitors();
-    gamePlay.generateMeme(competitors[0],competitors[1],'image-battle',randomNumber);
-    setTimeout(function(){
-      $('#memeModal').modal('hide');
-    },5000);
+    gamePlay.generateMeme(competitors[0],competitors[1],'image-battle');
   },
   findNextOpponent : function(currentPlayer){
     var nextPlayer;
@@ -200,23 +253,25 @@ var gamePlay = {
     });
   },
   initSnakeLadderGame : function(){
-    randomNumber = 2;
+    
     $('.js-rollDice').click(function(){
       var player = $(this).attr('player');
       var dice = Math.floor((Math.random() * 6) + 1);
       $('.message').html(dice);
       gamePlay.diceMove(player,dice);
       var player2 = gamePlay.findNextOpponent(player);
-      console.log(player2);
       $('.js-rollDice').attr('player',(dice == 6)?player:player2);
       if(characters[player].position == 99){
-        gamePlay.generateMeme(player,player2,'image-result',randomNumber);
-        /*setTimeout(function(){
-          gamePlay.generateMeme(player,player2,'image-winner',randomNumber);
-        },5000);
+        gamePlay.generateMeme(player,player2,'image-result');
         setTimeout(function(){
-          gamePlay.generateMeme(player,player2,'image-loser',randomNumber);
-        },5000);*/
+          gamePlay.generateMeme(player,player2,'image-winner');
+        },4000);
+        setTimeout(function(){
+          gamePlay.generateMeme(player,player2,'image-loser');
+        },8000);
+        setTimeout(function(){
+          location.href = location.href
+        },12000);
       }
     });
     $('.select-box').click(function(){

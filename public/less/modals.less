@@ -7,7 +7,7 @@
     position: relative;
     height: inherit;
     background-size: cover;
-
+    border-radius: 10px;
     .game-player{
       position: absolute;
       width: 100px;
@@ -15,6 +15,19 @@
       border: 5px solid;
       .player-avatar{
         background-position-y: -31px !important;
+      }
+    }
+    .game-message{
+      .text-center;
+      width: 100%;
+      font-size: 40px;
+      position: absolute;
+      .meme-font;
+      &.top{
+        top: 10px;
+      }
+      &.bottom{
+        bottom: 10px;
       }
     }
   }
@@ -38,6 +51,9 @@
         height: 130px !important;
       }
     }
+    .game-message{
+      font-size: 45px !important;
+    }
   }
 }
 
@@ -59,6 +75,9 @@
         height: 210px !important;
       }
     }
+    .game-message{
+      font-size: 50px !important;
+    }
   }
 }
 
@@ -75,6 +94,9 @@
         .hide;
       }
     }
+    .game-message{
+      font-size: 35px !important;
+    }
   }
 }
 
@@ -90,6 +112,9 @@
       .loser{
         .hide;
       }
+    }
+    .game-message{
+      font-size: 30px !important;
     }
   }
 }
@@ -127,6 +152,9 @@
         width: 130px !important;
         height: 130px !important;
       }
+    }
+    .game-message{
+      font-size: 35px !important;
     }
   }
 }

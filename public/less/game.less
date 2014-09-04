@@ -1,8 +1,8 @@
 .game-title{
+  border-radius: 25px;
   background: @bg-color-base-dark;
   padding: @padding-large;
   .image-box{
-    margin: @margin-xxlarge 0 ;
     background: url('../images/banners/snakes-and-ladders-banner.png') no-repeat center;
     background-size: contain;
     height: 400px;
@@ -10,12 +10,13 @@
 }
 
 .game-select{
+  border-radius: 25px;
   background: @bg-color-base-dark;
   padding: @padding-large;
   .text-center;
   .select-title{
     margin: @margin-xxlarge 0;
-    font-size: 50px;
+    font-size: 75px;
   }
   .select-box{
     .display-inline;
@@ -53,7 +54,7 @@
       .player-name{
         color: #fff;
         margin: @margin-large 0;
-        font-size: 20px;
+        font-size: 30px;
       }
     }
   }
@@ -63,7 +64,7 @@
   .text-center;
   color: #fafafa;
   margin: @margin-xlarge*2 0;
-  font-size: 50px;
+  font-size: 75px;
   cursor: pointer;
   &:hover{
     color: #ffff00;
@@ -118,6 +119,7 @@
   width: 100%;
   position: relative;
   color: #fff;
+  border-radius: 10px;
   font-size: 30px;
   font-style: italic;
   margin: @margin-xxlarge 0;
@@ -202,16 +204,16 @@
   height: inherit;
   background-size: 400% !important;
   border-radius: 50%;
-  &.normal{
+  &[type=normal]{
     background-position-x: 0% !important;
   }
-  &.sad{
+  &[type=sad]{
     background-position-x: 33% !important;
   }
-  &.angry{
+  &[type=angry]{
     background-position-x: 67% !important;
   }
-  &.happy{
+  &[type=happy]{
     background-position-x: 100% !important;
   }
 }
@@ -221,12 +223,12 @@
 }
 
 @media screen and (max-width: @min-screen-width){
-  .image-box{
-    margin: 0;
-  }
   .continue-button{
     margin-bottom: @margin-xxlarge;
-    font-size: 30px;
+    font-size: 50px;
+  }
+  .select-title{
+    font-size: 60px;
   }
   .box.half-box:last-child{
     display: none;
@@ -239,6 +241,7 @@
     margin-top: @margin-xxlarge;
     .mini-score-board{
       .display-inline;
+      border-radius: 10px;
       position: relative;
       font-style: italic;
       padding: @padding-base @padding-medium;
