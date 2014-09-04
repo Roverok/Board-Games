@@ -12,19 +12,19 @@ block content
       .col-xs-12
         .game-select.hide
           .select-title Select Two Players
-          .select-box(type='1')
+          .select-box(type='p-1')
             .game-player(type='p-1')
               .player-avatar
               .player-name AshBee
-          .select-box(type='2')
+          .select-box(type='p-2')
             .game-player(type='p-2')
               .player-avatar
               .player-name Ashish
-          .select-box(type='3')
+          .select-box(type='p-3')
             .game-player(type='p-3')
               .player-avatar
               .player-name Troller
-          .select-box(type='4')
+          .select-box(type='p-4')
             .game-player(type='p-4')
               .player-avatar
               .player-name Trollmaster
@@ -32,15 +32,18 @@ block content
   .game-box.hide
     .box.half-box
       .mini-score-box
+      .dice-box
+        .dice-show
+          .message
+        .js-rollDice.dice-button Roll Dice
       .game-board
         img(src='../images/boards/snakes-and-ladders-board.jpg')
-      .dice-box
-        .js-rollDice Roll Dice
-        .message
+
     .box.half-box
       .dice-box
-        .js-rollDice Roll Dice
-        .message
+        .dice-show
+          .message
+        .js-rollDice.dice-button Roll Dice
 
 block js
   script(src='js/jquery.min.js')

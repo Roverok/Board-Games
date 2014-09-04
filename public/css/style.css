@@ -269,16 +269,16 @@ ul.roman {
 .pad0 {
   padding: 0;
 }
-.text-color-p1 {
+.text-color-p-1 {
   color: #ff0000 !important;
 }
-.text-color-p2 {
+.text-color-p-2 {
   color: #0000ff !important;
 }
-.text-color-p3 {
+.text-color-p-3 {
   color: #00ff00 !important;
 }
-.text-color-p4 {
+.text-color-p-4 {
   color: #ffdd00 !important;
 }
 .meme-font {
@@ -308,7 +308,7 @@ ul.roman {
 }
 .game-select .select-box {
   display: inline-block;
-  height: 270px;
+  height: 320px;
   width: 250px;
   cursor: pointer;
 }
@@ -343,7 +343,7 @@ ul.roman {
 .continue-button {
   text-align: center;
   color: #fafafa;
-  margin: 40px 0;
+  margin-bottom: 40px;
   font-size: 75px;
   cursor: pointer;
 }
@@ -361,6 +361,13 @@ ul.roman {
 }
 .game-box .box.half-box {
   width: 50%;
+}
+.game-box .box:first-child .dice-box {
+  display: none;
+}
+.player-message {
+  position: absolute;
+  top: 75px;
 }
 .game-player {
   position: absolute;
@@ -430,6 +437,47 @@ ul.roman {
 .dice-box {
   height: 200px;
 }
+.dice-box .dice-show {
+  margin: 0px auto;
+  border: 2px solid;
+  border-radius: 5px;
+  width: 150px;
+  min-height: 105px;
+}
+.dice-box .dice-show.animate {
+  background: url('../images/gifs/rolling-dice.gif') no-repeat center;
+  background-size: contain;
+}
+.dice-box .dice-show .message {
+  color: #ffffff;
+  text-align: center;
+  font-size: 60px;
+  padding: 15px;
+}
+.dice-box .dice-show .message[type=p-1] {
+  background: #ff0000;
+}
+.dice-box .dice-show .message[type=p-2] {
+  background: #0000ff;
+}
+.dice-box .dice-show .message[type=p-3] {
+  background: #00ff00;
+}
+.dice-box .dice-show .message[type=p-4] {
+  background: #ffdd00;
+}
+.dice-box .dice-button {
+  padding: 10px 15px;
+  color: #ffffff;
+  background-color: #c7c7c7;
+  font-size: 30px;
+  border: 1px solid #d8d8d8;
+  border-radius: 5px;
+  margin: 10px auto;
+  cursor: pointer;
+  width: 120px;
+  text-align: center;
+}
 .score-box {
   margin-top: 15px;
   height: 175px;
@@ -440,11 +488,17 @@ ul.roman {
 .score-box:nth-child(2) .score-board .game-player {
   left: 5px;
 }
+.score-box:nth-child(2) .score-board .player-message {
+  left: 155px;
+}
 .score-box:last-child .score-board {
   text-align: left;
 }
 .score-box:last-child .score-board .game-player {
   right: 5px;
+}
+.score-box:last-child .score-board .player-message {
+  right: 155px;
 }
 .game-board {
   position: relative;
@@ -497,14 +551,33 @@ ul.roman {
     margin-bottom: 25px;
     font-size: 50px;
   }
+  .player-message {
+    top: 30px;
+  }
   .select-title {
-    font-size: 60px;
+    font-size: 60px !important;
   }
   .box.half-box:last-child {
     display: none;
   }
   .box.half-box:first-child {
     width: 100%;
+  }
+  .box.half-box:first-child .dice-box {
+    display: block;
+    height: 130px;
+  }
+  .box.half-box:first-child .dice-box .dice-show {
+    width: 100px;
+    min-height: 65px;
+  }
+  .box.half-box:first-child .dice-box .message {
+    font-size: 40px;
+    padding: 10px;
+  }
+  .box.half-box:first-child .dice-box .dice-button {
+    font-size: 20px;
+    width: 75px;
   }
   .mini-score-box {
     display: block;
@@ -529,6 +602,9 @@ ul.roman {
   .mini-score-box .mini-score-board:first-child .game-player {
     left: 5px;
   }
+  .mini-score-box .mini-score-board:first-child .player-message {
+    left: 70px;
+  }
   .mini-score-box .mini-score-board:last-child {
     margin-right: 15px;
     margin-left: 5px;
@@ -536,6 +612,9 @@ ul.roman {
   }
   .mini-score-box .mini-score-board:last-child .game-player {
     right: 5px;
+  }
+  .mini-score-box .mini-score-board:last-child .player-message {
+    right: 70px;
   }
   .mini-score-box .mini-score-board[type=p-1] {
     background: #ff0000;

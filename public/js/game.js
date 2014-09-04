@@ -209,9 +209,9 @@ var gamePlay = {
     $('.game-message.top').html(topMemeMessage);
     $('.game-message.bottom').html(bottomMemeMessage);
     $('#memeModal').attr('type',imageCase+'-'+randomNumber).modal('show');
-    /*setTimeout(function(){
+    setTimeout(function(){
       $('#memeModal').modal('hide');
-    },3000);*/
+    },3000);
   },
   initGameBox : function(){
     randomNumber = Math.floor((Math.random() * 2) + 1);
@@ -220,15 +220,16 @@ var gamePlay = {
          var gameBoard = '<div class="game-player" type="' + i + '">' +
                             '<div class="player-avatar"></div>' +
                          '</div>';
-         var miniScoreBoard = '<div class="mini-score-board" type="' + i + '">' + obj.name + gameBoard + '</div>';
+         var miniScoreBoard = '<div class="mini-score-board" type="' + i + '">' + obj.name + gameBoard + '<div class="player-message hide text-color-'+ i +'">Playing</div></div>';
          var scoreBoard = '<div class="score-box">' +
-                            '<div class="score-board" type="' + i + '">' + obj.name + gameBoard +'</div>' +
+                            '<div class="score-board" type="' + i + '">' + obj.name + gameBoard +'<div class="player-message hide text-color-'+ i +'">Playing</div></div>' +
                           '</div>';
          $('.game-board').append(gameBoard);
          $('.mini-score-box').append(miniScoreBoard);
          $('.box.half-box:last-child').append(scoreBoard);
          if($('.js-rollDice').attr('player') === undefined){
            $('.js-rollDice').attr('player',i);
+           $('.player-message.text-color-'+ i ).removeClass('hide');
          }
        }
     });
@@ -253,39 +254,53 @@ var gamePlay = {
     });
   },
   initSnakeLadderGame : function(){
-    
     $('.js-rollDice').click(function(){
-      var player = $(this).attr('player');
-      var dice = Math.floor((Math.random() * 6) + 1);
-      $('.message').html(dice);
-      gamePlay.diceMove(player,dice);
-      var player2 = gamePlay.findNextOpponent(player);
-      $('.js-rollDice').attr('player',(dice == 6)?player:player2);
-      if(characters[player].position == 99){
-        gamePlay.generateMeme(player,player2,'image-result');
+      if($(this).attr('disabled') !== 'disabled'){
+        var player = $(this).attr('player');
+        var dice = Math.floor((Math.random() * 6) + 1);
+        var player2 = gamePlay.findNextOpponent(player);
+        $('.dice-show .message').fadeOut();
+        $('.dice-show').addClass('animate');
+        $('.js-rollDice').attr('disabled',true);
         setTimeout(function(){
-          gamePlay.generateMeme(player,player2,'image-winner');
-        },4000);
-        setTimeout(function(){
-          gamePlay.generateMeme(player,player2,'image-loser');
-        },8000);
-        setTimeout(function(){
-          location.href = location.href
-        },12000);
+          $('.dice-show .message').attr('type',player).html(dice).fadeIn();
+          $('.dice-show').removeClass('animate');
+          $('.js-rollDice').attr('player',(dice == 6)?player:player2);
+          gamePlay.diceMove(player,dice);
+          if(dice != 6){
+            $('.player-message.text-color-'+player).fadeOut();
+            $('.player-message.text-color-'+player2).fadeIn();
+          }
+          $('.js-rollDice').attr('disabled',false);
+        },2000);
+
+        if(characters[player].position == 99){
+          gamePlay.generateMeme(player,player2,'image-result');
+          setTimeout(function(){
+            gamePlay.generateMeme(player,player2,'image-winner');
+          },4000);
+          setTimeout(function(){
+            gamePlay.generateMeme(player,player2,'image-loser');
+          },8000);
+          setTimeout(function(){
+            location.href = location.href
+          },12000);
+        }
       }
+
     });
     $('.select-box').click(function(){
       var player = $(this).attr('type');
       if(!$(this).hasClass('selected')){
         if($('.select-box.selected').length < 2){
           $(this).addClass('selected');
-          $(this).find('.player-name').addClass('text-color-p'+player);
-          characters['p-'+player].selected = true;
+          $(this).find('.player-name').addClass('text-color-'+player);
+          characters[player].selected = true;
         }
       }else{
         $(this).removeClass('selected');
-        $(this).find('.player-name').removeClass('text-color-p'+player);
-        characters['p-'+player].selected = false;
+        $(this).find('.player-name').removeClass('text-color-'+player);
+        characters[player].selected = false;
       }
       if($('.select-box.selected').length == 2){
         $('.continue-button').removeClass('hide');

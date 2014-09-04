@@ -20,7 +20,7 @@
   }
   .select-box{
     .display-inline;
-    height: 270px;
+    height: 320px;
     width: 250px;
     cursor: pointer;
     &:hover{
@@ -63,7 +63,7 @@
 .continue-button{
   .text-center;
   color: #fafafa;
-  margin: @margin-xlarge*2 0;
+  margin-bottom: @margin-xlarge*2;
   font-size: 75px;
   cursor: pointer;
   &:hover{
@@ -81,7 +81,17 @@
     &.half-box{
       width: 50%;
     }
+    &:first-child{
+      .dice-box{
+        display: none;
+      }
+    }
   }
+}
+
+.player-message{
+  position: absolute;
+  top: 75px;
 }
 
 .game-player{
@@ -123,7 +133,6 @@
   font-size: 30px;
   font-style: italic;
   margin: @margin-xxlarge 0;
-
   &[type=p-1]{
     background: @p-1color;
   }
@@ -151,6 +160,47 @@
 
 .dice-box{
   height: 200px;
+  .dice-show{
+    margin: 0px auto;
+    border: 2px solid;
+    border-radius: 5px;
+    width: 150px;
+    min-height: 105px;
+    &.animate{
+      background: url('../images/gifs/rolling-dice.gif') no-repeat center;
+      background-size: contain;
+    }
+    .message{
+      .text-white;
+      .text-center;
+      font-size: 60px;
+      padding: 15px;
+      &[type=p-1]{
+        background: @p-1color;
+      }
+      &[type=p-2]{
+        background: @p-2color;
+      }
+      &[type=p-3]{
+        background: @p-3color;
+      }
+      &[type=p-4]{
+        background: @p-4color;
+      }
+    }
+  }
+  .dice-button{
+    padding: @padding-medium @padding-large;
+    .text-white;
+    .bkground-dark;
+    font-size: 30px;
+    border: 1px solid #d8d8d8;
+    border-radius: 5px;
+    margin: 10px auto;
+    cursor: pointer;
+    width: 120px;
+    text-align: center;
+  }
 }
 .score-box{
   margin-top: @margin-large;
@@ -161,6 +211,9 @@
       .game-player{
         left: 5px;
       }
+      .player-message{
+        left: 155px;
+      }
     }
   }
   &:last-child{
@@ -168,6 +221,9 @@
       .text-left;
       .game-player{
         right: 5px;
+      }
+      .player-message{
+        right: 155px;
       }
     }
   }
@@ -227,14 +283,33 @@
     margin-bottom: @margin-xxlarge;
     font-size: 50px;
   }
+  .player-message{
+    top: 30px;
+  }
   .select-title{
-    font-size: 60px;
+    font-size: 60px !important;
   }
   .box.half-box:last-child{
     display: none;
   }
   .box.half-box:first-child{
     width: 100%;
+    .dice-box{
+      .display-block;
+      height: 130px;
+      .dice-show{
+        width: 100px;
+        min-height: 65px;
+      }
+      .message{
+        font-size: 40px;
+        padding: @padding-medium;
+      }
+      .dice-button{
+        font-size: 20px;
+        width: 75px;
+      }
+    }
   }
   .mini-score-box{
     .display-block;
@@ -256,6 +331,9 @@
         .game-player{
           left: 5px;
         }
+        .player-message{
+          left: 70px;
+        }
       }
       &:last-child{
         margin-right: @margin-large;
@@ -263,6 +341,9 @@
         .text-left;
         .game-player{
           right: 5px;
+        }
+        .player-message{
+          right: 70px;
         }
       }
       &[type=p-1]{
