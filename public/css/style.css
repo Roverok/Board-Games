@@ -361,28 +361,28 @@ ul.roman {
   border-radius: 50%;
   border: 3px solid;
 }
-.game-player.p-1 {
+.game-player[type=p-1] {
   color: #ff0000;
 }
-.game-player.p-1 .player-avatar {
+.game-player[type=p-1] .player-avatar {
   background: url('../images/avatars/avatar-1.png') no-repeat;
 }
-.game-player.p-2 {
+.game-player[type=p-2] {
   color: #0000ff;
 }
-.game-player.p-2 .player-avatar {
+.game-player[type=p-2] .player-avatar {
   background: url('../images/avatars/avatar-2.png') no-repeat;
 }
-.game-player.p-3 {
+.game-player[type=p-3] {
   color: #00ff00;
 }
-.game-player.p-3 .player-avatar {
+.game-player[type=p-3] .player-avatar {
   background: url('../images/avatars/avatar-3.png') no-repeat;
 }
-.game-player.p-4 {
+.game-player[type=p-4] {
   color: #ffdd00;
 }
-.game-player.p-4 .player-avatar {
+.game-player[type=p-4] .player-avatar {
   background: url('../images/avatars/avatar-4.png') no-repeat;
 }
 .score-board {
@@ -394,16 +394,16 @@ ul.roman {
   font-style: italic;
   margin: 25px 0;
 }
-.score-board.p-1 {
+.score-board[type=p-1] {
   background: #ff0000;
 }
-.score-board.p-2 {
+.score-board[type=p-2] {
   background: #0000ff;
 }
-.score-board.p-3 {
+.score-board[type=p-3] {
   background: #00ff00;
 }
-.score-board.p-4 {
+.score-board[type=p-4] {
   background: #ffdd00;
 }
 .score-board .game-player {
@@ -411,10 +411,10 @@ ul.roman {
   height: 150px;
   border: 6px solid;
 }
-.score-board .game-player.p-1,
-.score-board .game-player.p-2,
-.score-board .game-player.p-3,
-.score-board .game-player.p-4 {
+.score-board .game-player[type=p-1],
+.score-board .game-player[type=p-2],
+.score-board .game-player[type=p-3],
+.score-board .game-player[type=p-4] {
   top: -55px;
 }
 .score-board .game-player .player-avatar {
@@ -446,19 +446,19 @@ ul.roman {
   width: 40px;
   height: 40px;
 }
-.game-board .game-player.p-1 {
+.game-board .game-player[type=p-1] {
   bottom: 25px;
   left: 20px;
 }
-.game-board .game-player.p-2 {
+.game-board .game-player[type=p-2] {
   bottom: 25px;
   left: 40px;
 }
-.game-board .game-player.p-3 {
+.game-board .game-player[type=p-3] {
   bottom: 45px;
   left: 20px;
 }
-.game-board .game-player.p-4 {
+.game-board .game-player[type=p-4] {
   bottom: 45px;
   left: 40px;
 }
@@ -529,26 +529,26 @@ ul.roman {
   .mini-score-box .mini-score-board:last-child .game-player {
     right: 5px;
   }
-  .mini-score-box .mini-score-board.p-1 {
+  .mini-score-box .mini-score-board[type=p-1] {
     background: #ff0000;
   }
-  .mini-score-box .mini-score-board.p-2 {
+  .mini-score-box .mini-score-board[type=p-2] {
     background: #0000ff;
   }
-  .mini-score-box .mini-score-board.p-3 {
+  .mini-score-box .mini-score-board[type=p-3] {
     background: #00ff00;
   }
-  .mini-score-box .mini-score-board.p-4 {
+  .mini-score-box .mini-score-board[type=p-4] {
     background: #ffdd00;
   }
   .mini-score-box .mini-score-board .game-player {
     width: 60px;
     height: 60px;
   }
-  .mini-score-box .mini-score-board .game-player.p-1,
-  .mini-score-box .mini-score-board .game-player.p-2,
-  .mini-score-box .mini-score-board .game-player.p-3,
-  .mini-score-box .mini-score-board .game-player.p-4 {
+  .mini-score-box .mini-score-board .game-player[type=p-1],
+  .mini-score-box .mini-score-board .game-player[type=p-2],
+  .mini-score-box .mini-score-board .game-player[type=p-3],
+  .mini-score-box .mini-score-board .game-player[type=p-4] {
     top: -20px;
   }
   .mini-score-box .mini-score-board .game-player .player-avatar {
@@ -573,118 +573,132 @@ ul.roman {
   border: 5px solid;
 }
 #memeModal .meme-image .game-player .player-avatar {
-  height: 100px;
   background-position-y: -31px !important;
 }
-.image-result-1 .modal-body {
+[type=image-result-1] .modal-body {
   height: 430px;
 }
-.image-result-1 .modal-body .meme-image {
+[type=image-result-1] .modal-body .meme-image {
   background: url('../images/memes/meme-result-1.jpg');
 }
-.image-result-1 .modal-body .meme-image .winner {
-  top: 75px;
+[type=image-result-1] .modal-body .meme-image .winner {
+  top: 50px;
   left: 185px;
+  width: 130px !important;
+  height: 130px !important;
 }
-.image-result-1 .modal-body .meme-image .loser {
-  bottom: 130px;
-  right: 15px;
+[type=image-result-1] .modal-body .meme-image .loser {
+  bottom: 100px;
+  right: 5px;
+  width: 130px !important;
+  height: 130px !important;
 }
-.image-result-2 .modal-body {
+[type=image-result-2] .modal-body {
   height: 430px;
 }
-.image-result-2 .modal-body .meme-image {
+[type=image-result-2] .modal-body .meme-image {
   background: url('../images/memes/meme-result-2.jpg');
 }
-.image-result-2 .modal-body .meme-image .winner {
-  top: 75px;
-  left: 185px;
+[type=image-result-2] .modal-body .meme-image .winner {
+  top: 125px;
+  right: 85px;
+  width: 140px !important;
+  height: 140px !important;
 }
-.image-result-2 .modal-body .meme-image .loser {
-  bottom: 130px;
-  right: 15px;
+[type=image-result-2] .modal-body .meme-image .loser {
+  bottom: 100px;
+  left: 35px;
+  width: 210px !important;
+  height: 210px !important;
 }
-.image-winner-1 .modal-body {
-  height: 430px;
+[type=image-winner-1] .modal-body {
+  height: 350px;
 }
-.image-winner-1 .modal-body .meme-image {
+[type=image-winner-1] .modal-body .meme-image {
   background: url('../images/memes/meme-winner-1.jpg');
 }
-.image-winner-1 .modal-body .meme-image .winner {
-  top: 75px;
-  left: 185px;
+[type=image-winner-1] .modal-body .meme-image .winner {
+  top: 40px;
+  right: 85px;
 }
-.image-winner-1 .modal-body .meme-image .loser {
-  bottom: 130px;
-  right: 15px;
+[type=image-winner-1] .modal-body .meme-image .loser {
+  display: none;
 }
-.image-winner-2 .modal-body {
-  height: 430px;
+[type=image-winner-2] .modal-body {
+  height: 275px;
 }
-.image-winner-2 .modal-body .meme-image {
+[type=image-winner-2] .modal-body .meme-image {
   background: url('../images/memes/meme-winner-2.jpg');
 }
-.image-winner-2 .modal-body .meme-image .winner {
-  top: 75px;
-  left: 185px;
+[type=image-winner-2] .modal-body .meme-image .winner {
+  top: 15px;
+  left: 205px;
 }
-.image-winner-2 .modal-body .meme-image .loser {
-  bottom: 130px;
-  right: 15px;
+[type=image-winner-2] .modal-body .meme-image .loser {
+  display: none;
 }
-.image-loser-1 .modal-body {
-  height: 430px;
+[type=image-loser-1] .modal-body {
+  height: 380px;
 }
-.image-loser-1 .modal-body .meme-image {
+[type=image-loser-1] .modal-body .meme-image {
   background: url('../images/memes/meme-loser-1.jpg');
 }
-.image-loser-1 .modal-body .meme-image .winner {
-  top: 75px;
-  left: 185px;
+[type=image-loser-1] .modal-body .meme-image .winner {
+  display: none;
 }
-.image-loser-1 .modal-body .meme-image .loser {
-  bottom: 130px;
-  right: 15px;
+[type=image-loser-1] .modal-body .meme-image .loser {
+  top: 60px;
+  right: 135px;
+  width: 85px !important;
+  height: 80px !important;
+  border: 4px solid !important;
 }
-.image-loser-2 .modal-body {
-  height: 430px;
+[type=image-loser-2] .modal-body {
+  height: 300px;
 }
-.image-loser-2 .modal-body .meme-image {
+[type=image-loser-2] .modal-body .meme-image {
   background: url('../images/memes/meme-loser-2.jpg');
 }
-.image-loser-2 .modal-body .meme-image .winner {
-  top: 75px;
-  left: 185px;
+[type=image-loser-2] .modal-body .meme-image .winner {
+  display: none;
 }
-.image-loser-2 .modal-body .meme-image .loser {
-  bottom: 130px;
-  right: 15px;
+[type=image-loser-2] .modal-body .meme-image .loser {
+  top: 55px;
+  left: 195px;
+  width: 130px !important;
+  height: 130px !important;
 }
-.image-battle-1 .modal-body {
-  height: 430px;
+[type=image-battle-1] .modal-body {
+  height: 350px;
 }
-.image-battle-1 .modal-body .meme-image {
+[type=image-battle-1] .modal-body .meme-image {
   background: url('../images/memes/meme-battle-1.jpg');
 }
-.image-battle-1 .modal-body .meme-image .winner {
-  top: 75px;
-  left: 185px;
+[type=image-battle-1] .modal-body .meme-image .winner {
+  left: 145px;
+  width: 125px !important;
+  height: 125px !important;
 }
-.image-battle-1 .modal-body .meme-image .loser {
-  bottom: 130px;
-  right: 15px;
+[type=image-battle-1] .modal-body .meme-image .loser {
+  right: 65px;
+  width: 125px !important;
+  height: 125px !important;
 }
-.image-battle-2 .modal-body {
-  height: 430px;
+[type=image-battle-2] .modal-body {
+  height: 500px;
 }
-.image-battle-2 .modal-body .meme-image {
+[type=image-battle-2] .modal-body .meme-image {
   background: url('../images/memes/meme-battle-2.jpg');
 }
-.image-battle-2 .modal-body .meme-image .winner {
-  top: 75px;
-  left: 185px;
+[type=image-battle-2] .modal-body .meme-image .winner {
+  top: 25px;
+  left: 135px;
+  width: 125px !important;
+  height: 125px !important;
 }
-.image-battle-2 .modal-body .meme-image .loser {
-  bottom: 130px;
-  right: 15px;
+[type=image-battle-2] .modal-body .meme-image .loser {
+  top: 40px;
+  right: 130px;
+  width: 125px !important;
+  height: 125px !important;
 }

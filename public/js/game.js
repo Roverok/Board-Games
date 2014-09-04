@@ -61,14 +61,14 @@ var gamePlay = {
       distX = -distX;
     distY = (distY <0?'-':'+')+ '=' + (55*(distY > 0 ? distY : -distY)) + 'px';
     distX = (distX <0?'-':'+')+ '=' + (57*(distX > 0 ? distX : -distX)) + 'px';
-    $('.game-board .game-player.'+player).animate({bottom: distY , left: distX},speed,(typeof callback != undefined)?callback:null);
+    $('.game-board .game-player[type='+player+']').animate({bottom: distY , left: distX},speed,(typeof callback != undefined)?callback:null);
   },
   snakeBite : function(player,snakeBody){
-    $('.game-player.'+player+' .player-avatar').removeClass('normal').addClass('sad');
-    $('.game-player:not(.'+player+') .player-avatar').removeClass('normal').addClass('happy');
+    $('.game-player[type='+player+'] .player-avatar').removeClass('normal').addClass('sad');
+    $('.game-player:not([type='+player+']) .player-avatar').removeClass('normal').addClass('happy');
     var callback = function(){
-      $('.game-player.'+player+' .player-avatar').addClass('normal').removeClass('sad');
-      $('.game-player:not(.'+player+') .player-avatar').addClass('normal').removeClass('happy');
+      $('.game-player[type='+player+'] .player-avatar').addClass('normal').removeClass('sad');
+      $('.game-player:not([type='+player+']) .player-avatar').addClass('normal').removeClass('happy');
     }
     var length = snakeBody.length-1;
     for(var i=1;i<=length;i++)
@@ -76,11 +76,11 @@ var gamePlay = {
     characters[player].position = snakeBody[length];
   },
   ladderHit : function(player,ladder){
-    $('.game-player.'+player+' .player-avatar').removeClass('normal').addClass('happy');
-    $('.game-player:not(.'+player+') .player-avatar').removeClass('normal').addClass('angry');
+    $('.game-player[type='+player+'] .player-avatar').removeClass('normal').addClass('happy');
+    $('.game-player:not([type='+player+']) .player-avatar').removeClass('normal').addClass('angry');
     var callback = function(){
-      $('.game-player.'+player+' .player-avatar').addClass('normal').removeClass('happy');
-      $('.game-player:not(.'+player+') .player-avatar').addClass('normal').removeClass('angry');
+      $('.game-player[type='+player+'] .player-avatar').addClass('normal').removeClass('happy');
+      $('.game-player:not([type='+player+']) .player-avatar').addClass('normal').removeClass('angry');
     }
     gamePlay.moveAvatar(player,ladder[0],ladder[1],500,callback);
     characters[player].position = ladder[1];
@@ -151,22 +151,22 @@ var gamePlay = {
     });
   },*/
   generateMeme  : function(winner,loser,imageCase,number){
-    $('#memeModal').modal('hide');
-    $('.winner').addClass(winner);
+    $('#memeModal').attr('type','').modal('hide');
+    $('.winner').attr('type',winner);
     $('.winner .player-avatar').addClass('happy');
-    $('.loser').addClass(loser);
-    $('.loser .player-avatar').addClass('sad');
-    $('#memeModal').addClass(imageCase+'-'+number).modal('show');
+    $('.loser').attr('type',loser);
+    $('.loser .player-avatar').addClass(imageCase=='image-battle'?'happy':'sad');
+    $('#memeModal').attr('type',imageCase+'-'+number).modal('show');
   },
   initGameBox : function(){
     $.each(characters, function(i,obj){
        if(obj.selected){
-         var gameBoard = '<div class="game-player ' + i + '">' +
+         var gameBoard = '<div class="game-player" type="' + i + '">' +
                             '<div class="player-avatar normal"></div>' +
                          '</div>';
-         var miniScoreBoard = '<div class="mini-score-board ' + i + '">' + obj.name + gameBoard + '</div>';
+         var miniScoreBoard = '<div class="mini-score-board" type="' + i + '">' + obj.name + gameBoard + '</div>';
          var scoreBoard = '<div class="score-box">' +
-                            '<div class="score-board ' + i + '">' + obj.name + gameBoard +'</div>' +
+                            '<div class="score-board" type="' + i + '">' + obj.name + gameBoard +'</div>' +
                           '</div>';
          $('.game-board').append(gameBoard);
          $('.mini-score-box').append(miniScoreBoard);
@@ -200,7 +200,7 @@ var gamePlay = {
     });
   },
   initSnakeLadderGame : function(){
-    randomNumber = Math.floor((Math.random() * 2) + 1);
+    randomNumber = 2;
     $('.js-rollDice').click(function(){
       var player = $(this).attr('player');
       var dice = Math.floor((Math.random() * 6) + 1);
@@ -211,13 +211,12 @@ var gamePlay = {
       $('.js-rollDice').attr('player',(dice == 6)?player:player2);
       if(characters[player].position == 99){
         gamePlay.generateMeme(player,player2,'image-result',randomNumber);
-        setTimeout(function(){
+        /*setTimeout(function(){
           gamePlay.generateMeme(player,player2,'image-winner',randomNumber);
         },5000);
         setTimeout(function(){
           gamePlay.generateMeme(player,player2,'image-loser',randomNumber);
-        },5000);
-        location.href = location.href;
+        },5000);*/
       }
     });
     $('.select-box').click(function(){

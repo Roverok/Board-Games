@@ -87,25 +87,25 @@
   position: absolute;
   border-radius: 50%;
   border: 3px solid;
-  &.p-1{
+  &[type=p-1]{
      color: @p-1color;
     .player-avatar{
       background: url('../images/avatars/avatar-1.png') no-repeat;
     }
   }
-  &.p-2{
+  &[type=p-2]{
     color: @p-2color;
     .player-avatar{
       background: url('../images/avatars/avatar-2.png') no-repeat;
     }
   }
-  &.p-3{
+  &[type=p-3]{
     color: @p-3color;
     .player-avatar{
       background: url('../images/avatars/avatar-3.png') no-repeat;
     }
   }
-  &.p-4{
+  &[type=p-4]{
     color: @p-4color;
     .player-avatar{
       background: url('../images/avatars/avatar-4.png') no-repeat;
@@ -122,23 +122,23 @@
   font-style: italic;
   margin: @margin-xxlarge 0;
 
-  &.p-1{
+  &[type=p-1]{
     background: @p-1color;
   }
-  &.p-2{
+  &[type=p-2]{
     background: @p-2color;
   }
-  &.p-3{
+  &[type=p-3]{
     background: @p-3color;
   }
-  &.p-4{
+  &[type=p-4]{
     background: @p-4color;
   }
   .game-player{
     width: 150px;
     height: 150px;
     border: 6px solid;
-    &.p-1, &.p-2, &.p-3, &.p-4{
+    &[type=p-1], &[type=p-2], &[type=p-3], &[type=p-4]{
       top: -55px;
     }
     .player-avatar{
@@ -176,19 +176,19 @@
   .game-player{
     width: 40px;
     height: 40px;
-    &.p-1{
+    &[type=p-1]{
       bottom: 25px;
       left: 20px;
     }
-    &.p-2{
+    &[type=p-2]{
       bottom: 25px;
       left: 40px;
     }
-    &.p-3{
+    &[type=p-3]{
       bottom: 45px;
       left: 20px;
     }
-    &.p-4{
+    &[type=p-4]{
       bottom: 45px;
       left: 40px;
     }
@@ -262,22 +262,22 @@
           right: 5px;
         }
       }
-      &.p-1{
+      &[type=p-1]{
         background: @p-1color;
       }
-      &.p-2{
+      &[type=p-2]{
         background: @p-2color;
       }
-      &.p-3{
+      &[type=p-3]{
         background: @p-3color;
       }
-      &.p-4{
+      &[type=p-4]{
         background: @p-4color;
       }
       .game-player{
         width: 60px;
         height: 60px;
-        &.p-1, &.p-2, &.p-3, &.p-4{
+        &[type=p-1], &[type=p-2], &[type=p-3], &[type=p-4]{
           top: -20px;
         }
         .player-avatar{
