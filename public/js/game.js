@@ -12,12 +12,6 @@ var ladders = [
   [49,92],
   [62,80]
 ];
-var position = {
-  'p-1' : 0,
-  'p-2' : 0,
-  'p-3' : 0,
-  'p-4' : 0
-}
 var memeMessage = {
   'image-battle' : [
     {
@@ -77,6 +71,16 @@ var characters = {
   },
   'p-4' : {
     'name' : 'Trollmaster',
+    'position' : 0,
+    'selected'  : false
+  },
+  'p-5' : {
+    'name' : 'NaMo NaMo',
+    'position' : 0,
+    'selected'  : false
+  },
+  'p-6' : {
+    'name' : 'Pappu',
     'position' : 0,
     'selected'  : false
   }

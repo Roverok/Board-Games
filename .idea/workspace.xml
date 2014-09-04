@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f3573a7-2240-4b21-99bc-e63127740861" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/avatars/avatar-5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/avatars/avatar-6.png" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\avatars\ashish-avatar.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\avatars\ashish-avatar2.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/less/base.less" afterPath="$PROJECT_DIR$/public/less/base.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layouts/default.jade" afterPath="$PROJECT_DIR$/views/layouts/default.jade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/game.js" afterPath="$PROJECT_DIR$/public/js/game.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/less/game.less" afterPath="$PROJECT_DIR$/public/less/game.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/home.jade" afterPath="$PROJECT_DIR$/views/home.jade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/style.css" afterPath="$PROJECT_DIR$/public/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/less/variables.less" afterPath="$PROJECT_DIR$/public/less/variables.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Board-Games.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -74,7 +79,7 @@
       <file leaf-file-name="game.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/less/game.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="331" column="74" selection-start="6849" selection-end="6849" vertical-scroll-proportion="-4.0784316" vertical-offset="5419" max-vertical-offset="6426">
+            <state line="97" column="18" selection-start="2472" selection-end="2472" vertical-scroll-proportion="-2.235294" vertical-offset="1535" max-vertical-offset="7089">
               <folding>
                 <element signature="e#787#1038#2" expanded="true" />
                 <element signature="e#1059#1310#2" expanded="true" />
@@ -84,40 +89,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rolling-dice.gif" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/images/gifs/rolling-dice.gif">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="game.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/game.js">
+      <file leaf-file-name="home.jade" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/home.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="233" column="35" selection-start="7528" selection-end="7528" vertical-scroll-proportion="-18.36" vertical-offset="3502" max-vertical-offset="5627">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ashish-avatar.png" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/images/avatars/ashish-avatar.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="snakes-and-ladders-logo3.png" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/images/icons/snakes-and-ladders-logo3.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bootstrap.min.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/css/bootstrap.min.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="50" selection-start="215" selection-end="215" vertical-scroll-proportion="-2.72" vertical-offset="0" max-vertical-offset="170">
+            <state line="33" column="36" selection-start="997" selection-end="997" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1513">
               <folding />
             </state>
           </provider>
@@ -126,34 +101,34 @@
       <file leaf-file-name="modals.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/less/modals.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="201" column="13" selection-start="3672" selection-end="3672" vertical-scroll-proportion="-3.764706" vertical-offset="3225" max-vertical-offset="3519">
+            <state line="33" column="18" selection-start="626" selection-end="626" vertical-scroll-proportion="-1.3333334" vertical-offset="493" max-vertical-offset="3519">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bootstrap.custom.min.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/css/bootstrap.custom.min.css">
+      <file leaf-file-name="variables.less" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/less/variables.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="46" selection-start="1440" selection-end="1440" vertical-scroll-proportion="-4.08" vertical-offset="170" max-vertical-offset="527">
+            <state line="69" column="19" selection-start="1855" selection-end="1855" vertical-scroll-proportion="-1.3076923" vertical-offset="1139" max-vertical-offset="2737">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="memeModal.jade" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/modals/memeModal.jade">
+      <file leaf-file-name="game.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+            <state line="77" column="19" selection-start="1363" selection-end="1363" vertical-scroll-proportion="0.40328467" vertical-offset="1088" max-vertical-offset="5695">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="media.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/less-middleware/node_modules/less/test/css/media.css">
+      <file leaf-file-name="base.less" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/less/base.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="2" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3825">
+            <state line="322" column="13" selection-start="4793" selection-end="4793" vertical-scroll-proportion="-14.692307" vertical-offset="5092" max-vertical-offset="5763">
               <folding />
             </state>
           </provider>
@@ -183,13 +158,13 @@
         <option value="$PROJECT_DIR$/public/less/style.less" />
         <option value="$PROJECT_DIR$/public/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/public/css/bootstrap.custom.min.css" />
-        <option value="$PROJECT_DIR$/public/less/variables.less" />
         <option value="$PROJECT_DIR$/views/modals/memeModal.jade" />
         <option value="$PROJECT_DIR$/public/less/modals.less" />
         <option value="$PROJECT_DIR$/views/layouts/default.jade" />
-        <option value="$PROJECT_DIR$/views/home.jade" />
+        <option value="$PROJECT_DIR$/public/less/variables.less" />
         <option value="$PROJECT_DIR$/public/less/base.less" />
         <option value="$PROJECT_DIR$/public/less/game.less" />
+        <option value="$PROJECT_DIR$/views/home.jade" />
         <option value="$PROJECT_DIR$/public/js/game.js" />
       </list>
     </option>
@@ -543,8 +518,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes" />
       <recent name="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\avatars" />
+      <recent name="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes" />
       <recent name="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\css" />
       <recent name="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\less" />
       <recent name="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\views" />
@@ -791,12 +766,12 @@
       <workItem from="1409577528535" duration="8202000" />
       <workItem from="1409641618318" duration="10544000" />
       <workItem from="1409683414535" duration="8939000" />
-      <workItem from="1409718201735" duration="58231000" />
+      <workItem from="1409718201735" duration="59555000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103664000" />
+    <option name="totallyTimeSpent" value="104988000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -821,7 +796,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.49744898" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.49744898" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3321976" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -873,13 +848,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/less/base.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="219" column="4" selection-start="3219" selection-end="3219" vertical-scroll-proportion="0.0" vertical-offset="3494" max-vertical-offset="5117">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/less/variables.less">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="12" selection-start="31" selection-end="31" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="2601">
@@ -1047,21 +1015,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/avatars/avatar-4.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/avatars/avatar-3.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/avatars/avatar-1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/images/memes/meme-result-1.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1078,11 +1031,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/images/banners/snakes-and-ladders-banner3.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/avatars/avatar-2.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -1111,11 +1059,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/icons/snakes-and-ladders-logo3.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/images/icons/snakes-and-ladders-logo.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1135,21 +1078,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/css/bootstrap.min.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="50" selection-start="215" selection-end="215" vertical-scroll-proportion="-2.72" vertical-offset="0" max-vertical-offset="170">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/less/modals.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="201" column="13" selection-start="3672" selection-end="3672" vertical-scroll-proportion="-3.764706" vertical-offset="3225" max-vertical-offset="3519">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/less/variables.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="1" selection-start="356" selection-end="356" vertical-scroll-proportion="0.35019454" vertical-offset="24" max-vertical-offset="2703">
+        <state line="4" column="50" selection-start="215" selection-end="215" vertical-scroll-proportion="0.13001911" vertical-offset="0" max-vertical-offset="523">
           <folding />
         </state>
       </provider>
@@ -1159,23 +1088,60 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/home.jade">
+    <entry file="file://$PROJECT_DIR$/public/images/avatars/avatar-1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/avatars/avatar-2.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/avatars/avatar-3.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/avatars/avatar-4.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/icons/snakes-and-ladders-logo3.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/avatars/avatar-5.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/less/modals.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="30" selection-start="347" selection-end="347" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="1377">
+        <state line="33" column="18" selection-start="626" selection-end="626" vertical-scroll-proportion="-1.3333334" vertical-offset="493" max-vertical-offset="3519">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/less/variables.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="19" selection-start="1855" selection-end="1855" vertical-scroll-proportion="-1.3076923" vertical-offset="1139" max-vertical-offset="2737">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/less/base.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="314" column="170" selection-start="4708" selection-end="4708" vertical-scroll-proportion="-10.461538" vertical-offset="5066" max-vertical-offset="5627">
+        <state line="322" column="13" selection-start="4793" selection-end="4793" vertical-scroll-proportion="-14.692307" vertical-offset="5092" max-vertical-offset="5763">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/less/game.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="331" column="74" selection-start="6849" selection-end="6849" vertical-scroll-proportion="-4.0784316" vertical-offset="5419" max-vertical-offset="6426">
+        <state line="97" column="18" selection-start="2472" selection-end="2472" vertical-scroll-proportion="-2.235294" vertical-offset="1535" max-vertical-offset="7089">
           <folding>
             <element signature="e#787#1038#2" expanded="true" />
             <element signature="e#1059#1310#2" expanded="true" />
@@ -1184,16 +1150,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/game.js">
+    <entry file="file://$PROJECT_DIR$/views/home.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="233" column="35" selection-start="7528" selection-end="7528" vertical-scroll-proportion="-18.36" vertical-offset="3502" max-vertical-offset="5627">
+        <state line="33" column="36" selection-start="997" selection-end="997" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1513">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/avatars/ashish-avatar.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
+    <entry file="file://$PROJECT_DIR$/public/js/game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="19" selection-start="1363" selection-end="1363" vertical-scroll-proportion="0.40328467" vertical-offset="1088" max-vertical-offset="5695">
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
