@@ -53,17 +53,15 @@ if ('development' == app.get('env')) {
 require('./routes')(app);
 
 io.on('connection', function(socket){
-    console.log("UserConnected");
     socket.on('disconnect', function(){
         console.log("DisCnctd");
     });
-    socket.on('User select', function(msg){
-        io.emit('User select', msg);
+    socket.on('selection', function(msg){
+      io.emit('selection', msg);
     });
-    socket.on('Dice points', function(msg){
-        io.emit('Dice points', msg);
+    socket.on('dice', function(msg){
+      io.emit('dice', msg);
     });
-
 });
 
 

@@ -12,6 +12,7 @@ var ladders = [
   [49,92],
   [62,80]
 ];
+
 var memeMessage = {
   'image-battle' : [
     {
@@ -57,32 +58,38 @@ var characters = {
   'p-1' : {
     'name' : 'AshBee',
     'position' : 0,
-    'selected'  : false
+    'selected'  : false,
+    'isYours' : false
   },
   'p-2' : {
     'name' : 'Ashish',
     'position' : 0,
-    'selected'  : false
+    'selected'  : false,
+    'isYours' : false
   },
   'p-3' : {
     'name' : 'Troll Kid',
     'position' : 0,
-    'selected'  : false
+    'selected'  : false,
+    'isYours' : false
   },
   'p-4' : {
     'name' : 'Trollmaster',
     'position' : 0,
-    'selected'  : false
+    'selected'  : false,
+    'isYours' : false
   },
   'p-5' : {
     'name' : 'NaMo NaMo',
     'position' : 0,
-    'selected'  : false
+    'selected'  : false,
+    'isYours' : false
   },
   'p-6' : {
     'name' : 'Pappu',
     'position' : 0,
-    'selected'  : false
+    'selected'  : false,
+    'isYours' : false
   }
 };
 
@@ -221,12 +228,13 @@ var gamePlay = {
     randomNumber = Math.floor((Math.random() * 2) + 1);
     $.each(characters, function(i,obj){
        if(obj.selected){
+         var message = obj.isYours?'Your Turn':'Rival Turn';
          var gameBoard = '<div class="game-player" type="' + i + '">' +
                             '<div class="player-avatar"></div>' +
                          '</div>';
-         var miniScoreBoard = '<div class="mini-score-board" type="' + i + '">' + obj.name + gameBoard + '<div class="player-message hide text-color-'+ i +'">Playing</div></div>';
+         var miniScoreBoard = '<div class="mini-score-board" type="' + i + '">' + obj.name + gameBoard + '<div class="player-message hide text-color-'+ i +'">'+ message +'</div></div>';
          var scoreBoard = '<div class="score-box">' +
-                            '<div class="score-board" type="' + i + '">' + obj.name + gameBoard +'<div class="player-message hide text-color-'+ i +'">Playing</div></div>' +
+                            '<div class="score-board" type="' + i + '">' + obj.name + gameBoard +'<div class="player-message hide text-color-'+ i +'">'+ message +'</div></div>' +
                           '</div>';
          $('.game-board').append(gameBoard);
          $('.mini-score-box').append(miniScoreBoard);
@@ -258,10 +266,15 @@ var gamePlay = {
     });
   },
   initSnakeLadderGame : function(){
+
+    var socket = io();
+
     $('.js-rollDice').click(function(){
-      if($(this).attr('disabled') !== 'disabled'){
-        var player = $(this).attr('player');
+      var player = $(this).attr('player');
+      if($(this).attr('disabled') !== 'disabled' && characters[player].isYours){
         var dice = Math.floor((Math.random() * 6) + 1);
+        socket.emit('dice',{player:player,isYours:characters[player].isYours,dice:dice});
+
         var player2 = gamePlay.findNextOpponent(player);
         $('.dice-show .message').fadeOut();
         $('.dice-show').addClass('animate');
@@ -291,8 +304,8 @@ var gamePlay = {
           },12000);
         }
       }
-
     });
+
     $('.select-box').click(function(){
       var player = $(this).attr('type');
       if(!$(this).hasClass('selected')){
@@ -300,12 +313,19 @@ var gamePlay = {
           $(this).addClass('selected');
           $(this).find('.player-name').addClass('text-color-'+player);
           characters[player].selected = true;
+          characters[player].isYours = true;
         }
       }else{
-        $(this).removeClass('selected');
-        $(this).find('.player-name').removeClass('text-color-'+player);
-        characters[player].selected = false;
+        if(characters[player].isYours){
+          $(this).removeClass('selected');
+          $(this).find('.player-name').removeClass('text-color-'+player);
+          characters[player].selected = false;
+          characters[player].isYours = false;
+        }
       }
+
+      socket.emit('selection',{player:player,selection:characters[player].selected,isYours:characters[player].isYours});
+
       if($('.select-box.selected').length == 2){
         $('.continue-button').removeClass('hide');
       }else{
@@ -326,5 +346,61 @@ var gamePlay = {
         $('.game-box').fadeIn();
       },500);
     });
+
+    socket.on('selection',function(data){
+      console.log(data);
+      if(characters[data.player].selected != data.selection){
+        characters[data.player].selected = data.selection;
+        if(data.selection){
+          if($('.select-box.selected').length < 2){
+            $('.select-box[type='+data.player+']').addClass('selected');
+            $('.select-box[type='+data.player+']').find('.player-name').addClass('text-color-'+data.player);
+            characters[data.player].isYours = !data.isYours;
+          }
+        }else{
+          $('.select-box[type='+data.player+']').removeClass('selected');
+          $('.select-box[type='+data.player+']').find('.player-name').removeClass('text-color-'+data.player);
+        }
+        if($('.select-box.selected').length == 2){
+          $('.continue-button').removeClass('hide');
+        }else{
+          $('.continue-button').addClass('hide');
+        }
+      }
+    });
+
+    socket.on('dice',function(data){
+     console.log(data);
+     if(characters[data.player].selected && !characters[data.player].isYours){
+       var player2 = gamePlay.findNextOpponent(data.player);
+       $('.dice-show .message').fadeOut();
+       $('.dice-show').addClass('animate');
+       $('.js-rollDice').attr('disabled',true);
+       setTimeout(function(){
+         $('.dice-show .message').attr('type',data.player).html(data.dice).fadeIn();
+         $('.dice-show').removeClass('animate');
+         $('.js-rollDice').attr('player',(data.dice == 6)?data.player:player2);
+         gamePlay.diceMove(data.player,data.dice);
+         if(data.dice != 6){
+           $('.player-message.text-color-'+data.player).fadeOut();
+           $('.player-message.text-color-'+player2).fadeIn();
+         }
+         $('.js-rollDice').attr('disabled',false);
+       },2000);
+       if(characters[data.player].position == 99){
+         gamePlay.generateMeme(data.player,player2,'image-result');
+         setTimeout(function(){
+           gamePlay.generateMeme(data.player,player2,'image-winner');
+         },4000);
+         setTimeout(function(){
+           gamePlay.generateMeme(data.player,player2,'image-loser');
+         },8000);
+         setTimeout(function(){
+           location.href = location.href
+         },12000);
+       }
+     }
+    });
+
   }
 };

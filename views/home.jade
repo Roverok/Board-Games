@@ -62,22 +62,4 @@ block js
   script(type='text/javascript').
     $(document).ready(function(){
       gamePlay.initSnakeLadderGame();
-          var socket = io();
-              $('form').submit(function(){
-              socket.emit('User select', $('#m').val());
-              $('#m').val('');
-              return false;
-              });
-
-            $('form').submit(function(){
-            socket.emit('Dice points', $('#m').val());
-            $('#m').val('');
-            return false;
-            });
-              socket.on('Dice points', function(msg){
-              $('#messages').append($('<li>').text(msg));
-              });
-              socket.on('User select', function(msg){
-              $('#messages').append($('<li>').text(msg));
-              });
     });
