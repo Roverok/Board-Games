@@ -52,17 +52,7 @@ if ('development' == app.get('env')) {
 
 require('./routes')(app);
 
-io.on('connection', function(socket){
-    socket.on('disconnect', function(){
-    });
-    socket.on('selection', function(msg){
-      io.emit('selection', msg);
-    });
-    socket.on('dice', function(msg){
-      io.emit('dice', msg);
-    });
-});
-
+require('./app/connection/gameSocket')(io);
 
 http.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
