@@ -9,6 +9,7 @@ var routes = require('./routes');
 var user = require('./routes/user');
 */
 var path = require('path');
+var cloudinary = require('cloudinary');
 
 /*
 var mongoose = require('mongoose');
@@ -53,6 +54,8 @@ if ('development' == app.get('env')) {
 require('./routes')(app);
 
 require('./app/connection/gameSocket')(io);
+
+require('./app/connection/imageCloud')(cloudinary);
 
 http.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
