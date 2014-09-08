@@ -260,7 +260,6 @@ var gamePlay = {
   findCompetitors : function(){
     $.each(characters,function(i,obj){
       if(obj.selected == true){
-        console.log(i);
         competitors.push(i);
       }
     });
@@ -348,7 +347,6 @@ var gamePlay = {
     });
 
     socket.on('selection',function(data){
-      console.log(data);
       if(characters[data.player].selected != data.selection){
         characters[data.player].selected = data.selection;
         if(data.selection){
@@ -370,7 +368,6 @@ var gamePlay = {
     });
 
     socket.on('dice',function(data){
-     console.log(data);
      if(characters[data.player].selected && !characters[data.player].isYours){
        var player2 = gamePlay.findNextOpponent(data.player);
        $('.dice-show .message').fadeOut();
