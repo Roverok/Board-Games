@@ -6,4 +6,18 @@ var testSchema = new Schema({
   secondName: String
 },{ collection : 'playa' });
 
-module.exports = mongoose.model('playa', testSchema);
+var testSchema2 = new Schema({
+  fileName: String,
+  id: Number,
+  fileType: String,
+  url: String,
+  securedUrl: String,
+  width: Number,
+  height: Number
+});
+
+
+module.exports = {
+  'playaSchema' : mongoose.model('playa', testSchema),
+  'imageSchema' : mongoose.model('image', testSchema2)
+};

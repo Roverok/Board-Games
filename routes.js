@@ -11,7 +11,9 @@ module.exports = function(app){
   var testController = require('./app/controllers/test')
   app.get(urls.WEB.TEST_SCHEMA, testController.showSchema);
   app.get(urls.WEB.TEST_SCHEMA2, testController.saveSchema);
-  app.get(urls.WEB.TEST_INDEX2, testController.testIndex2);
+  app.get(urls.WEB.TEST_MODAL, testController.showModal);
+  app.get(urls.WEB.TEST_MODAL_SCHEMA, testController.showModalSchema);
+  app.get(urls.WEB.TEST_MODAL_SCHEMA2, testController.saveModalSchema);
   app.get(urls.WEB.TEST_GET, testController.testList);
 
 }

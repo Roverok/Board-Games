@@ -10,11 +10,11 @@ exports.testList = function(req, res){
 }
 
 exports.showSchema = function(req, res){
-  testSchema.find()
-      .exec(function(err, playas) {
-        if (err) {
+  testSchema.playaSchema.find()
+      .exec(function(err, playas){
+        if(err){
           res.status(500).json({status: 'failure'});
-        } else {
+        }else{
           console.log(playas);
           res.render('test/index', {
             title: 'playas',
@@ -25,7 +25,7 @@ exports.showSchema = function(req, res){
 };
 
 exports.saveSchema = function(req, res){
-  var record = new testSchema(
+  var record = new testSchema.playaSchema(
       {
         firstName:'Tom',
         secondName:'Araya'
@@ -40,6 +40,45 @@ exports.saveSchema = function(req, res){
     }
   });
 };
-exports.testIndex2 = function(req, res){
+
+exports.showModal = function(req, res){
+  var dataSample = require('../dataSamples/testDataSample');
+  var testModel = require('../models/testModel');
+  for(var i in dataSample){
+    console.log(testModel(dataSample[i]).getInformation());
+  }
   res.render('index', { title: 'Test Express2' });
+};
+
+exports.saveModalSchema = function(req, res){
+  var dataSample = require('../dataSamples/testDataSample');
+  var testModel = require('../models/testModel');
+
+  for(var i in dataSample){
+    var record = new testSchema.imageSchema(testModel(dataSample[i]).getInformation());
+    record.save(function(err) {
+      if (err) {
+        console.log(err);
+        res.status(500).json({status: 'failure'});
+      } else {
+        console.log('success');
+      }
+    });
+  }
+  res.json({status: 'success'});
+};
+
+exports.showModalSchema = function(req, res){
+  testSchema.imageSchema.find()
+      .exec(function(err, images){
+        if(err){
+          res.status(500).json({status: 'failure'});
+        }else{
+          console.log(images);
+          res.render('test/index2', {
+            title: 'images',
+            images: images
+          });
+        }
+      });
 };
