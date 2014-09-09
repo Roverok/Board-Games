@@ -3,36 +3,13 @@
  * Module dependencies.
  */
 
-var express = require('express');
-/*
-var routes = require('./routes');
-var user = require('./routes/user');
-*/
-var path = require('path');
-var cloudinary = require('cloudinary');
-
-/*
-var mongoose = require('mongoose');
-var db = mongoose.connection;
-var conn = mongoose.connect('mongodb://localhost/testdb');
-db.on('error', console.error);
-db.once('open', function() {
-  // Create your schemas and models here.
-  var playaSchema = new mongoose.Schema({
-    firstName: String,
-    lastName: String
-  });
-  var collection = db.collection("playa");
-  var Playa = conn.model('Playa', playaSchema);
-  Playa.save({firstName: 'a', lastName: 'b'}, function(errr, data){
-    console.log(errr); console.log(data);
-  });
-});
-*/
-
-var app = express();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var express = require('express'),
+    path = require('path'),
+    cloudinary = require('cloudinary'),
+    http = require('http'),
+    io = require('socket.io')(http),
+    db = require('./db'),
+    app = express();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -57,6 +34,6 @@ require('./app/connection/gameSocket')(io);
 
 require('./app/connection/imageCloud')(cloudinary);
 
-http.listen(app.get('port'), function(){
+http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
