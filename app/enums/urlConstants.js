@@ -5,7 +5,8 @@ exports.urls = {
   },
   WEB : {
     SNAKES_N_LADDERS : '/snakes-n-ladders',
-    TEST_INDEX : '/t',
+    TEST_SCHEMA : '/schema-test',
+    TEST_SCHEMA2 : '/schema-test-2',
     TEST_INDEX2 : '/t/index',
     TEST_GET : '/t/get'
   },

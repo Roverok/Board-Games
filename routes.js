@@ -9,7 +9,8 @@ module.exports = function(app){
   app.get(urls.WEB.SNAKES_N_LADDERS, gameController.showSnakeAndLadders);
 
   var testController = require('./app/controllers/test')
-  app.get(urls.WEB.TEST_INDEX, testController.testIndex);
+  app.get(urls.WEB.TEST_SCHEMA, testController.showSchema);
+  app.get(urls.WEB.TEST_SCHEMA2, testController.saveSchema);
   app.get(urls.WEB.TEST_INDEX2, testController.testIndex2);
   app.get(urls.WEB.TEST_GET, testController.testList);
 
