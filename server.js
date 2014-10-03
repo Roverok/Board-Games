@@ -7,7 +7,6 @@ var express = require('express'),
     path = require('path'),
     cloudinary = require('cloudinary'),
     http = require('http'),
-    io = require('socket.io')(http),
     db = require('./db'),
     app = express();
 
@@ -30,10 +29,11 @@ if ('development' == app.get('env')) {
 
 require('./routes')(app);
 
-require('./app/connections/gameSocket')(io);
-
 require('./app/connections/imageCloud')(cloudinary);
 
-http.createServer(app).listen(app.get('port'), function(){
+var server = http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+var io = require('socket.io').listen(server);
+require('./app/connections/gameSocket')(io);
