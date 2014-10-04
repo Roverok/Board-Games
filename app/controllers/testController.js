@@ -69,7 +69,8 @@ exports.saveModalSchema = function(req, res){
 };
 
 exports.showModalSchema = function(req, res){
-  testSchema.imageSchema.find()
+  testSchema.imageSchema.find({fileType: 'avatars'})
+      .setOptions({sort:'fileName'})
       .exec(function(err, images){
         if(err){
           res.status(500).json({status: 'failure'});

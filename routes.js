@@ -8,7 +8,7 @@ module.exports = function(app){
   var gameController = require('./app/controllers/gameController')
   app.get(urls.WEB.SNAKES_N_LADDERS, gameController.showSnakeAndLadders);
 
-  var testController = require('./app/controllers/test')
+  var testController = require('./app/controllers/testController')
   app.get(urls.WEB.TEST_SCHEMA, testController.showSchema);
   app.get(urls.WEB.TEST_SCHEMA2, testController.saveSchema);
   app.get(urls.WEB.TEST_MODAL, testController.showModal);
