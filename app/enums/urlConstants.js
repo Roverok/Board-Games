@@ -1,3 +1,9 @@
+var API_VERSION = {
+  v1 : '/api/v1',
+  v2 : '/api/v2',
+  v3 : '/api/v3'
+};
+
 exports.urls = {
   ADMIN : {
     SHOW_SCHEMA : '/admin/show-schema-test',
@@ -7,6 +13,7 @@ exports.urls = {
     SHOW_MODAL : '/admin/show-modal'
   },
   API : {
+    FETCH_PLAYER_LIST : API_VERSION.v1 + '/fetchGamePlayers'
   },
   WEB : {
     SNAKES_N_LADDERS : '/snakes-n-ladders',

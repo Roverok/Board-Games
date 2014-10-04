@@ -26,10 +26,12 @@ exports.saveSchema = function(req, res){
       {
         "name": "Ashish",
         "id": 'p-8',
+        "position" : 0,
         "played": 0,
         "won": 0,
         "selected": false,
-        "isYours": false
+        "isYours": false,
+        "isHidden" : true
       }
   );
   record.save(function(err) {

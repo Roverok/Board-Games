@@ -29,11 +29,11 @@ if ('development' == app.get('env')) {
 
 require('./routes')(app);
 
-require('./app/connections/imageCloud')(cloudinary);
+require('./app/connections/utils/imageCloud')(cloudinary);
 
 var server = http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
 var io = require('socket.io').listen(server);
-require('./app/connections/gameSocket')(io);
+require('./app/connections/utils/gameSocket')(io);

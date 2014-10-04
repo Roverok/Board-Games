@@ -11,10 +11,12 @@ var gameSchema = new Schema({
 var playerSchema = new Schema({
   name: String,
   id: String,
+  position: Number,
   played: Number,
   won: Number,
   selected : Boolean,
-  isYours : Boolean
+  isYours : Boolean,
+  isHidden:Boolean
 });
 
 var imageSchema = new Schema({

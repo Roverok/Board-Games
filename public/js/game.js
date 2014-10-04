@@ -54,47 +54,29 @@ var memeMessage = {
 };
 var randomNumber = 1;
 var competitors = [];
-var characters = {
-  'p-1' : {
-    'name' : 'AshBee',
-    'position' : 0,
-    'selected'  : false,
-    'isYours' : false
-  },
-  'p-2' : {
-    'name' : 'Ashish',
-    'position' : 0,
-    'selected'  : false,
-    'isYours' : false
-  },
-  'p-3' : {
-    'name' : 'Troll Kid',
-    'position' : 0,
-    'selected'  : false,
-    'isYours' : false
-  },
-  'p-4' : {
-    'name' : 'Trollmaster',
-    'position' : 0,
-    'selected'  : false,
-    'isYours' : false
-  },
-  'p-5' : {
-    'name' : 'NaMo NaMo',
-    'position' : 0,
-    'selected'  : false,
-    'isYours' : false
-  },
-  'p-6' : {
-    'name' : 'Pappu',
-    'position' : 0,
-    'selected'  : false,
-    'isYours' : false
-  }
-};
+var players = {};
 
 
 var gamePlay = {
+  _sendAjaxRequest : function(rqUrl,rqData,methodType,async,success,failure,dataType,contentType)
+  {
+    $.ajax({
+      url : rqUrl,
+      type : methodType,
+      data : rqData,
+      dataType : dataType,
+      contentType:contentType,
+      cache : false,
+      async: async,
+      success : function(data) {
+        success(data);
+      },
+      error : function(err) {
+        failure(err);
+      }
+    });
+
+  },
   moveAvatar : function(player, from, to, speed, callback){
     var fromY = parseInt(from/10);
     var toY = parseInt(to/10);
@@ -123,7 +105,7 @@ var gamePlay = {
     var length = snakeBody.length-1;
     for(var i=1;i<=length;i++)
       gamePlay.moveAvatar(player,snakeBody[i-1],snakeBody[i],800,(i==length)?callback:null);
-    characters[player].position = snakeBody[length];
+    players[player].position = snakeBody[length];
   },
   ladderHit : function(player,ladder){
     $('.game-player[type='+player+'] .player-avatar').attr('type','happy');
@@ -133,10 +115,10 @@ var gamePlay = {
       $('.game-player:not([type='+player+']) .player-avatar').attr('type','normal');
     }
     gamePlay.moveAvatar(player,ladder[0],ladder[1],800,callback);
-    characters[player].position = ladder[1];
+    players[player].position = ladder[1];
   },
   diceMove : function(player,dice){
-    var source = characters[player].position;
+    var source = players[player].position;
     var sourceX = parseInt(source%10);
     var delay = 0;
     if(source + dice <= 99){
@@ -152,7 +134,7 @@ var gamePlay = {
           delay += 500;
         }
       }
-      characters[player].position = source + dice;
+      players[player].position = source + dice;
       setTimeout(function(){
         gamePlay.checkLadderHit(player);
         gamePlay.checkSnakeBite(player);
@@ -162,7 +144,7 @@ var gamePlay = {
   },
   checkLadderHit : function(player){
     for(var i in ladders){
-      if(ladders[i][0] == characters[player].position){
+      if(ladders[i][0] == players[player].position){
         gamePlay.ladderHit(player,ladders[i]);
         return;
       }
@@ -171,7 +153,7 @@ var gamePlay = {
   },
   checkSnakeBite : function(player){
     for(var i in snakes){
-      if(snakes[i][0] == characters[player].position){
+      if(snakes[i][0] == players[player].position){
         gamePlay.snakeBite(player,snakes[i]);
         return;
       }
@@ -208,13 +190,13 @@ var gamePlay = {
     var topMemeMessage = '';
     var bottomMemeMessage = '';
     if(imageCase === 'image-battle'){
-      topMemeMessage = characters[winner].name + memeMessage[imageCase][0].top + characters[loser].name;
+      topMemeMessage = players[winner].name + memeMessage[imageCase][0].top + players[loser].name;
       bottomMemeMessage = memeMessage[imageCase][0].bottom;
     }else if(imageCase === 'image-result'){
       topMemeMessage = memeMessage[imageCase][randomNumber-1].top;
       bottomMemeMessage = memeMessage[imageCase][randomNumber-1].bottom;
     }else{
-      topMemeMessage = memeMessage[imageCase][randomNumber-1].top + (imageCase==='image-winner'?characters[winner].name:characters[loser].name);
+      topMemeMessage = memeMessage[imageCase][randomNumber-1].top + (imageCase==='image-winner'?players[winner].name:players[loser].name);
       bottomMemeMessage = memeMessage[imageCase][randomNumber-1].bottom;
     }
     $('.game-message.top').html(topMemeMessage);
@@ -226,7 +208,7 @@ var gamePlay = {
   },
   initGameBox : function(){
     randomNumber = Math.floor((Math.random() * 2) + 1);
-    $.each(characters, function(i,obj){
+    $.each(players, function(i,obj){
        if(obj.selected){
          var message = obj.isYours?'Your Turn':'Rival Turn';
          var gameBoard = '<div class="game-player" type="' + i + '">' +
@@ -250,7 +232,7 @@ var gamePlay = {
   },
   findNextOpponent : function(currentPlayer){
     var nextPlayer;
-    $.each(characters,function(i,obj){
+    $.each(players,function(i,obj){
        if(i !== currentPlayer && obj.selected === true){
          nextPlayer = i;
        }
@@ -258,22 +240,40 @@ var gamePlay = {
     return nextPlayer;
   },
   findCompetitors : function(){
-    $.each(characters,function(i,obj){
+    $.each(players,function(i,obj){
       if(obj.selected == true){
         competitors.push(i);
       }
     });
   },
+  initGamePlayers : function(){
+    var success = function(data){
+      $.each(data,function(index,obj){
+        console.log(obj);
+        players[obj.id] = new Object();
+        $.each(obj,function(key,value){
+          if(key !== 'id') {
+            players[obj.id][key] = value;
+          }
+        });
+      });
+      console.log(players);
+    }
+    var failure = function(data){
+      console.log(data)
+    }
+    gamePlay._sendAjaxRequest(urls.fetchPlayerList,"","GET",false,success,failure,"JSON","application/json; charset=utf-8");
+  },
   initSnakeLadderGame : function(){
 
     var socket = io();
 
+    gamePlay.initGamePlayers();
     $('.js-rollDice').click(function(){
       var player = $(this).attr('player');
-      if($(this).attr('disabled') !== 'disabled' && characters[player].isYours){
+      if($(this).attr('disabled') !== 'disabled' && players[player].isYours){
         var dice = Math.floor((Math.random() * 6) + 1);
-        socket.emit('dice',{player:player,isYours:characters[player].isYours,dice:dice});
-
+        socket.emit('dice',{player:player,isYours:players[player].isYours,dice:dice});
         var player2 = gamePlay.findNextOpponent(player);
         $('.dice-show .message').fadeOut();
         $('.dice-show').addClass('animate');
@@ -290,7 +290,7 @@ var gamePlay = {
           $('.js-rollDice').attr('disabled',false);
         },2000);
 
-        if(characters[player].position == 99){
+        if(players[player].position == 99){
           gamePlay.generateMeme(player,player2,'image-result');
           setTimeout(function(){
             gamePlay.generateMeme(player,player2,'image-winner');
@@ -311,19 +311,19 @@ var gamePlay = {
         if($('.select-box.selected').length < 2){
           $(this).addClass('selected');
           $(this).find('.player-name').addClass('text-color-'+player);
-          characters[player].selected = true;
-          characters[player].isYours = true;
+          players[player].selected = true;
+          players[player].isYours = true;
         }
       }else{
-        if(characters[player].isYours){
+        if(players[player].isYours){
           $(this).removeClass('selected');
           $(this).find('.player-name').removeClass('text-color-'+player);
-          characters[player].selected = false;
-          characters[player].isYours = false;
+          players[player].selected = false;
+          players[player].isYours = false;
         }
       }
 
-      socket.emit('selection',{player:player,selection:characters[player].selected,isYours:characters[player].isYours});
+      socket.emit('selection',{player:player,selection:players[player].selected,isYours:players[player].isYours});
 
       if($('.select-box.selected').length == 2){
         $('.continue-button').removeClass('hide');
@@ -347,13 +347,13 @@ var gamePlay = {
     });
 
     socket.on('selection',function(data){
-      if(characters[data.player].selected != data.selection){
-        characters[data.player].selected = data.selection;
+      if(players[data.player].selected != data.selection){
+        players[data.player].selected = data.selection;
         if(data.selection){
           if($('.select-box.selected').length < 2){
             $('.select-box[type='+data.player+']').addClass('selected');
             $('.select-box[type='+data.player+']').find('.player-name').addClass('text-color-'+data.player);
-            characters[data.player].isYours = !data.isYours;
+            players[data.player].isYours = !data.isYours;
           }
         }else{
           $('.select-box[type='+data.player+']').removeClass('selected');
@@ -368,7 +368,7 @@ var gamePlay = {
     });
 
     socket.on('dice',function(data){
-     if(characters[data.player].selected && !characters[data.player].isYours){
+     if(players[data.player].selected && !players[data.player].isYours){
        var player2 = gamePlay.findNextOpponent(data.player);
        $('.dice-show .message').fadeOut();
        $('.dice-show').addClass('animate');
@@ -384,7 +384,7 @@ var gamePlay = {
          }
          $('.js-rollDice').attr('disabled',false);
        },2000);
-       if(characters[data.player].position == 99){
+       if(players[data.player].position == 99){
          gamePlay.generateMeme(data.player,player2,'image-result');
          setTimeout(function(){
            gamePlay.generateMeme(data.player,player2,'image-winner');

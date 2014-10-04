@@ -2,10 +2,12 @@ var player = function () {
   this.data = {
     name: null,
     id: null,
+    position: 0,
     played: 0,
     won: 0,
     selected: false,
-    isYours: false
+    isYours: false,
+    isHidden : false
   };
   this.fill = function (info) {
     for(var prop in this.data) {
