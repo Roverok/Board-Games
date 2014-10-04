@@ -1,5 +1,10 @@
 exports.urls = {
   ADMIN : {
+    SHOW_SCHEMA : '/admin/show-schema-test',
+    SAVE_SCHEMA : '/admin/save-schema-test',
+    SHOW_MODAL_SCHEMA : '/admin/show-modal-schema-test',
+    SAVE_MODAL_SCHEMA : '/admin/save-modal-schema-test',
+    SHOW_MODAL : '/admin/show-modal'
   },
   API : {
   },

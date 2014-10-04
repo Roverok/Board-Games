@@ -19,5 +19,5 @@ var testSchema2 = new Schema({
 
 module.exports = {
   'playaSchema' : mongoose.model('playa', testSchema),
-  'imageSchema' : mongoose.model('image', testSchema2)
+  'imageSchema' : mongoose.model('test_image', testSchema2)
 };

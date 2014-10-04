@@ -339,7 +339,7 @@ ul.roman {
   border: 6px solid;
 }
 .game-select .select-box .game-player .player-avatar {
-  background-position-y: -41px !important;
+  background-position-y: 60% !important;
 }
 .game-select .select-box .game-player .player-name {
   color: #fff;
@@ -458,7 +458,7 @@ ul.roman {
   top: -55px;
 }
 .score-board .game-player .player-avatar {
-  background-position-y: -41px !important;
+  background-position-y: 60% !important;
 }
 .dice-box {
   height: 200px;
@@ -564,7 +564,7 @@ ul.roman {
   left: 30px;
 }
 .game-board .game-player .player-avatar {
-  background-position-y: -11px !important;
+  background-position-y: 60% !important;
 }
 .player-avatar {
   height: inherit;
@@ -687,7 +687,7 @@ ul.roman {
     top: -20px;
   }
   .mini-score-box .mini-score-board .game-player .player-avatar {
-    background-position-y: -16px !important;
+    background-position-y: 60% !important;
   }
 }
 #memeModal {
@@ -709,7 +709,7 @@ ul.roman {
   border: 5px solid;
 }
 #memeModal .meme-image .game-player .player-avatar {
-  background-position-y: -31px !important;
+  background-position-y: 60% !important;
 }
 #memeModal .meme-image .game-message {
   text-align: center;

@@ -3,32 +3,33 @@
  * GET users listing.
  */
 
-var testSchema = require('../schemas/testSchema');
-
-exports.testList = function(req, res){
-  res.send("respond with a test resource");
-}
+var adminSchema = require('../schemas/adminSchema');
 
 exports.showSchema = function(req, res){
-  testSchema.playaSchema.find()
-      .exec(function(err, playas){
+  adminSchema.playerSchema.find()
+      .setOptions({sort:'id'})
+      .exec(function(err, results){
         if(err){
           res.status(500).json({status: 'failure'});
         }else{
-          console.log(playas);
-          res.render('test/index', {
-            title: 'playas',
-            playas: playas
+          console.log(results);
+          res.render('admin/index', {
+            title: 'results',
+            results: results
           });
         }
       });
 };
 
 exports.saveSchema = function(req, res){
-  var record = new testSchema.playaSchema(
+  var record = new adminSchema.playerSchema(
       {
-        firstName:'Tom',
-        secondName:'Araya'
+        "name": "Ashish",
+        "id": 'p-8',
+        "played": 0,
+        "won": 0,
+        "selected": false,
+        "isYours": false
       }
   );
   record.save(function(err) {
@@ -42,20 +43,20 @@ exports.saveSchema = function(req, res){
 };
 
 exports.showModel = function(req, res){
-  var dataSample = require('../dataSamples/testDataSample');
-  var testModel = require('../models/testModel');
+  var dataSample = require('../dataSamples/playerDataSample');
+  var testModel = require('../models/playerModel');
   for(var i in dataSample){
     console.log(testModel(dataSample[i]).getInformation());
   }
-  res.render('index', { title: 'Test Express2' });
+  res.json(dataSample);
 };
 
 exports.saveModelSchema = function(req, res){
-  var dataSample = require('../dataSamples/testDataSample');
-  var testModel = require('../models/testModel');
+  var dataSample = require('../dataSamples/playerDataSample');
+  var testModel = require('../models/playerModel');
 
   for(var i in dataSample){
-    var record = new testSchema.imageSchema(testModel(dataSample[i]).getInformation());
+    var record = new adminSchema.playerSchema(testModel(dataSample[i]).getInformation());
     record.save(function(err) {
       if (err) {
         console.log(err);
@@ -69,16 +70,16 @@ exports.saveModelSchema = function(req, res){
 };
 
 exports.showModelSchema = function(req, res){
-  testSchema.imageSchema.find({fileType: 'avatars'})
-      .setOptions({sort:'fileName'})
-      .exec(function(err, images){
+  adminSchema.playerSchema.find()
+      .setOptions({sort:'id'})
+      .exec(function(err, results){
         if(err){
           res.status(500).json({status: 'failure'});
         }else{
-          console.log(images);
-          res.render('test/index2', {
-            title: 'images',
-            images: images
+          console.log(results);
+          res.render('admin/index', {
+            title: 'results',
+            results: results
           });
         }
       });
