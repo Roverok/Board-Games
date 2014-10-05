@@ -296,6 +296,7 @@ ul.roman {
   border-radius: 25px;
   background: #52c9f4;
   padding: 15px;
+  height: 575px;
 }
 .game-title .image-box {
   background: url('../images/banners/snakes-and-ladders-banner.png') no-repeat center;
@@ -318,18 +319,35 @@ ul.roman {
   width: 250px;
   cursor: pointer;
 }
-.game-select .select-box:hover .game-player .player-avatar {
-  background-position-x: 100% !important;
+.game-select .select-box.hide {
+  display: none;
 }
-.game-select .select-box:hover .game-player .player-name {
+.game-select .select-box:hover .game-player .player-avatar {
+  opacity: 0.2;
+}
+.game-select .select-box:hover .game-player .player-record {
+  position: absolute;
+  width: inherit;
+  display: block;
+  text-align: center;
+  padding: 50px 0;
+}
+.game-select .select-box:hover .game-player .player-record .title {
+  font-size: 50px;
+}
+.game-select .select-box:hover .game-player .player-record .rec {
+  font-size: 30px;
+}
+.game-select .select-box:hover .player-name {
   color: #ffff00;
 }
 .game-select .select-box.selected .player-avatar {
-  -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
-  -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
-  -webkit-filter: grayscale(100%);
-  filter: gray;
-  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+  /*-moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+        -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+        -webkit-filter: grayscale(100%);
+        filter: gray;
+        filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");*/
+  opacity: 0.2;
 }
 .game-select .select-box .game-player {
   margin: 20px auto;
@@ -337,11 +355,15 @@ ul.roman {
   width: 200px;
   height: 200px;
   border: 6px solid;
+  background-color: #ffffff;
 }
 .game-select .select-box .game-player .player-avatar {
   background-position-y: 60% !important;
 }
-.game-select .select-box .game-player .player-name {
+.game-select .select-box .game-player .player-record {
+  display: none;
+}
+.game-select .select-box .player-name {
   color: #fff;
   margin: 15px 0;
   font-size: 30px;
@@ -349,26 +371,34 @@ ul.roman {
 .continue-button {
   text-align: center;
   color: #fafafa;
-  margin-bottom: 40px;
+  margin: 40px 0;
   font-size: 75px;
+}
+.continue-button .button {
+  display: inline-block;
   cursor: pointer;
 }
-.continue-button:hover {
+.continue-button .button:hover {
   color: #ffff00;
 }
-.game-box {
+.continue-button .box {
+  font-size: 60px;
+}
+.boxes {
   width: 100%;
   font-size: 0;
 }
-.game-box .box {
-  font-size: 14px;
+.boxes .box {
   display: inline-block;
   vertical-align: top;
 }
-.game-box .box.half-box {
+.boxes .box.half-box {
   width: 50%;
 }
-.game-box .box:first-child .dice-box {
+.game-box.boxes .box {
+  font-size: 14px;
+}
+.game-box.boxes .box:first-child .dice-box {
   display: none;
 }
 .player-message {
@@ -461,24 +491,24 @@ ul.roman {
   background-position-y: 60% !important;
 }
 .dice-box {
-  height: 200px;
+  height: 130px;
 }
 .dice-box .dice-show {
-  margin: 0px auto;
+  width: 100px;
+  min-height: 65px;
+  margin: 15px auto;
   border: 2px solid;
   border-radius: 5px;
-  width: 150px;
-  min-height: 105px;
 }
 .dice-box .dice-show.animate {
   background: url('../images/gifs/rolling-dice.gif') no-repeat center;
   background-size: contain;
 }
 .dice-box .dice-show .message {
+  font-size: 40px;
+  padding: 10px;
   color: #ffffff;
   text-align: center;
-  font-size: 60px;
-  padding: 15px;
 }
 .dice-box .dice-show .message[type=p-1] {
   background: #ff0000;
@@ -499,37 +529,36 @@ ul.roman {
   background: #00ff00;
 }
 .dice-box .dice-button {
+  font-size: 20px;
+  width: 75px;
   padding: 10px 15px;
   color: #ffffff;
   background-color: #c7c7c7;
-  font-size: 30px;
   border: 1px solid #d8d8d8;
   border-radius: 5px;
   margin: 10px auto;
   cursor: pointer;
-  width: 120px;
   text-align: center;
 }
 .score-box {
   margin-top: 15px;
-  height: 175px;
 }
-.score-box:nth-child(2) .score-board {
+.score-box:nth-child(2n+2) .score-board {
   text-align: right;
 }
-.score-box:nth-child(2) .score-board .game-player {
+.score-box:nth-child(2n+2) .score-board .game-player {
   left: 5px;
 }
-.score-box:nth-child(2) .score-board .player-message {
+.score-box:nth-child(2n+2) .score-board .player-message {
   left: 155px;
 }
-.score-box:last-child .score-board {
+.score-box:nth-child(2n+1) .score-board {
   text-align: left;
 }
-.score-box:last-child .score-board .game-player {
+.score-box:nth-child(2n+1) .score-board .game-player {
   right: 5px;
 }
-.score-box:last-child .score-board .player-message {
+.score-box:nth-child(2n+1) .score-board .player-message {
   right: 155px;
 }
 .game-board {
@@ -587,8 +616,11 @@ ul.roman {
   display: none;
 }
 @media screen and (max-width: 625px) {
+  .game-title {
+    height: 525px;
+  }
   .continue-button {
-    margin-bottom: 25px;
+    margin: 25px 0;
     font-size: 50px;
   }
   .player-message {
@@ -597,27 +629,20 @@ ul.roman {
   .select-title {
     font-size: 60px !important;
   }
-  .box.half-box:last-child {
+  .continue-button .box.half-box {
+    font-size: 40px;
+  }
+  .game-box .box.half-box:last-child {
     display: none;
   }
-  .box.half-box:first-child {
+  .game-box .box.half-box:first-child {
     width: 100%;
   }
-  .box.half-box:first-child .dice-box {
+  .game-box .box.half-box:first-child .dice-box {
     display: block;
-    height: 130px;
   }
-  .box.half-box:first-child .dice-box .dice-show {
-    width: 100px;
-    min-height: 65px;
-  }
-  .box.half-box:first-child .dice-box .message {
-    font-size: 40px;
-    padding: 10px;
-  }
-  .box.half-box:first-child .dice-box .dice-button {
-    font-size: 20px;
-    width: 75px;
+  .game-box .box.half-box:first-child .dice-box .dice-show {
+    margin: 0 auto;
   }
   .mini-score-box {
     display: block;
@@ -634,26 +659,26 @@ ul.roman {
     font-size: 15px;
     color: #ffffff;
   }
-  .mini-score-box .mini-score-board:first-child {
+  .mini-score-box .mini-score-board:nth-child(odd) {
     margin-left: 15px;
     margin-right: 5px;
     text-align: right;
   }
-  .mini-score-box .mini-score-board:first-child .game-player {
+  .mini-score-box .mini-score-board:nth-child(odd) .game-player {
     left: 5px;
   }
-  .mini-score-box .mini-score-board:first-child .player-message {
+  .mini-score-box .mini-score-board:nth-child(odd) .player-message {
     left: 70px;
   }
-  .mini-score-box .mini-score-board:last-child {
+  .mini-score-box .mini-score-board:nth-child(even) {
     margin-right: 15px;
     margin-left: 5px;
     text-align: left;
   }
-  .mini-score-box .mini-score-board:last-child .game-player {
+  .mini-score-box .mini-score-board:nth-child(even) .game-player {
     right: 5px;
   }
-  .mini-score-box .mini-score-board:last-child .player-message {
+  .mini-score-box .mini-score-board:nth-child(even) .player-message {
     right: 70px;
   }
   .mini-score-box .mini-score-board[type=p-1] {

@@ -117,7 +117,36 @@ var gamePlay = {
     gamePlay.moveAvatar(player,ladder[0],ladder[1],800,callback);
     players[player].position = ladder[1];
   },
-  diceMove : function(player,dice){
+  diceMove : function(player, dice){
+    var player2 = gamePlay.findNextOpponent(player);
+    $('.dice-show .message').fadeOut();
+    $('.dice-show').addClass('animate');
+    $('.js-rollDice').attr('disabled',true);
+    setTimeout(function(){
+      $('.dice-show .message').attr('type',player).html(dice).fadeIn();
+      $('.dice-show').removeClass('animate');
+      $('.js-rollDice').attr('player',(dice == 6)?player:player2);
+      gamePlay.diceMoveAvatar(player,dice);
+      if(dice != 6){
+        $('.player-message.text-color-'+player).fadeOut();
+        $('.player-message.text-color-'+player2).fadeIn();
+      }
+      $('.js-rollDice').attr('disabled',false);
+      if(players[player].position == 99){
+        gamePlay.generateMeme(player,player2,'image-result');
+        setTimeout(function(){
+          gamePlay.generateMeme(player,player2,'image-winner');
+        },4000);
+        setTimeout(function(){
+          gamePlay.generateMeme(player,player2,'image-loser');
+        },8000);
+        setTimeout(function(){
+          location.href = location.href
+        },12000);
+      }
+    },2000);
+  },
+  diceMoveAvatar : function(player,dice){
     var source = players[player].position;
     var sourceX = parseInt(source%10);
     var delay = 0;
@@ -208,6 +237,7 @@ var gamePlay = {
   },
   initGameBox : function(){
     randomNumber = Math.floor((Math.random() * 2) + 1);
+    gamePlay.findCompetitors();
     $.each(players, function(i,obj){
        if(obj.selected){
          var message = obj.isYours?'Your Turn':'Rival Turn';
@@ -227,17 +257,18 @@ var gamePlay = {
          }
        }
     });
-    gamePlay.findCompetitors();
+    $('.game-box .score-box').css('height',400/competitors.length+'px');
     gamePlay.generateMeme(competitors[0],competitors[1],'image-battle');
   },
   findNextOpponent : function(currentPlayer){
-    var nextPlayer;
-    $.each(players,function(i,obj){
-       if(i !== currentPlayer && obj.selected === true){
-         nextPlayer = i;
-       }
-    });
-    return nextPlayer;
+    for(var i = 0; i<competitors.length; i++){
+      console.log(i,competitors.length);
+      if(competitors[i] === currentPlayer){
+        var j = (i+1)%competitors.length;
+        console.log(i,j);
+        return competitors[j];
+      }
+    }
   },
   findCompetitors : function(){
     $.each(players,function(i,obj){
@@ -264,6 +295,31 @@ var gamePlay = {
     }
     gamePlay._sendAjaxRequest(urls.fetchPlayerList,"","GET",false,success,failure,"JSON","application/json; charset=utf-8");
   },
+  selectAvatar : function(player,selection,isYours){
+    if(selection){
+      if($('.select-box.selected').length < 4){
+        $('.select-box[type='+player+']').addClass('selected');
+        $('.select-box[type='+player+']').find('.player-name').addClass('text-color-'+player);
+        players[player].selected = true;
+        if(isYours)
+          players[player].isYours = true;
+      }
+    }else{
+      if(players[player].isYours || !isYours){
+        $('.select-box[type='+player+']').removeClass('selected');
+        $('.select-box[type='+player+']').find('.player-name').removeClass('text-color-'+player);
+        players[player].selected = false;
+        if(isYours)
+          players[player].isYours = false;
+      }
+    }
+
+    if($('.select-box.selected').length >= 2){
+      $('.continue-button').removeClass('hide');
+    }else{
+      $('.continue-button').addClass('hide');
+    }
+  },
   initSnakeLadderGame : function(){
 
     var socket = io();
@@ -273,65 +329,25 @@ var gamePlay = {
       var player = $(this).attr('player');
       if($(this).attr('disabled') !== 'disabled' && players[player].isYours){
         var dice = Math.floor((Math.random() * 6) + 1);
-        socket.emit('dice',{player:player,isYours:players[player].isYours,dice:dice});
-        var player2 = gamePlay.findNextOpponent(player);
-        $('.dice-show .message').fadeOut();
-        $('.dice-show').addClass('animate');
-        $('.js-rollDice').attr('disabled',true);
-        setTimeout(function(){
-          $('.dice-show .message').attr('type',player).html(dice).fadeIn();
-          $('.dice-show').removeClass('animate');
-          $('.js-rollDice').attr('player',(dice == 6)?player:player2);
-          gamePlay.diceMove(player,dice);
-          if(dice != 6){
-            $('.player-message.text-color-'+player).fadeOut();
-            $('.player-message.text-color-'+player2).fadeIn();
-          }
-          $('.js-rollDice').attr('disabled',false);
-        },2000);
-
-        if(players[player].position == 99){
-          gamePlay.generateMeme(player,player2,'image-result');
-          setTimeout(function(){
-            gamePlay.generateMeme(player,player2,'image-winner');
-          },4000);
-          setTimeout(function(){
-            gamePlay.generateMeme(player,player2,'image-loser');
-          },8000);
-          setTimeout(function(){
-            location.href = location.href
-          },12000);
-        }
+        socket.emit('dice',{player:player,dice:dice});
+        gamePlay.diceMove(player,dice);
       }
     });
 
     $('.select-box').click(function(){
       var player = $(this).attr('type');
-      if(!$(this).hasClass('selected')){
-        if($('.select-box.selected').length < 2){
-          $(this).addClass('selected');
-          $(this).find('.player-name').addClass('text-color-'+player);
-          players[player].selected = true;
-          players[player].isYours = true;
-        }
-      }else{
-        if(players[player].isYours){
-          $(this).removeClass('selected');
-          $(this).find('.player-name').removeClass('text-color-'+player);
-          players[player].selected = false;
-          players[player].isYours = false;
-        }
-      }
-
-      socket.emit('selection',{player:player,selection:players[player].selected,isYours:players[player].isYours});
-
-      if($('.select-box.selected').length == 2){
-        $('.continue-button').removeClass('hide');
-      }else{
-        $('.continue-button').addClass('hide');
-      }
+      var selection = !$(this).hasClass('selected');
+      gamePlay.selectAvatar(player,selection,true);
+      socket.emit('selection',{player:player,selection:players[player].selected});
     });
-    $('.game-title').on('click','.continue-button',function(){
+
+    $('.game-title').on('click','.js-gameEnter',function(){
+      $(this).fadeOut();
+      setTimeout(function(){
+        $('.continue-button .boxes').fadeIn();
+      },300);
+    });
+    $('.game-title').on('click','.js-gamePlay',function(){
       $('.game-title').fadeOut();
       setTimeout(function(){
         $('.game-select').fadeIn();
@@ -348,54 +364,13 @@ var gamePlay = {
 
     socket.on('selection',function(data){
       if(players[data.player].selected != data.selection){
-        players[data.player].selected = data.selection;
-        if(data.selection){
-          if($('.select-box.selected').length < 2){
-            $('.select-box[type='+data.player+']').addClass('selected');
-            $('.select-box[type='+data.player+']').find('.player-name').addClass('text-color-'+data.player);
-            players[data.player].isYours = !data.isYours;
-          }
-        }else{
-          $('.select-box[type='+data.player+']').removeClass('selected');
-          $('.select-box[type='+data.player+']').find('.player-name').removeClass('text-color-'+data.player);
-        }
-        if($('.select-box.selected').length == 2){
-          $('.continue-button').removeClass('hide');
-        }else{
-          $('.continue-button').addClass('hide');
-        }
+        gamePlay.selectAvatar(data.player,data.selection,false);
       }
     });
 
     socket.on('dice',function(data){
      if(players[data.player].selected && !players[data.player].isYours){
-       var player2 = gamePlay.findNextOpponent(data.player);
-       $('.dice-show .message').fadeOut();
-       $('.dice-show').addClass('animate');
-       $('.js-rollDice').attr('disabled',true);
-       setTimeout(function(){
-         $('.dice-show .message').attr('type',data.player).html(data.dice).fadeIn();
-         $('.dice-show').removeClass('animate');
-         $('.js-rollDice').attr('player',(data.dice == 6)?data.player:player2);
-         gamePlay.diceMove(data.player,data.dice);
-         if(data.dice != 6){
-           $('.player-message.text-color-'+data.player).fadeOut();
-           $('.player-message.text-color-'+player2).fadeIn();
-         }
-         $('.js-rollDice').attr('disabled',false);
-       },2000);
-       if(players[data.player].position == 99){
-         gamePlay.generateMeme(data.player,player2,'image-result');
-         setTimeout(function(){
-           gamePlay.generateMeme(data.player,player2,'image-winner');
-         },4000);
-         setTimeout(function(){
-           gamePlay.generateMeme(data.player,player2,'image-loser');
-         },8000);
-         setTimeout(function(){
-           location.href = location.href
-         },12000);
-       }
+       gamePlay.diceMove(data.player, data.dice);
      }
     });
 
