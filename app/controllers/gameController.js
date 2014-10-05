@@ -47,7 +47,6 @@ exports.addGameToList = function(req,res){
   if(typeof body !== 'undefined')
     options = body;
   var failure = function(){
-    console.log('Failure')
     res.status(500).json({status: 'failure'});
   }
   var addSuccess = function(result){
@@ -64,3 +63,27 @@ exports.addGameToList = function(req,res){
   gameService.fetchGameList(searchSuccess,failure,options);
 };
 
+exports.updatePlayerMatch = function(req,res){
+  var players = decodeURIComponent(req.query.players).split(',');
+  var success = function(result){
+    res.json(result)
+  }
+  var failure = function(){
+    res.status(500).json({status: 'failure'});
+  }
+  for(var i in players){
+    var playerID = players[i];
+    gameService.updatePlayerMatch({'id':playerID}, success, failure);
+  }
+};
+
+exports.updatePlayerWin = function(req,res){
+  var playerID = req.query.player;
+  var success = function(result){
+    res.json(result)
+  }
+  var failure = function(){
+    res.status(500).json({status: 'failure'});
+  }
+  gameService.updatePlayerWin({'id':playerID}, success, failure);
+};

@@ -14,16 +14,12 @@ exports.fetchGamePlayers = function(query, projection, successCallback, errCallb
 };
 
 exports.fetchGameList = function(query, projection, successCallback, errCallback){
-  console.log('I was here',query);
   adminSchema.gameSchema.find(query,projection)
       .setOptions({sort:'_id'})
       .exec(function(err, gameList){
-        console.log(gameList);
         if(err){
-          console.log('Error');
           errCallback;
         }else{
-          console.log('True');
           successCallback(gameList);
         }
       });
@@ -37,4 +33,15 @@ exports.addNewGame = function(successCallback, errCallback, gameData){
     }
   });
   successCallback({status:0});
+};
+
+exports.updatePlayer = function(query, incParameter, successCallback, errCallback){
+  adminSchema.playerSchema.find(query)
+      .update({$inc:incParameter},function(err){
+        if(err){
+          errCallback;
+        }else{
+          successCallback({status:0});
+        }
+      });
 };

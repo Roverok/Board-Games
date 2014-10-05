@@ -54,6 +54,7 @@ var memeMessage = {
 };
 var randomNumber = 1;
 var competitors = [];
+var yours = [];
 var players = {};
 
 function displayAlertMessage(obj,alertMsg){
@@ -141,6 +142,9 @@ var gamePlay = {
       }
       $('.js-rollDice').attr('disabled',false);
       if(players[player].position == 99){
+        if(players[player].isYours){
+          gamePlay.updatePlayerWin(player);
+        }
         gamePlay.generateMeme(player,player2,'image-result');
         setTimeout(function(){
           gamePlay.generateMeme(player,player2,'image-winner');
@@ -243,6 +247,25 @@ var gamePlay = {
       $('#memeModal').modal('hide');
     },3000);
   },
+  updatePlayerPlay : function(){
+    var playerIDs = yours.join(',');
+    var success = function(data){
+      console.log(data);
+    }
+    var failure = function(data){
+      console.log(data)
+    }
+    gamePlay._sendAjaxRequest(urls.updatePlayerPlayed,{players:playerIDs},"GET",false,success,failure,"JSON","application/x-www-form-urlencoded; charset=UTF-8");
+  },
+  updatePlayerWin : function(player){
+    var success = function(data){
+      console.log(data);
+    }
+    var failure = function(data){
+      console.log(data)
+    }
+    gamePlay._sendAjaxRequest(urls.updatePlayerWon,{player:player},"GET",true,success,failure,"JSON","application/x-www-form-urlencoded; charset=UTF-8");
+  },
   initGameBox : function(){
     randomNumber = Math.floor((Math.random() * 2) + 1);
     gamePlay.findCompetitors();
@@ -266,6 +289,7 @@ var gamePlay = {
        }
     });
     $('.game-box .score-box').css('height',400/competitors.length+'px');
+    gamePlay.updatePlayerPlay();
     gamePlay.generateMeme(competitors[0],competitors[1],'image-battle');
   },
   findNextOpponent : function(currentPlayer){
@@ -282,6 +306,9 @@ var gamePlay = {
     $.each(players,function(i,obj){
       if(obj.selected == true){
         competitors.push(i);
+      }
+      if(obj.isYours){
+        yours.push(i);
       }
     });
   },

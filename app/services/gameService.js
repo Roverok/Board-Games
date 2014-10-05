@@ -11,3 +11,11 @@ exports.fetchGameList = function(successCallback, failureCallback, queryOptions)
 exports.addNewGame = function(successCallback, failureCallback, dataOptions){
   gameConnection.addNewGame(successCallback, failureCallback, dataOptions);
 };
+
+exports.updatePlayerMatch = function(query, successCallback, failureCallback){
+  gameConnection.updatePlayer(query,{'played':1}, successCallback, failureCallback);
+};
+
+exports.updatePlayerWin = function(query, successCallback, failureCallback){
+  gameConnection.updatePlayer(query,{'won':1}, successCallback, failureCallback);
+};
