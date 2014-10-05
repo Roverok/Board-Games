@@ -1,7 +1,10 @@
-.game-title{
+.game-layout{
   border-radius: 25px;
   background: @bg-color-base-dark;
   padding: @padding-large;
+}
+
+.game-title{
   height: 575px;
   .image-box{
     background: url('../images/banners/snakes-and-ladders-banner.png') no-repeat center;
@@ -10,15 +13,81 @@
   }
 }
 
-.game-select{
-  border-radius: 25px;
-  background: @bg-color-base-dark;
-  padding: @padding-large;
+.select-title{
+  margin: @margin-xxlarge 0;
+  font-size: 75px;
   .text-center;
-  .select-title{
-    margin: @margin-xxlarge 0;
-    font-size: 75px;
+}
+
+.game-mode-box{
+  padding: @padding-medium;
+  margin-bottom: @margin-xxlarge;
+  .text-center;
+  input[type=text]{
+    background: transparent;
+    padding: @padding-medium;
+    font-size: 30px;
+    width: 700px;
+    border: @border-width-thick @border-style-base @border-color-white;
+    border-radius: 10px;
+    .text-white;
+    &::-webkit-input-placeholder{
+      .text-white;
+    }
+    &:-moz-placeholder{
+      .text-white;
+    }
+    &::-moz-placeholder{
+      .text-white;
+    }
+    &:-ms-input-placeholder {
+      .text-white;
+    }
   }
+  .continue-button{
+    font-size: 40px;
+    margin: 0 0 0 @margin-large;
+    vertical-align: @text-middle;
+  }
+  &:last-child{
+    border-top: @border-width-thick @border-style-base @border-color-white;
+  }
+  table{
+    width: 75%;
+    margin: 0px auto;
+    tr{
+      font-size: 30px;
+      td{
+        border-bottom: @border-width-base @border-style-base @border-color-white;
+        padding: @padding-base 0;
+        &:first-child{
+          .text-left;
+        }
+        .continue-button{
+          font-size: inherit;
+          .text-right;
+        }
+      }
+      &:last-child{
+        td{
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+  #noGameList{
+    padding: @margin-large;
+    border: @border-width-thick @border-style-base @border-color-white;
+    border-radius: 5px;
+    width: 80%;
+    margin: 0px auto;
+    .text-white;
+    font-size: 25px;
+  }
+}
+
+.game-select{
+  .text-center;
   .select-box{
     .display-inline;
     height: 320px;
@@ -112,12 +181,14 @@
   }
 }
 
-.game-box.boxes{
-  .box{
-    .text-base;
-    &:first-child{
-      .dice-box{
-        display: none;
+.game-box{
+  .boxes{
+    .box{
+      .text-base;
+      &:first-child{
+        .dice-box{
+          display: none;
+        }
       }
     }
   }
@@ -173,13 +244,12 @@
 
 .score-board{
   padding: @padding-large;
-  width: 100%;
   position: relative;
   color: #fff;
   border-radius: 10px;
   font-size: 30px;
   font-style: italic;
-  margin: @margin-xxlarge 0;
+  margin: @margin-xxlarge 0 @margin-xxlarge @margin-medium;
   &[type=p-1]{
     background: @p-1color;
   }
@@ -219,9 +289,11 @@
     margin: @margin-large auto;
     border: 2px solid;
     border-radius: 5px;
+    background-color: #ffffff;
     &.animate{
       background: url('../images/gifs/rolling-dice.gif') no-repeat center;
       background-size: contain;
+      background-color: #ffffff;
     }
     .message{
       font-size: 40px;
@@ -320,6 +392,9 @@
       background-position-y: 60% !important;
     }
   }
+  img{
+    border-radius: 25px;
+  }
 }
 
 .player-avatar{
@@ -348,6 +423,22 @@
   .game-title{
     height: 525px;
   }
+  .game-mode-box{
+    margin-bottom: @margin-large;
+    input[type=text]{
+      font-size: 20px;
+      width: 350px;
+    }
+    .continue-button {
+      font-size: 35px;
+    }
+    table{
+      width: 85%;
+      tr{
+        font-size: 20px;
+      }
+    }
+  }
   .continue-button{
     margin: @margin-xxlarge 0;
     font-size: 50px;
@@ -365,9 +456,10 @@
     display: none;
   }
   .game-box .box.half-box:first-child{
-    width: 100%;
+    width: inherit;
     .dice-box{
       .display-block;
+      margin-bottom: @margin-medium;
       .dice-show{
         margin: 0 auto;
       }
@@ -382,7 +474,7 @@
       position: relative;
       font-style: italic;
       padding: @padding-base @padding-medium;
-      width: 260px;
+      width: 245px;
       margin: @margin-xxlarge 0;
       font-size: 15px;
       .text-white;

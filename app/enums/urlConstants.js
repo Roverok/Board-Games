@@ -13,7 +13,9 @@ exports.urls = {
     SHOW_MODAL : '/admin/show-modal'
   },
   API : {
-    FETCH_PLAYER_LIST : API_VERSION.v1 + '/fetchGamePlayers'
+    FETCH_PLAYER_LIST : API_VERSION.v1 + '/player/list',
+    ADD_NEW_GAME : API_VERSION.v1 + '/game/add',
+    FETCH_GAME_LIST : API_VERSION.v1 + '/game/list'
   },
   WEB : {
     SNAKES_N_LADDERS : '/snakes-n-ladders',

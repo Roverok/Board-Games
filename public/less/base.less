@@ -222,7 +222,7 @@ img{
 }
 
 
-@media screen and (max-width: 625px){
+@media screen and (max-width: @min-screen-width){
   .main-content > .content{
       width: @min-width;
   }
@@ -331,4 +331,8 @@ ul{
   .text-white;
   text-transform: uppercase;
   text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+}
+
+.alert-msg{
+  font-size: 20px;
 }

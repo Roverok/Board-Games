@@ -1,13 +1,13 @@
 var game = function () {
   this.data = {
     name: null,
-    id: null,
-    isActive:null,
-    isOccupied: null
+    playerCount: 0,
+    isActive:true,
+    isOccupied: false
   };
   this.fill = function (info) {
     for(var prop in this.data) {
-      if(this.data[prop] !== 'undefined') {
+      if(typeof this.data[prop] !== 'undefined' && typeof info[prop] !== 'undefined') {
         this.data[prop] = info[prop];
       }
     }

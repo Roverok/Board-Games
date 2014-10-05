@@ -56,6 +56,14 @@ var randomNumber = 1;
 var competitors = [];
 var players = {};
 
+function displayAlertMessage(obj,alertMsg){
+  var element = $(obj)
+  element.html(alertMsg).fadeIn();
+  setTimeout(function(){
+    element.fadeOut();
+  },2000)
+}
+
 
 var gamePlay = {
   _sendAjaxRequest : function(rqUrl,rqData,methodType,async,success,failure,dataType,contentType)
@@ -280,7 +288,6 @@ var gamePlay = {
   initGamePlayers : function(){
     var success = function(data){
       $.each(data,function(index,obj){
-        console.log(obj);
         players[obj.id] = new Object();
         $.each(obj,function(key,value){
           if(key !== 'id') {
@@ -288,7 +295,6 @@ var gamePlay = {
           }
         });
       });
-      console.log(players);
     }
     var failure = function(data){
       console.log(data)
@@ -320,11 +326,55 @@ var gamePlay = {
       $('.continue-button').addClass('hide');
     }
   },
+  searchGameList : function(){
+    var success = function(data){
+      if(data.length > 0){
+        $('#gameList tr.game-row').remove();
+        $.each(data,function(index,obj){
+          var gameRow = "<tr class='game-row'>" +
+                          "<td>"+ obj.name+"</td>" +
+                          "<td>"+ obj.playerCount+"/4 playing</td>" +
+                          "<td>"+
+                             "<div class='continue-button'><div class='button'>Join</div></div>" +
+                          "</td>"+
+                        "</tr>";
+          $('#gameList').append(gameRow);
+        });
+        $('#noGameList').hide();
+        $('#gameList').fadeIn();
+      }else{
+        $('#gameList').hide();
+        $('#noGameList').fadeIn();
+      }
+    }
+    var failure = function(data){
+      console.log(data)
+    }
+    gamePlay._sendAjaxRequest(urls.fetchGameList,"","GET",false,success,failure,"JSON","application/json; charset=utf-8");
+  },
   initSnakeLadderGame : function(){
 
     var socket = io();
 
     gamePlay.initGamePlayers();
+    $('.js-submitGame').click(function(){
+      var success = function(data){
+        console.log(data);
+        if(data.status == 1){
+         displayAlertMessage('.alert-msg',data.errMsg)
+        }else{
+          $('[name=gameName]').val('');
+          gamePlay.searchGameList();
+        }
+      }
+      var failure = function(data){
+        console.log(data)
+      }
+      var name = $('[name=gameName]').val();
+      console.log(name);
+      gamePlay._sendAjaxRequest(urls.addNewGame,{name:name},"POST",true,success,failure,"JSON","application/x-www-form-urlencoded; charset=UTF-8");
+    });
+
     $('.js-rollDice').click(function(){
       var player = $(this).attr('player');
       if($(this).attr('disabled') !== 'disabled' && players[player].isYours){
@@ -348,9 +398,11 @@ var gamePlay = {
       },300);
     });
     $('.game-title').on('click','.js-gamePlay',function(){
+      var gamePlayType = $(this).attr('type');
       $('.game-title').fadeOut();
       setTimeout(function(){
-        $('.game-select').fadeIn();
+        $((gamePlayType === 'local')?'.game-select':'.game-mode').fadeIn();
+        gamePlay.searchGameList();
       },500);
 
     });

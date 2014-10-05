@@ -54,11 +54,11 @@ exports.showModel = function(req, res){
 };
 
 exports.saveModelSchema = function(req, res){
-  var dataSample = require('../dataSamples/playerDataSample');
-  var testModel = require('../models/playerModel');
+  var dataSample = require('../dataSamples/gameDataSample');
+  var testModel = require('../models/gameModel');
 
   for(var i in dataSample){
-    var record = new adminSchema.playerSchema(testModel(dataSample[i]).getInformation());
+    var record = new adminSchema.gameSchema(testModel(dataSample[i]).getInformation());
     record.save(function(err) {
       if (err) {
         console.log(err);
@@ -72,7 +72,7 @@ exports.saveModelSchema = function(req, res){
 };
 
 exports.showModelSchema = function(req, res){
-  adminSchema.playerSchema.find()
+  adminSchema.gameSchema.find()
       .setOptions({sort:'id'})
       .exec(function(err, results){
         if(err){

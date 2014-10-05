@@ -198,7 +198,7 @@ img {
   width: 1200px;
   margin: 0px auto;
 }
-@media screen and (max-width: 625px) {
+@media screen and (max-width: 630px) {
   .main-content > .content {
     width: 600px;
   }
@@ -292,10 +292,15 @@ ul.roman {
   text-transform: uppercase;
   text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000;
 }
-.game-title {
+.alert-msg {
+  font-size: 20px;
+}
+.game-layout {
   border-radius: 25px;
   background: #52c9f4;
   padding: 15px;
+}
+.game-title {
   height: 575px;
 }
 .game-title .image-box {
@@ -303,15 +308,77 @@ ul.roman {
   background-size: contain;
   height: 400px;
 }
-.game-select {
-  border-radius: 25px;
-  background: #52c9f4;
-  padding: 15px;
-  text-align: center;
-}
-.game-select .select-title {
+.select-title {
   margin: 25px 0;
   font-size: 75px;
+  text-align: center;
+}
+.game-mode-box {
+  padding: 10px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+.game-mode-box input[type=text] {
+  background: transparent;
+  padding: 10px;
+  font-size: 30px;
+  width: 700px;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  color: #ffffff;
+}
+.game-mode-box input[type=text]::-webkit-input-placeholder {
+  color: #ffffff;
+}
+.game-mode-box input[type=text]:-moz-placeholder {
+  color: #ffffff;
+}
+.game-mode-box input[type=text]::-moz-placeholder {
+  color: #ffffff;
+}
+.game-mode-box input[type=text]:-ms-input-placeholder {
+  color: #ffffff;
+}
+.game-mode-box .continue-button {
+  font-size: 40px;
+  margin: 0 0 0 15px;
+  vertical-align: middle;
+}
+.game-mode-box:last-child {
+  border-top: 2px solid #ffffff;
+}
+.game-mode-box table {
+  width: 75%;
+  margin: 0px auto;
+}
+.game-mode-box table tr {
+  font-size: 30px;
+}
+.game-mode-box table tr td {
+  border-bottom: 1px solid #ffffff;
+  padding: 5px 0;
+}
+.game-mode-box table tr td:first-child {
+  text-align: left;
+}
+.game-mode-box table tr td .continue-button {
+  font-size: inherit;
+  text-align: right;
+}
+.game-mode-box table tr:last-child td {
+  border-bottom: 0;
+}
+.game-mode-box #noGameList {
+  padding: 15px;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  width: 80%;
+  margin: 0px auto;
+  color: #ffffff;
+  font-size: 25px;
+}
+.game-select {
+  text-align: center;
 }
 .game-select .select-box {
   display: inline-block;
@@ -395,10 +462,10 @@ ul.roman {
 .boxes .box.half-box {
   width: 50%;
 }
-.game-box.boxes .box {
+.game-box .boxes .box {
   font-size: 14px;
 }
-.game-box.boxes .box:first-child .dice-box {
+.game-box .boxes .box:first-child .dice-box {
   display: none;
 }
 .player-message {
@@ -448,13 +515,12 @@ ul.roman {
 }
 .score-board {
   padding: 15px;
-  width: 100%;
   position: relative;
   color: #fff;
   border-radius: 10px;
   font-size: 30px;
   font-style: italic;
-  margin: 25px 0;
+  margin: 25px 0 25px 10px;
 }
 .score-board[type=p-1] {
   background: #ff0000;
@@ -499,10 +565,12 @@ ul.roman {
   margin: 15px auto;
   border: 2px solid;
   border-radius: 5px;
+  background-color: #ffffff;
 }
 .dice-box .dice-show.animate {
   background: url('../images/gifs/rolling-dice.gif') no-repeat center;
   background-size: contain;
+  background-color: #ffffff;
 }
 .dice-box .dice-show .message {
   font-size: 40px;
@@ -595,6 +663,9 @@ ul.roman {
 .game-board .game-player .player-avatar {
   background-position-y: 60% !important;
 }
+.game-board img {
+  border-radius: 25px;
+}
 .player-avatar {
   height: inherit;
   background-size: 400% !important;
@@ -615,9 +686,25 @@ ul.roman {
 .mini-score-box {
   display: none;
 }
-@media screen and (max-width: 625px) {
+@media screen and (max-width: 630px) {
   .game-title {
     height: 525px;
+  }
+  .game-mode-box {
+    margin-bottom: 15px;
+  }
+  .game-mode-box input[type=text] {
+    font-size: 20px;
+    width: 350px;
+  }
+  .game-mode-box .continue-button {
+    font-size: 35px;
+  }
+  .game-mode-box table {
+    width: 85%;
+  }
+  .game-mode-box table tr {
+    font-size: 20px;
   }
   .continue-button {
     margin: 25px 0;
@@ -636,10 +723,11 @@ ul.roman {
     display: none;
   }
   .game-box .box.half-box:first-child {
-    width: 100%;
+    width: inherit;
   }
   .game-box .box.half-box:first-child .dice-box {
     display: block;
+    margin-bottom: 10px;
   }
   .game-box .box.half-box:first-child .dice-box .dice-show {
     margin: 0 auto;
@@ -654,7 +742,7 @@ ul.roman {
     position: relative;
     font-style: italic;
     padding: 5px 10px;
-    width: 260px;
+    width: 245px;
     margin: 25px 0;
     font-size: 15px;
     color: #ffffff;

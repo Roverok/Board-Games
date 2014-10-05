@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
 
 var gameSchema = new Schema({
   name: String,
-  id: String,
+  playerCount: Number,
   isActive : Boolean,
   isOccupied : Boolean
 });

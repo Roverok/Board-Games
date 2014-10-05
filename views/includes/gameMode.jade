@@ -1,12 +1,14 @@
-.game-select.hide
-  .select-title Select Players
-  each player in players
-    .select-box(type='#{player.id}', class=player.isHidden?'hide':'')
-      .game-player(type='#{player.id}')
-        .player-record
-          .title RECORD
-          .rec #{player.won} - #{player.played-player.won}
-        .player-avatar
-      .player-name #{player.name}
-  .continue-button.hide
-    .button Start The Game
+.game-layout.game-mode
+  .game-mode-box
+    .select-title Create New Battle
+    .create-game-box
+      input(type='text', name='gameName', placeholder='Enter an unique name')
+      .continue-button.display-inline
+        .button.js-submitGame Submit
+      .alert-msg.hide
+  .game-mode-box
+    .select-title Join Other Battle
+    .join-game-box
+      .continue-button.text-right
+      table#gameList.hide
+      #noGameList No game currently available. Please refresh the list or create a new game.
