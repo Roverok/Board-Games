@@ -68,6 +68,17 @@ exports.addGameToList = function(req,res){
   gameService.fetchGameList(searchSuccess,failure,options);
 };
 
+exports.updateGameOccupied = function(req,res){
+  var gameID = req.query.gameID;
+  var success = function(result){
+    res.json(result)
+  }
+  var failure = function(){
+    res.status(500).json({status: 'failure'});
+  }
+  gameService.updateGame({'_id':gameID}, {'isOccupied':true}, success, failure)
+};
+
 exports.updatePlayerMatch = function(req,res){
   var players = decodeURIComponent(req.query.players).split(',');
   var success = function(result){

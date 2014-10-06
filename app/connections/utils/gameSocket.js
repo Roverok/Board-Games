@@ -14,5 +14,8 @@ module.exports = function(io){
     socket.on('newGame', function(msg){
       io.emit('newGame', msg);
     });
+    socket.on('countdown', function(msg){
+      io.emit('countdown', msg);
+    });
   });
 }

@@ -11,6 +11,7 @@ module.exports = function(app){
   app.get(urls.API.UPDATE_PLAYER_PLAYED, gameController.updatePlayerMatch);
   app.get(urls.API.UPDATE_PLAYER_WON, gameController.updatePlayerWin);
   app.get(urls.API.FETCH_GAME_LIST, gameController.fetchGameList);
+  app.get(urls.API.UPDATE_GAME, gameController.updateGameOccupied);
   app.post(urls.API.ADD_NEW_GAME, gameController.addGameToList);
   app.post(urls.API.JOIN_GAME, gameController.joinGame);
   app.post(urls.API.CHECK_CHEAT_CODE, gameController.checkCheatCode);

@@ -4,6 +4,7 @@ var urls = {
   'checkCheatCode' : '/api/v1/game/cheat',
   'addNewGame' : '/api/v1/game/add',
   'joinGame' : '/api/v1/game/join',
+  'updateGame' : '/api/v1/game/update',
   'updatePlayerPlayed' : '/api/v1/player/played/update',
   'updatePlayerWon' : '/api/v1/player/won/update'
 };

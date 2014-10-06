@@ -58,6 +58,7 @@ var yourPlayers = [];
 var yourGameID = -1;
 var players = {};
 var posn = 0;
+var count = 20;
 
 function displayAlertMessage(obj,alertMsg){
   var element = $(obj)
@@ -66,7 +67,6 @@ function displayAlertMessage(obj,alertMsg){
     element.fadeOut();
   },2000)
 }
-
 
 var gamePlay = {
   _sendAjaxRequest : function(rqUrl,rqData,methodType,async,success,failure,dataType,contentType)
@@ -260,6 +260,15 @@ var gamePlay = {
     }
     gamePlay._sendAjaxRequest(urls.updatePlayerPlayed,{players:playerIDs},"GET",false,success,failure,"JSON","application/x-www-form-urlencoded; charset=UTF-8");
   },
+  updateGameOccupied : function(){
+    var success = function(data){
+      console.log(data);
+    }
+    var failure = function(data){
+      console.log(data)
+    }
+    gamePlay._sendAjaxRequest(urls.updateGame,{gameID:yourGameID},"GET",false,success,failure,"JSON","application/x-www-form-urlencoded; charset=UTF-8");
+  },
   updatePlayerWin : function(player){
     var success = function(data){
       console.log(data);
@@ -271,6 +280,8 @@ var gamePlay = {
   },
   initGameBox : function(){
     randomNumber = Math.floor((Math.random() * 2) + 1);
+    if(yourGameID === -1)
+      gamePlay.findYours();
     gamePlay.findCompetitors();
     $.each(players, function(i,obj){
        if(obj.selected){
@@ -305,13 +316,23 @@ var gamePlay = {
       }
     }
   },
+  findYours : function(callback){
+    $.each(players,function(i,obj){
+      if(obj.isYours){
+        yourPlayers.push(i);
+      }
+    });
+    console.log(yourPlayers);
+    if(typeof callback !== 'undefined'){
+      console.log(callback)
+      callback();
+    }
+
+  },
   findCompetitors : function(){
     $.each(players,function(i,obj){
       if(obj.selected == true){
         competitors.push(i);
-      }
-      if(obj.isYours){
-        yourPlayers.push(i);
       }
     });
   },
@@ -332,10 +353,12 @@ var gamePlay = {
     gamePlay._sendAjaxRequest(urls.fetchPlayerList,"","GET",false,success,failure,"JSON","application/json; charset=utf-8");
   },
   selectAvatar : function(player,selection,isYours){
+    count = 20;
     if(selection){
       if($('.select-box.selected').length < 4){
         $('.select-box[type='+player+']').addClass('selected');
         $('.select-box[type='+player+']').find('.player-name').addClass('text-color-'+player);
+        $('.select-box[type='+player+']').find('.player-who').html(isYours?'(You)':'(Rival)');
         players[player].selected = true;
         if(isYours)
           players[player].isYours = true;
@@ -344,12 +367,12 @@ var gamePlay = {
       if(players[player].isYours || !isYours){
         $('.select-box[type='+player+']').removeClass('selected');
         $('.select-box[type='+player+']').find('.player-name').removeClass('text-color-'+player);
+        $('.select-box[type='+player+']').find('.player-who').html('');
         players[player].selected = false;
         if(isYours)
           players[player].isYours = false;
       }
     }
-
     if($('.select-box.selected').length >= 2){
       $('.continue-button').removeClass('hide');
     }else{
@@ -390,6 +413,7 @@ var gamePlay = {
     var socket = io();
 
     gamePlay.initGamePlayers();
+
     $('.js-submitGame').click(function(){
       var nameEle = $('[name=gameName]');
       var name = nameEle.val();
@@ -475,14 +499,16 @@ var gamePlay = {
         console.log(data);
         $('.game-mode').fadeOut();
         setTimeout(function(){
+          $('.game-select .continue-button').hide();
           $('.game-select').fadeIn();
         },500);
         yourGameID = gameID;
+        gamePlay.setCountdown($('.countdown .count'));
+        socket.emit('countdown',{gameID:yourGameID});
       }
       var failure = function(data){
         console.log(data)
       }
-      console.log(gameID);
       gamePlay._sendAjaxRequest(urls.joinGame,{_id:gameID},"POST",false,success,failure,"JSON","application/x-www-form-urlencoded; charset=UTF-8");
     });
 
@@ -518,5 +544,37 @@ var gamePlay = {
       }
     });
 
-  }
+    socket.on('countdown',function(data){
+      if(data.gameID == yourGameID){
+        count = 20;
+      }
+    });
+  },
+  setCountdown : function(element) {
+  (function loop() {
+    element.html(count);
+    console.log(count);
+    if (count--) {
+      setTimeout(loop, 1000);
+    }else{
+      var callback = function(){
+        console.log(yourPlayers);
+        if(yourPlayers.length > 0 && $('.select-box.selected').length > 1){
+          $('.game-select').fadeOut();
+          setTimeout(function(){
+            gamePlay.initGameBox();
+            $('.game-box').fadeIn();
+          },2000);
+        }else{
+          setTimeout(function(){
+            location.href = location.href;
+          },2000);
+        }
+      };
+      gamePlay.updateGameOccupied();
+      gamePlay.findYours(callback);
+    }
+  })();
+}
+
 };
