@@ -4,8 +4,14 @@
     .select-box(type='#{player.id}', class=player.isHidden?'hide':'')
       .game-player(type='#{player.id}')
         .player-record
-          .title RECORD
-          .rec #{player.won} - #{player.played-player.won}
+          .rec
+            //-| #{player.won} - #{player.played-player.won}
+            if player.played > 0
+              | #{(player.won/player.played*100).toFixed(2)} %
+            else
+              | 0%
+          //-.title RECORD
+          .title WINS
         .player-avatar
       .player-name #{player.name}
   .continue-button.hide

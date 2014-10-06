@@ -4,7 +4,8 @@
  */
 
 var adminSchema = require('../schemas/adminSchema'),
-    gameService = require('../services/gameService');
+    gameService = require('../services/gameService')
+    cheatCodes = require('../dataSamples/codeDataSample');
 
 exports.showSnakeAndLadders = function(req, res){
   adminSchema.playerSchema.find()
@@ -120,4 +121,20 @@ exports.joinGame = function(req,res){
   }
   console.log(options);
   gameService.fetchGameList(searchSuccess,failure,options);
+};
+
+
+exports.checkCheatCode = function(req,res){
+  var charCode = req.body.charCode;
+  var posn = Number(req.body.posn);
+  if(cheatCodes.unlockPlayersCheat.charCodeAt(posn)-32 == charCode){
+    posn += 1;
+    if(posn === cheatCodes.unlockPlayersCheat.length){
+      posn = -1;
+    }
+  }else{
+    posn = 0;
+  }
+  res.json({status:posn});
+
 };

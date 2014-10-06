@@ -13,6 +13,7 @@ module.exports = function(app){
   app.get(urls.API.FETCH_GAME_LIST, gameController.fetchGameList);
   app.post(urls.API.ADD_NEW_GAME, gameController.addGameToList);
   app.post(urls.API.JOIN_GAME, gameController.joinGame);
+  app.post(urls.API.CHECK_CHEAT_CODE, gameController.checkCheatCode);
 
   var testController = require('./app/controllers/testController');
   app.get(urls.WEB.TEST_SCHEMA, testController.showSchema);

@@ -57,6 +57,7 @@ var competitors = [];
 var yourPlayers = [];
 var yourGameID = -1;
 var players = {};
+var posn = 0;
 
 function displayAlertMessage(obj,alertMsg){
   var element = $(obj)
@@ -129,11 +130,12 @@ var gamePlay = {
   },
   diceMove : function(player, dice){
     var player2 = gamePlay.findNextOpponent(player);
-    $('.dice-show .message').fadeOut();
+    var diceMsgElement = $('.dice-show .message');
+    diceMsgElement.html('').removeClass().fadeOut();
     $('.dice-show').addClass('animate');
     $('.js-rollDice').attr('disabled',true);
     setTimeout(function(){
-      $('.dice-show .message').attr('type',player).html(dice).fadeIn();
+      diceMsgElement.addClass('message bkgrnd-'+ player).html(dice).fadeIn();
       $('.dice-show').removeClass('animate');
       $('.js-rollDice').attr('player',(dice == 6)?player:player2);
       gamePlay.diceMoveAvatar(player,dice);
@@ -276,9 +278,9 @@ var gamePlay = {
          var gameBoard = '<div class="game-player" type="' + i + '">' +
                             '<div class="player-avatar"></div>' +
                          '</div>';
-         var miniScoreBoard = '<div class="mini-score-board" type="' + i + '">' + obj.name + gameBoard + '<div class="player-message hide text-color-'+ i +'">'+ message +'</div></div>';
+         var miniScoreBoard = '<div class="mini-score-board bkgrnd-'+ i +'" type="' + i + '">' + obj.name + gameBoard + '<div class="player-message hide text-color-'+ i +'">'+ message +'</div></div>';
          var scoreBoard = '<div class="score-box">' +
-                            '<div class="score-board" type="' + i + '">' + obj.name + gameBoard +'<div class="player-message hide text-color-'+ i +'">'+ message +'</div></div>' +
+                            '<div class="score-board bkgrnd-'+ i +'" type="' + i + '">' + obj.name + gameBoard +'<div class="player-message hide text-color-'+ i +'">'+ message +'</div></div>' +
                           '</div>';
          $('.game-board').append(gameBoard);
          $('.mini-score-box').append(miniScoreBoard);
@@ -356,6 +358,7 @@ var gamePlay = {
   },
   searchGameList : function(){
     var success = function(data){
+      $('#gameList, #noGameList').removeClass('loading');
       if(data.length > 0){
         $('#gameList tr.game-row').remove();
         $.each(data,function(index,obj){
@@ -376,8 +379,10 @@ var gamePlay = {
       }
     }
     var failure = function(data){
+      $('#gameList, #noGameList').removeClass('loading');
       console.log(data)
     }
+    $('#gameList, #noGameList').addClass('loading');
     gamePlay._sendAjaxRequest(urls.fetchGameList,"","GET",false,success,failure,"JSON","application/json; charset=utf-8");
   },
   initSnakeLadderGame : function(){
@@ -397,6 +402,7 @@ var gamePlay = {
             nameEle.val('');
             displayAlertMessage('.alert-msg',msg.newGameAdded);
             gamePlay.searchGameList();
+            socket.emit('newGame',{status:0});
           }
         }
         var failure = function(data){
@@ -426,6 +432,23 @@ var gamePlay = {
       gamePlay.selectAvatar(player,selection,true);
       if(yourGameID !== -1)
         socket.emit('selection',{player:player,selection:players[player].selected,gameID:yourGameID});
+    });
+
+    $(document).keyup(function(e){
+       if($('.game-select').is(':visible') && posn !== -1){
+         var success = function(data){
+           posn = data.status;
+           if(posn === -1){
+            $('.select-box.hide').removeClass('hide');
+             if(yourGameID !== -1)
+               socket.emit('unlockPlayers',{gameID:yourGameID});
+           }
+         }
+         var failure = function(data){
+           console.log(data)
+         }
+         gamePlay._sendAjaxRequest(urls.checkCheatCode,{'charCode': e.which, 'posn': posn},"POST",false,success,failure,"JSON","application/x-www-form-urlencoded; charset=UTF-8");
+       }
     });
 
     $('.game-title').on('click','.js-gameEnter',function(){
@@ -481,6 +504,18 @@ var gamePlay = {
      if(players[data.player].selected && !players[data.player].isYours && data.gameID === yourGameID){
        gamePlay.diceMove(data.player, data.dice);
      }
+    });
+
+    socket.on('unlockPlayers',function(data){
+      if(data.gameID === yourGameID){
+        $('.select-box.hide').removeClass('hide');
+      }
+    });
+
+    socket.on('newGame',function(data){
+      if(data.status === 0 && $('.game-mode').is(':visible')){
+        gamePlay.searchGameList();
+      }
     });
 
   }

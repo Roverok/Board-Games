@@ -8,5 +8,11 @@ module.exports = function(io){
     socket.on('dice', function(msg){
       io.emit('dice', msg);
     });
+    socket.on('unlockPlayers', function(msg){
+      io.emit('unlockPlayers', msg);
+    });
+    socket.on('newGame', function(msg){
+      io.emit('newGame', msg);
+    });
   });
 }
