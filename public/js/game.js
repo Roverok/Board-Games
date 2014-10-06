@@ -54,7 +54,8 @@ var memeMessage = {
 };
 var randomNumber = 1;
 var competitors = [];
-var yours = [];
+var yourPlayers = [];
+var yourGameID = -1;
 var players = {};
 
 function displayAlertMessage(obj,alertMsg){
@@ -248,7 +249,7 @@ var gamePlay = {
     },3000);
   },
   updatePlayerPlay : function(){
-    var playerIDs = yours.join(',');
+    var playerIDs = yourPlayers.join(',');
     var success = function(data){
       console.log(data);
     }
@@ -308,7 +309,7 @@ var gamePlay = {
         competitors.push(i);
       }
       if(obj.isYours){
-        yours.push(i);
+        yourPlayers.push(i);
       }
     });
   },
@@ -362,7 +363,7 @@ var gamePlay = {
                           "<td>"+ obj.name+"</td>" +
                           "<td>"+ obj.playerCount+"/4 playing</td>" +
                           "<td>"+
-                             "<div class='continue-button'><div class='button'>Join</div></div>" +
+                             "<div class='continue-button'><div class='button js-joinGame' type='"+ obj._id +"'>Join</div></div>" +
                           "</td>"+
                         "</tr>";
           $('#gameList').append(gameRow);
@@ -385,28 +386,36 @@ var gamePlay = {
 
     gamePlay.initGamePlayers();
     $('.js-submitGame').click(function(){
-      var success = function(data){
-        console.log(data);
-        if(data.status == 1){
-         displayAlertMessage('.alert-msg',data.errMsg)
-        }else{
-          $('[name=gameName]').val('');
-          gamePlay.searchGameList();
+      var nameEle = $('[name=gameName]');
+      var name = nameEle.val();
+      if(name.length >= 3){
+        var success = function(data){
+          nameEle.removeClass('loading');
+          if(data.status == 1){
+            displayAlertMessage('.alert-msg',data.errMsg)
+          }else{
+            nameEle.val('');
+            displayAlertMessage('.alert-msg',msg.newGameAdded);
+            gamePlay.searchGameList();
+          }
         }
+        var failure = function(data){
+          nameEle.removeClass('loading');
+          console.log(data)
+        }
+        nameEle.addClass('loading');
+        gamePlay._sendAjaxRequest(urls.addNewGame,{name:name},"POST",true,success,failure,"JSON","application/x-www-form-urlencoded; charset=UTF-8");
+      }else{
+        displayAlertMessage('.alert-msg',msg.enterGameName);
       }
-      var failure = function(data){
-        console.log(data)
-      }
-      var name = $('[name=gameName]').val();
-      console.log(name);
-      gamePlay._sendAjaxRequest(urls.addNewGame,{name:name},"POST",true,success,failure,"JSON","application/x-www-form-urlencoded; charset=UTF-8");
     });
 
     $('.js-rollDice').click(function(){
       var player = $(this).attr('player');
       if($(this).attr('disabled') !== 'disabled' && players[player].isYours){
         var dice = Math.floor((Math.random() * 6) + 1);
-        socket.emit('dice',{player:player,dice:dice});
+        if(yourGameID !== -1)
+          socket.emit('dice',{player:player,dice:dice,gameID:yourGameID});
         gamePlay.diceMove(player,dice);
       }
     });
@@ -415,7 +424,8 @@ var gamePlay = {
       var player = $(this).attr('type');
       var selection = !$(this).hasClass('selected');
       gamePlay.selectAvatar(player,selection,true);
-      socket.emit('selection',{player:player,selection:players[player].selected});
+      if(yourGameID !== -1)
+        socket.emit('selection',{player:player,selection:players[player].selected,gameID:yourGameID});
     });
 
     $('.game-title').on('click','.js-gameEnter',function(){
@@ -424,15 +434,35 @@ var gamePlay = {
         $('.continue-button .boxes').fadeIn();
       },300);
     });
+
     $('.game-title').on('click','.js-gamePlay',function(){
       var gamePlayType = $(this).attr('type');
       $('.game-title').fadeOut();
       setTimeout(function(){
         $((gamePlayType === 'local')?'.game-select':'.game-mode').fadeIn();
-        gamePlay.searchGameList();
+        if(gamePlayType === 'global'){
+          gamePlay.searchGameList();
+        }
       },500);
-
     });
+
+    $('.game-mode').on('click','.game-row .js-joinGame',function(){
+      var gameID = $(this).attr('type');
+      var success = function(data){
+        console.log(data);
+        $('.game-mode').fadeOut();
+        setTimeout(function(){
+          $('.game-select').fadeIn();
+        },500);
+        yourGameID = gameID;
+      }
+      var failure = function(data){
+        console.log(data)
+      }
+      console.log(gameID);
+      gamePlay._sendAjaxRequest(urls.joinGame,{_id:gameID},"POST",false,success,failure,"JSON","application/x-www-form-urlencoded; charset=UTF-8");
+    });
+
     $('.game-select').on('click','.continue-button',function(){
       $('.game-select').fadeOut();
       setTimeout(function(){
@@ -442,13 +472,13 @@ var gamePlay = {
     });
 
     socket.on('selection',function(data){
-      if(players[data.player].selected != data.selection){
-        gamePlay.selectAvatar(data.player,data.selection,false);
+      if(players[data.player].selected != data.selection && data.gameID === yourGameID){
+        gamePlay.selectAvatar(data.player, data.selection, false);
       }
     });
 
     socket.on('dice',function(data){
-     if(players[data.player].selected && !players[data.player].isYours){
+     if(players[data.player].selected && !players[data.player].isYours && data.gameID === yourGameID){
        gamePlay.diceMove(data.player, data.dice);
      }
     });

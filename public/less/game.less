@@ -28,9 +28,14 @@
     padding: @padding-medium;
     font-size: 30px;
     width: 700px;
+    background-position: 98% center;
+    background-repeat: no-repeat;
     border: @border-width-thick @border-style-base @border-color-white;
     border-radius: 10px;
     .text-white;
+    &.loading{
+      background-image: url(../images/gifs/loader-medium.gif);
+    }
     &::-webkit-input-placeholder{
       .text-white;
     }
@@ -43,6 +48,10 @@
     &:-ms-input-placeholder {
       .text-white;
     }
+  }
+  .alert-msg{
+    margin-top: @margin-base;
+    .text-white;
   }
   .continue-button{
     font-size: 40px;

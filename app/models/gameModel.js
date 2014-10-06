@@ -1,6 +1,7 @@
 var game = function () {
   this.data = {
     name: null,
+    dateCreated: new Date(),
     playerCount: 0,
     isActive:true,
     isOccupied: false

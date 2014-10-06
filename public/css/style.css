@@ -323,9 +323,14 @@ ul.roman {
   padding: 10px;
   font-size: 30px;
   width: 700px;
+  background-position: 98% center;
+  background-repeat: no-repeat;
   border: 2px solid #ffffff;
   border-radius: 10px;
   color: #ffffff;
+}
+.game-mode-box input[type=text].loading {
+  background-image: url(../images/gifs/loader-medium.gif);
 }
 .game-mode-box input[type=text]::-webkit-input-placeholder {
   color: #ffffff;
@@ -337,6 +342,10 @@ ul.roman {
   color: #ffffff;
 }
 .game-mode-box input[type=text]:-ms-input-placeholder {
+  color: #ffffff;
+}
+.game-mode-box .alert-msg {
+  margin-top: 5px;
   color: #ffffff;
 }
 .game-mode-box .continue-button {

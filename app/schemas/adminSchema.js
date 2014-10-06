@@ -3,10 +3,12 @@ var mongoose = require('mongoose'),
 
 var gameSchema = new Schema({
   name: String,
+  dateCreated: Date,
   playerCount: Number,
   isActive : Boolean,
   isOccupied : Boolean
 });
+gameSchema.index({ dateCreated: 1 }, { expireAfterSeconds: 3600 });
 
 var playerSchema = new Schema({
   name: String,

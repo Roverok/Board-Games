@@ -31,21 +31,25 @@ exports.fetchGamePlayers = function(req,res){
 };
 
 exports.fetchGameList = function(req,res){
+  var options = {'isOccupied':false};
   var success = function(games){
     res.json(games);
   }
   var failure = function(){
     res.status(500).json({status: 'failure'});
   }
-  gameService.fetchGameList(success,failure);
+  gameService.fetchGameList(success,failure,options);
 };
 
 
 exports.addGameToList = function(req,res){
-  var options = {};
+  var options = {'isOccupied':false};
   var body = req.body;
-  if(typeof body !== 'undefined')
-    options = body;
+  if(typeof body !== 'undefined'){
+    for(var prop in body){
+      options[prop] = body[prop];
+    }
+  }
   var failure = function(){
     res.status(500).json({status: 'failure'});
   }
@@ -59,7 +63,7 @@ exports.addGameToList = function(req,res){
       res.json({status:1,errMsg:'This name has already been taken'});
     }
   }
-
+  console.log(options);
   gameService.fetchGameList(searchSuccess,failure,options);
 };
 
@@ -86,4 +90,34 @@ exports.updatePlayerWin = function(req,res){
     res.status(500).json({status: 'failure'});
   }
   gameService.updatePlayerWin({'id':playerID}, success, failure);
+};
+
+exports.joinGame = function(req,res){
+  var options = {'isOccupied' : false};
+  var body = req.body;
+  if(typeof body !== 'undefined'){
+    for(var prop in body){
+      options[prop] = body[prop];
+    }
+  }
+  var failure = function(){
+    res.status(500).json({status: 'failure'});
+  }
+  var addSuccess = function(result){
+    res.json(result);
+  }
+  var searchSuccess = function(games){
+    if(games.length == 0){
+      res.json({status:1,errMsg:'This game has been occupied'});
+    }else{
+      console.log(games);
+      var setOptions = {};
+      if(games[0].playerCount == 3)
+        setOptions['isOccupied'] = true;
+      console.log(setOptions);
+      gameService.updateGame(options, setOptions, addSuccess, failure);
+    }
+  }
+  console.log(options);
+  gameService.fetchGameList(searchSuccess,failure,options);
 };

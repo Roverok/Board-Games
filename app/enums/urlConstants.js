@@ -17,6 +17,7 @@ exports.urls = {
     UPDATE_PLAYER_PLAYED : API_VERSION.v1 + '/player/played/update',
     UPDATE_PLAYER_WON : API_VERSION.v1 + '/player/won/update',
     ADD_NEW_GAME : API_VERSION.v1 + '/game/add',
+    JOIN_GAME : API_VERSION.v1 + '/game/join',
     FETCH_GAME_LIST : API_VERSION.v1 + '/game/list'
   },
   WEB : {
