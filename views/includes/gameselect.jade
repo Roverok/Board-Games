@@ -1,5 +1,6 @@
 .game-layout.game-select.hide
   .select-title Select Players
+    .time-count
   each player in players
     .select-box(type='#{player.id}', class=player.isHidden?'hide':'')
       .game-player(type='#{player.id}')

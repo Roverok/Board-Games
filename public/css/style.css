@@ -324,6 +324,12 @@ ul.roman {
   font-size: 75px;
   text-align: center;
 }
+.time-count {
+  text-align: center;
+  display: none;
+  font-size: 30px;
+  color: #ffffff;
+}
 .game-mode-box {
   padding: 10px;
   margin-bottom: 25px;

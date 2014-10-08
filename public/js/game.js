@@ -485,10 +485,11 @@ var gamePlay = {
         $('.game-mode').fadeOut();
         setTimeout(function () {
           $('.game-select .continue-button').hide();
+          $('.time-count').show();
           $('.game-select').fadeIn();
         }, 500);
         yourGameID = gameID;
-        gamePlay.setCountdown($('.countdown .count'));
+        gamePlay.setCountdown($('.time-count'));
         socket.emit('countdown', {gameID: yourGameID});
       }
       var failure = function (data) {
@@ -531,20 +532,21 @@ var gamePlay = {
   },
   setCountdown: function (element) {
     (function loop() {
-      element.html(count);
+      element.html('Time Left : '+count + ' seconds');
       console.log(count);
       if (count--) {
         setTimeout(loop, 1000);
       } else {
         var callback = function () {
-          console.log(yourPlayers);
           if (yourPlayers.length > 0 && $('.select-box.selected').length > 1) {
+            element.html('Player Selected! Launching the Game...');
             $('.game-select').fadeOut();
             setTimeout(function () {
               gamePlay.initGameBox();
               $('.game-box').fadeIn();
             }, 2000);
           } else {
+            element.html('No Player Selected! Back to the Title Page...');
             setTimeout(function () {
               location.href = location.href;
             }, 2000);
