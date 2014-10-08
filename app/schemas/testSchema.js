@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
 var testSchema = new Schema({
   firstName: String,
   secondName: String
-},{ collection : 'playa' });
+}, { collection: 'playa' });
 
 var testSchema2 = new Schema({
   fileName: String,
@@ -18,6 +18,6 @@ var testSchema2 = new Schema({
 
 
 module.exports = {
-  'playaSchema' : mongoose.model('playa', testSchema),
-  'imageSchema' : mongoose.model('test_image', testSchema2)
+  'playaSchema': mongoose.model('playa', testSchema),
+  'imageSchema': mongoose.model('test_image', testSchema2)
 };

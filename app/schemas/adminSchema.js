@@ -5,8 +5,8 @@ var gameSchema = new Schema({
   name: String,
   dateCreated: Date,
   playerCount: Number,
-  isActive : Boolean,
-  isOccupied : Boolean
+  isActive: Boolean,
+  isOccupied: Boolean
 });
 gameSchema.index({ dateCreated: 1 }, { expireAfterSeconds: 3600 });
 
@@ -16,9 +16,9 @@ var playerSchema = new Schema({
   position: Number,
   played: Number,
   won: Number,
-  selected : Boolean,
-  isYours : Boolean,
-  isHidden:Boolean
+  selected: Boolean,
+  isYours: Boolean,
+  isHidden: Boolean
 });
 
 var imageSchema = new Schema({
@@ -38,8 +38,8 @@ var gamePlayerSchema = new Schema({
 });
 
 module.exports = {
-  'gameSchema' : mongoose.model('game', gameSchema),
-  'imageSchema' : mongoose.model('image', imageSchema),
-  'playerSchema' : mongoose.model('player', playerSchema),
-  'gamePlayerSchema' : mongoose.model('gamePlayer', gamePlayerSchema)
+  'gameSchema': mongoose.model('game', gameSchema),
+  'imageSchema': mongoose.model('image', imageSchema),
+  'playerSchema': mongoose.model('player', playerSchema),
+  'gamePlayerSchema': mongoose.model('gamePlayer', gamePlayerSchema)
 };

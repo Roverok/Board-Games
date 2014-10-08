@@ -558,7 +558,6 @@ ul.roman {
   color: #fff;
   border-radius: 10px;
   font-size: 30px;
-  font-style: italic;
   margin: 25px 0 25px 10px;
 }
 .score-board .game-player {
@@ -733,7 +732,6 @@ ul.roman {
     display: inline-block;
     border-radius: 10px;
     position: relative;
-    font-style: italic;
     padding: 5px 10px;
     width: 245px;
     margin: 25px 0;

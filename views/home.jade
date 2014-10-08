@@ -1,12 +1,15 @@
 extends layouts/default
+
 block head
   title Snakes and Ladders
   include modals/memeModal
+
 block content
   include includes/gameTitle
   include includes/gameMode
   include includes/gameSelect
   include includes/gameBox
+
 block js
   script(src='js/jquery.min.js')
   script(src='js/bootstrap.min.js')

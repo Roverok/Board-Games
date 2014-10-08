@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -31,7 +30,7 @@ require('./routes')(app);
 
 require('./app/connections/utils/imageCloud')(cloudinary);
 
-var server = http.createServer(app).listen(app.get('port'), function(){
+var server = http.createServer(app).listen(app.get('port'), function () {
   console.log('Express server listening on port ' + app.get('port'));
 });
 

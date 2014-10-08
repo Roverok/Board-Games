@@ -1,26 +1,25 @@
 var snakes = [
-  [31,32,27,13,5],
-  [73,74,75,64,54,45,34,35,36,37,21],
-  [85,86,72,68,50],
-  [98,82,77,78,79,60,59,58,41,38]
+  [31, 32, 27, 13, 5],
+  [73, 74, 75, 64, 54, 45, 34, 35, 36, 37, 21],
+  [85, 86, 72, 68, 50],
+  [98, 82, 77, 78, 79, 60, 59, 58, 41, 38]
 ];
 var ladders = [
-  [8,30],
-  [15,44],
-  [17,63],
-  [47,65],
-  [49,92],
-  [62,80]
+  [8, 30],
+  [15, 44],
+  [17, 63],
+  [47, 65],
+  [49, 92],
+  [62, 80]
 ];
-
 var memeMessage = {
-  'image-battle' : [
+  'image-battle': [
     {
       'top': ' Vs ',
       'bottom': 'Let the Battle Begin'
     }
   ],
-  'image-winner' : [
+  'image-winner': [
     {
       'top': 'My Client ',
       'bottom': 'Has Conquered Snakes N\' Ladders'
@@ -30,7 +29,7 @@ var memeMessage = {
       'bottom': 'Hail To The King Of Snakes N\' Ladders'
     }
   ],
-  'image-loser' : [
+  'image-loser': [
     {
       'top': 'Hard Luck ',
       'bottom': 'Better Luck Next Time'
@@ -40,8 +39,7 @@ var memeMessage = {
       'bottom': 'Hey Maa!! Mata Ji!! You Lost'
     }
   ],
-
-  'image-result' : [
+  'image-result': [
     {
       'top': 'Game Over',
       'bottom': 'Eat Sleep Dominate Repeat'
@@ -60,521 +58,501 @@ var players = {};
 var posn = 0;
 var count = 20;
 
-function displayAlertMessage(obj,alertMsg){
+function displayAlertMessage(obj, alertMsg) {
   var element = $(obj)
   element.html(alertMsg).fadeIn();
-  setTimeout(function(){
+  setTimeout(function () {
     element.fadeOut();
-  },2000)
+  }, 2000)
 }
 
 var gamePlay = {
-  _sendAjaxRequest : function(rqUrl,rqData,methodType,async,success,failure,dataType,contentType)
-  {
+  _sendAjaxRequest: function (rqUrl, rqData, methodType, async, success, failure, dataType, contentType) {
     $.ajax({
-      url : rqUrl,
-      type : methodType,
-      data : rqData,
-      dataType : dataType,
-      contentType:contentType,
-      cache : false,
+      url: rqUrl,
+      type: methodType,
+      data: rqData,
+      dataType: dataType,
+      contentType: contentType,
+      cache: false,
       async: async,
-      success : function(data) {
+      success: function (data) {
         success(data);
       },
-      error : function(err) {
+      error: function (err) {
         failure(err);
       }
     });
-
   },
-  moveAvatar : function(player, from, to, speed, callback){
-    var fromY = parseInt(from/10);
-    var toY = parseInt(to/10);
-    var fromX = from%10;
-    var toX = to%10;
+  moveAvatar: function (player, from, to, speed, callback) {
+    var fromY = parseInt(from / 10);
+    var toY = parseInt(to / 10);
+    var fromX = from % 10;
+    var toX = to % 10;
     var distY = toY - fromY;
     var distX;
-    if(distY % 2 == 0){
+    if (distY % 2 == 0) {
       distX = toX - fromX;
-    }else{
+    } else {
       distX = 9 - toX - fromX;
     }
-    if(fromY%2 == 1)
+    if (fromY % 2 == 1)
       distX = -distX;
-    distY = (distY <0?'-':'+')+ '=' + (55*(distY > 0 ? distY : -distY)) + 'px';
-    distX = (distX <0?'-':'+')+ '=' + (57*(distX > 0 ? distX : -distX)) + 'px';
-    $('.game-board .game-player[type='+player+']').animate({bottom: distY , left: distX},speed,(typeof callback != undefined)?callback:null);
+    distY = (distY < 0 ? '-' : '+') + '=' + (55 * (distY > 0 ? distY : -distY)) + 'px';
+    distX = (distX < 0 ? '-' : '+') + '=' + (56 * (distX > 0 ? distX : -distX)) + 'px';
+    $('.game-board .game-player[type=' + player + ']').animate({bottom: distY, left: distX}, speed, (typeof callback != undefined) ? callback : null);
   },
-  snakeBite : function(player,snakeBody){
-    $('.game-player[type='+player+'] .player-avatar').attr('type','sad');
-    $('.game-player:not([type='+player+']) .player-avatar').attr('type','happy');
-    var callback = function(){
-      $('.game-player[type='+player+'] .player-avatar').attr('type','normal');
-      $('.game-player:not([type='+player+']) .player-avatar').attr('type','normal');
+  snakeBite: function (player, snakeBody) {
+    $('.game-player[type=' + player + '] .player-avatar').attr('type', 'sad');
+    $('.game-player:not([type=' + player + ']) .player-avatar').attr('type', 'happy');
+    var callback = function () {
+      $('.game-player[type=' + player + '] .player-avatar').attr('type', 'normal');
+      $('.game-player:not([type=' + player + ']) .player-avatar').attr('type', 'normal');
     }
-    var length = snakeBody.length-1;
-    for(var i=1;i<=length;i++)
-      gamePlay.moveAvatar(player,snakeBody[i-1],snakeBody[i],800,(i==length)?callback:null);
+    var length = snakeBody.length - 1;
+    for (var i = 1; i <= length; i++)
+      gamePlay.moveAvatar(player, snakeBody[i - 1], snakeBody[i], 800, (i == length) ? callback : null);
     players[player].position = snakeBody[length];
   },
-  ladderHit : function(player,ladder){
-    $('.game-player[type='+player+'] .player-avatar').attr('type','happy');
-    $('.game-player:not([type='+player+']) .player-avatar').attr('type','angry');
-    var callback = function(){
-      $('.game-player[type='+player+'] .player-avatar').attr('type','normal');
-      $('.game-player:not([type='+player+']) .player-avatar').attr('type','normal');
+  ladderHit: function (player, ladder) {
+    $('.game-player[type=' + player + '] .player-avatar').attr('type', 'happy');
+    $('.game-player:not([type=' + player + ']) .player-avatar').attr('type', 'angry');
+    var callback = function () {
+      $('.game-player[type=' + player + '] .player-avatar').attr('type', 'normal');
+      $('.game-player:not([type=' + player + ']) .player-avatar').attr('type', 'normal');
     }
-    gamePlay.moveAvatar(player,ladder[0],ladder[1],800,callback);
+    gamePlay.moveAvatar(player, ladder[0], ladder[1], 800, callback);
     players[player].position = ladder[1];
   },
-  diceMove : function(player, dice){
+  diceMove: function (player, dice) {
     var player2 = gamePlay.findNextOpponent(player);
     var diceMsgElement = $('.dice-show .message');
     diceMsgElement.html('').removeClass().fadeOut();
     $('.dice-show').addClass('animate');
-    $('.js-rollDice').attr('disabled',true);
-    setTimeout(function(){
-      diceMsgElement.addClass('message bkgrnd-'+ player).html(dice).fadeIn();
+    $('.js-rollDice').attr('disabled', true);
+    setTimeout(function () {
+      diceMsgElement.addClass('message bkgrnd-' + player).html(dice).fadeIn();
       $('.dice-show').removeClass('animate');
-      $('.js-rollDice').attr('player',(dice == 6)?player:player2);
-      gamePlay.diceMoveAvatar(player,dice);
-      if(dice != 6){
-        $('.player-message.text-color-'+player).fadeOut();
-        $('.player-message.text-color-'+player2).fadeIn();
+      $('.js-rollDice').attr('player', (dice == 6) ? player : player2);
+      gamePlay.diceMoveAvatar(player, dice);
+      if (dice != 6) {
+        $('.player-message.text-color-' + player).fadeOut();
+        $('.player-message.text-color-' + player2).fadeIn();
       }
-      $('.js-rollDice').attr('disabled',false);
-      if(players[player].position == 99){
-        if(players[player].isYours){
+      $('.js-rollDice').attr('disabled', false);
+      if (players[player].position == 99) {
+        if (players[player].isYours) {
           gamePlay.updatePlayerWin(player);
         }
-        gamePlay.generateMeme(player,player2,'image-result');
-        setTimeout(function(){
-          gamePlay.generateMeme(player,player2,'image-winner');
-        },4000);
-        setTimeout(function(){
-          gamePlay.generateMeme(player,player2,'image-loser');
-        },8000);
-        setTimeout(function(){
+        gamePlay.generateMeme(player, player2, 'image-result');
+        setTimeout(function () {
+          gamePlay.generateMeme(player, player2, 'image-winner');
+        }, 4000);
+        setTimeout(function () {
+          gamePlay.generateMeme(player, player2, 'image-loser');
+        }, 8000);
+        setTimeout(function () {
           location.href = location.href
-        },12000);
+        }, 12000);
       }
-    },2000);
+    }, 2000);
   },
-  diceMoveAvatar : function(player,dice){
+  diceMoveAvatar: function (player, dice) {
     var source = players[player].position;
-    var sourceX = parseInt(source%10);
+    var sourceX = parseInt(source % 10);
     var delay = 0;
-    if(source + dice <= 99){
-      var dest = (sourceX+dice <= 9)? (source+dice) : (source+(9-sourceX));
-      gamePlay.moveAvatar(player,source,dest,1000);
+    if (source + dice <= 99) {
+      var dest = (sourceX + dice <= 9) ? (source + dice) : (source + (9 - sourceX));
+      gamePlay.moveAvatar(player, source, dest, 1000);
       delay += 500;
-      if(source + dice > dest){
-        gamePlay.moveAvatar(player,dest,dest+1,500);
+      if (source + dice > dest) {
+        gamePlay.moveAvatar(player, dest, dest + 1, 500);
         delay += 500;
         dest += 1;
-        if(source + dice > dest){
-          gamePlay.moveAvatar(player,dest,source+dice,500);
+        if (source + dice > dest) {
+          gamePlay.moveAvatar(player, dest, source + dice, 500);
           delay += 500;
         }
       }
       players[player].position = source + dice;
-      setTimeout(function(){
+      setTimeout(function () {
         gamePlay.checkLadderHit(player);
         gamePlay.checkSnakeBite(player);
-      },delay);
-
-    }  
+      }, delay);
+    }
   },
-  checkLadderHit : function(player){
-    for(var i in ladders){
-      if(ladders[i][0] == players[player].position){
-        gamePlay.ladderHit(player,ladders[i]);
+  checkLadderHit: function (player) {
+    for (var i in ladders) {
+      if (ladders[i][0] == players[player].position) {
+        gamePlay.ladderHit(player, ladders[i]);
         return;
       }
     }
     return;
   },
-  checkSnakeBite : function(player){
-    for(var i in snakes){
-      if(snakes[i][0] == players[player].position){
-        gamePlay.snakeBite(player,snakes[i]);
+  checkSnakeBite: function (player) {
+    for (var i in snakes) {
+      if (snakes[i][0] == players[player].position) {
+        gamePlay.snakeBite(player, snakes[i]);
         return;
       }
     }
     return;
   },
   /*animateAvatars  : function(){
-    $(function(){
-      $('#android-slide img:gt(0)').hide();
-      setInterval(function(){
-            $('#android-slide :first-child').fadeOut(500)
-                .next('img').fadeIn(500)
-                .end().appendTo('#android-slide');},
-          5000);
-      $('#ios-slide img:gt(0)').hide();
-      setInterval(function(){
-            $('#ios-slide :first-child').fadeOut(500)
-                .next('img').fadeIn(500)
-                .end().appendTo('#ios-slide');},
-          5000);
-      $('#windows-slide img:gt(0)').hide();
-      setInterval(function(){
-            $('#windows-slide :first-child').fadeOut(500)
-                .next('img').fadeIn(500)
-                .end().appendTo('#windows-slide');},
-          5000);
-    });
-  },*/
-  generateMeme  : function(winner,loser,imageCase){
-    $('.winner').attr('type',winner);
-    $('.winner .player-avatar').attr('type','happy');
-    $('.loser').attr('type',loser);
-    $('.loser .player-avatar').attr('type',imageCase=='image-battle'?'happy':'sad');
+   $(function(){
+   $('#android-slide img:gt(0)').hide();
+   setInterval(function(){
+   $('#android-slide :first-child').fadeOut(500)
+   .next('img').fadeIn(500)
+   .end().appendTo('#android-slide');},
+   5000);
+   $('#ios-slide img:gt(0)').hide();
+   setInterval(function(){
+   $('#ios-slide :first-child').fadeOut(500)
+   .next('img').fadeIn(500)
+   .end().appendTo('#ios-slide');},
+   5000);
+   $('#windows-slide img:gt(0)').hide();
+   setInterval(function(){
+   $('#windows-slide :first-child').fadeOut(500)
+   .next('img').fadeIn(500)
+   .end().appendTo('#windows-slide');},
+   5000);
+   });
+   },*/
+  generateMeme: function (winner, loser, imageCase) {
+    $('.winner').attr('type', winner);
+    $('.winner .player-avatar').attr('type', 'happy');
+    $('.loser').attr('type', loser);
+    $('.loser .player-avatar').attr('type', imageCase == 'image-battle' ? 'happy' : 'sad');
     var topMemeMessage = '';
     var bottomMemeMessage = '';
-    if(imageCase === 'image-battle'){
+    if (imageCase === 'image-battle') {
       topMemeMessage = players[winner].name + memeMessage[imageCase][0].top + players[loser].name;
       bottomMemeMessage = memeMessage[imageCase][0].bottom;
-    }else if(imageCase === 'image-result'){
-      topMemeMessage = memeMessage[imageCase][randomNumber-1].top;
-      bottomMemeMessage = memeMessage[imageCase][randomNumber-1].bottom;
-    }else{
-      topMemeMessage = memeMessage[imageCase][randomNumber-1].top + (imageCase==='image-winner'?players[winner].name:players[loser].name);
-      bottomMemeMessage = memeMessage[imageCase][randomNumber-1].bottom;
+    } else if (imageCase === 'image-result') {
+      topMemeMessage = memeMessage[imageCase][randomNumber - 1].top;
+      bottomMemeMessage = memeMessage[imageCase][randomNumber - 1].bottom;
+    } else {
+      topMemeMessage = memeMessage[imageCase][randomNumber - 1].top + (imageCase === 'image-winner' ? players[winner].name : players[loser].name);
+      bottomMemeMessage = memeMessage[imageCase][randomNumber - 1].bottom;
     }
     $('.game-message.top').html(topMemeMessage);
     $('.game-message.bottom').html(bottomMemeMessage);
-    $('#memeModal').attr('type',imageCase+'-'+randomNumber).modal('show');
-    setTimeout(function(){
+    $('#memeModal').attr('type', imageCase + '-' + randomNumber).modal('show');
+    setTimeout(function () {
       $('#memeModal').modal('hide');
-    },3000);
+    }, 3000);
   },
-  updatePlayerPlay : function(){
+  updatePlayerPlay: function () {
     var playerIDs = yourPlayers.join(',');
-    var success = function(data){
+    var success = function (data) {
       console.log(data);
     }
-    var failure = function(data){
+    var failure = function (data) {
       console.log(data)
     }
-    gamePlay._sendAjaxRequest(urls.updatePlayerPlayed,{players:playerIDs},"GET",false,success,failure,"JSON","application/x-www-form-urlencoded; charset=UTF-8");
+    gamePlay._sendAjaxRequest(urls.updatePlayerPlayed, {players: playerIDs}, "GET", false, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
   },
-  updateGameOccupied : function(){
-    var success = function(data){
+  updateGameOccupied: function () {
+    var success = function (data) {
       console.log(data);
     }
-    var failure = function(data){
+    var failure = function (data) {
       console.log(data)
     }
-    gamePlay._sendAjaxRequest(urls.updateGame,{gameID:yourGameID},"GET",false,success,failure,"JSON","application/x-www-form-urlencoded; charset=UTF-8");
+    gamePlay._sendAjaxRequest(urls.updateGame, {gameID: yourGameID}, "GET", false, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
   },
-  updatePlayerWin : function(player){
-    var success = function(data){
+  updatePlayerWin: function (player) {
+    var success = function (data) {
       console.log(data);
     }
-    var failure = function(data){
+    var failure = function (data) {
       console.log(data)
     }
-    gamePlay._sendAjaxRequest(urls.updatePlayerWon,{player:player},"GET",true,success,failure,"JSON","application/x-www-form-urlencoded; charset=UTF-8");
+    gamePlay._sendAjaxRequest(urls.updatePlayerWon, {player: player}, "GET", true, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
   },
-  initGameBox : function(){
+  initGameBox: function () {
     randomNumber = Math.floor((Math.random() * 2) + 1);
-    if(yourGameID === -1)
+    if (yourGameID === -1)
       gamePlay.findYours();
     gamePlay.findCompetitors();
-    $.each(players, function(i,obj){
-       if(obj.selected){
-         var message = obj.isYours?'Your Turn':'Rival Turn';
-         var gameBoard = '<div class="game-player" type="' + i + '">' +
-                            '<div class="player-avatar"></div>' +
-                         '</div>';
-         var miniScoreBoard = '<div class="mini-score-board bkgrnd-'+ i +'" type="' + i + '">' + obj.name + gameBoard + '<div class="player-message hide text-color-'+ i +'">'+ message +'</div></div>';
-         var scoreBoard = '<div class="score-box">' +
-                            '<div class="score-board bkgrnd-'+ i +'" type="' + i + '">' + obj.name + gameBoard +'<div class="player-message hide text-color-'+ i +'">'+ message +'</div></div>' +
-                          '</div>';
-         $('.game-board').append(gameBoard);
-         $('.mini-score-box').append(miniScoreBoard);
-         $('.box.half-box:last-child').append(scoreBoard);
-         if($('.js-rollDice').attr('player') === undefined){
-           $('.js-rollDice').attr('player',i);
-           $('.player-message.text-color-'+ i ).removeClass('hide');
-         }
-       }
+    $.each(players, function (i, obj) {
+      if (obj.selected) {
+        var message = obj.isYours ? 'Your Turn' : 'Rival Turn';
+        var gameBoard = '<div class="game-player" type="' + i + '">' +
+            '<div class="player-avatar"></div>' +
+            '</div>';
+        var miniScoreBoard = '<div class="mini-score-board bkgrnd-' + i + '" type="' + i + '">' + obj.name + gameBoard + '<div class="player-message hide text-color-' + i + '">' + message + '</div></div>';
+        var scoreBoard = '<div class="score-box">' +
+            '<div class="score-board bkgrnd-' + i + '" type="' + i + '">' + obj.name + gameBoard + '<div class="player-message hide text-color-' + i + '">' + message + '</div></div>' +
+            '</div>';
+        $('.game-board').append(gameBoard);
+        $('.mini-score-box').append(miniScoreBoard);
+        $('.box.half-box:last-child').append(scoreBoard);
+        if ($('.js-rollDice').attr('player') === undefined) {
+          $('.js-rollDice').attr('player', i);
+          $('.player-message.text-color-' + i).removeClass('hide');
+        }
+      }
     });
-    $('.game-box .score-box').css('height',400/competitors.length+'px');
+    $('.game-box .score-box').css('height', 400 / competitors.length + 'px');
     gamePlay.updatePlayerPlay();
-    gamePlay.generateMeme(competitors[0],competitors[1],'image-battle');
+    gamePlay.generateMeme(competitors[0], competitors[1], 'image-battle');
   },
-  findNextOpponent : function(currentPlayer){
-    for(var i = 0; i<competitors.length; i++){
-      console.log(i,competitors.length);
-      if(competitors[i] === currentPlayer){
-        var j = (i+1)%competitors.length;
-        console.log(i,j);
+  findNextOpponent: function (currentPlayer) {
+    for (var i = 0; i < competitors.length; i++) {
+      console.log(i, competitors.length);
+      if (competitors[i] === currentPlayer) {
+        var j = (i + 1) % competitors.length;
+        console.log(i, j);
         return competitors[j];
       }
     }
   },
-  findYours : function(callback){
-    $.each(players,function(i,obj){
-      if(obj.isYours){
+  findYours: function (callback) {
+    $.each(players, function (i, obj) {
+      if (obj.isYours) {
         yourPlayers.push(i);
       }
     });
     console.log(yourPlayers);
-    if(typeof callback !== 'undefined'){
+    if (typeof callback !== 'undefined') {
       console.log(callback)
       callback();
     }
-
   },
-  findCompetitors : function(){
-    $.each(players,function(i,obj){
-      if(obj.selected == true){
+  findCompetitors: function () {
+    $.each(players, function (i, obj) {
+      if (obj.selected == true) {
         competitors.push(i);
       }
     });
   },
-  initGamePlayers : function(){
-    var success = function(data){
-      $.each(data,function(index,obj){
+  initGamePlayers: function () {
+    var success = function (data) {
+      $.each(data, function (index, obj) {
         players[obj.id] = new Object();
-        $.each(obj,function(key,value){
-          if(key !== 'id') {
+        $.each(obj, function (key, value) {
+          if (key !== 'id') {
             players[obj.id][key] = value;
           }
         });
       });
     }
-    var failure = function(data){
+    var failure = function (data) {
       console.log(data)
     }
-    gamePlay._sendAjaxRequest(urls.fetchPlayerList,"","GET",false,success,failure,"JSON","application/json; charset=utf-8");
+    gamePlay._sendAjaxRequest(urls.fetchPlayerList, "", "GET", false, success, failure, "JSON", "application/json; charset=utf-8");
   },
-  selectAvatar : function(player,selection,isYours){
+  selectAvatar: function (player, selection, isYours) {
     count = 20;
-    if(selection){
-      if($('.select-box.selected').length < 4){
-        $('.select-box[type='+player+']').addClass('selected');
-        $('.select-box[type='+player+']').find('.player-name').addClass('text-color-'+player);
-        $('.select-box[type='+player+']').find('.player-who').html(isYours?'(You)':'(Rival)');
+    if (selection) {
+      if ($('.select-box.selected').length < 4) {
+        $('.select-box[type=' + player + ']').addClass('selected');
+        $('.select-box[type=' + player + ']').find('.player-name').addClass('text-color-' + player);
+        $('.select-box[type=' + player + ']').find('.player-who').html(isYours ? '(You)' : '(Rival)');
         players[player].selected = true;
-        if(isYours)
+        if (isYours)
           players[player].isYours = true;
       }
-    }else{
-      if(players[player].isYours || !isYours){
-        $('.select-box[type='+player+']').removeClass('selected');
-        $('.select-box[type='+player+']').find('.player-name').removeClass('text-color-'+player);
-        $('.select-box[type='+player+']').find('.player-who').html('');
+    } else {
+      if (players[player].isYours || !isYours) {
+        $('.select-box[type=' + player + ']').removeClass('selected');
+        $('.select-box[type=' + player + ']').find('.player-name').removeClass('text-color-' + player);
+        $('.select-box[type=' + player + ']').find('.player-who').html('');
         players[player].selected = false;
-        if(isYours)
+        if (isYours)
           players[player].isYours = false;
       }
     }
-    if($('.select-box.selected').length >= 2){
+    if ($('.select-box.selected').length >= 2) {
       $('.continue-button').removeClass('hide');
-    }else{
+    } else {
       $('.continue-button').addClass('hide');
     }
   },
-  searchGameList : function(){
-    var success = function(data){
+  searchGameList: function () {
+    var success = function (data) {
       $('#gameList, #noGameList').removeClass('loading');
-      if(data.length > 0){
+      if (data.length > 0) {
         $('#gameList tr.game-row').remove();
-        $.each(data,function(index,obj){
+        $.each(data, function (index, obj) {
           var gameRow = "<tr class='game-row'>" +
-                          "<td>"+ obj.name+"</td>" +
-                          "<td>"+ obj.playerCount+"/4 playing</td>" +
-                          "<td>"+
-                             "<div class='continue-button'><div class='button js-joinGame' type='"+ obj._id +"'>Join</div></div>" +
-                          "</td>"+
+                          "<td>" + obj.name + "</td>" +
+                          "<td>" + obj.playerCount + "/4 playing</td>" +
+                          "<td>" +
+                            "<div class='continue-button'><div class='button js-joinGame' type='" + obj._id + "'>Join</div></div>" +
+                          "</td>" +
                         "</tr>";
           $('#gameList').append(gameRow);
         });
         $('#noGameList').hide();
         $('#gameList').fadeIn();
-      }else{
+      } else {
         $('#gameList').hide();
         $('#noGameList').fadeIn();
       }
     }
-    var failure = function(data){
+    var failure = function (data) {
       $('#gameList, #noGameList').removeClass('loading');
       console.log(data)
     }
     $('#gameList, #noGameList').addClass('loading');
-    gamePlay._sendAjaxRequest(urls.fetchGameList,"","GET",false,success,failure,"JSON","application/json; charset=utf-8");
+    gamePlay._sendAjaxRequest(urls.fetchGameList, "", "GET", false, success, failure, "JSON", "application/json; charset=utf-8");
   },
-  initSnakeLadderGame : function(){
-
+  initSnakeLadderGame: function () {
     var socket = io();
-
     gamePlay.initGamePlayers();
-
-    $('.js-submitGame').click(function(){
+    $('.js-submitGame').click(function () {
       var nameEle = $('[name=gameName]');
       var name = nameEle.val();
-      if(name.length >= 3){
-        var success = function(data){
+      if (name.length >= 3) {
+        var success = function (data) {
           nameEle.removeClass('loading');
-          if(data.status == 1){
-            displayAlertMessage('.alert-msg',data.errMsg)
-          }else{
+          if (data.status == 1) {
+            displayAlertMessage('.alert-msg', data.errMsg)
+          } else {
             nameEle.val('');
-            displayAlertMessage('.alert-msg',msg.newGameAdded);
+            displayAlertMessage('.alert-msg', msg.newGameAdded);
             gamePlay.searchGameList();
-            socket.emit('newGame',{status:0});
+            socket.emit('newGame', {status: 0});
           }
         }
-        var failure = function(data){
+        var failure = function (data) {
           nameEle.removeClass('loading');
           console.log(data)
         }
         nameEle.addClass('loading');
-        gamePlay._sendAjaxRequest(urls.addNewGame,{name:name},"POST",true,success,failure,"JSON","application/x-www-form-urlencoded; charset=UTF-8");
-      }else{
-        displayAlertMessage('.alert-msg',msg.enterGameName);
+        gamePlay._sendAjaxRequest(urls.addNewGame, {name: name}, "POST", true, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
+      } else {
+        displayAlertMessage('.alert-msg', msg.enterGameName);
       }
     });
-
-    $('.js-rollDice').click(function(){
+    $('.js-rollDice').click(function () {
       var player = $(this).attr('player');
-      if($(this).attr('disabled') !== 'disabled' && players[player].isYours){
+      if ($(this).attr('disabled') !== 'disabled' && players[player].isYours) {
         var dice = Math.floor((Math.random() * 6) + 1);
-        if(yourGameID !== -1)
-          socket.emit('dice',{player:player,dice:dice,gameID:yourGameID});
-        gamePlay.diceMove(player,dice);
+        if (yourGameID !== -1)
+          socket.emit('dice', {player: player, dice: dice, gameID: yourGameID});
+        gamePlay.diceMove(player, dice);
       }
     });
-
-    $('.select-box').click(function(){
+    $('.select-box').click(function () {
       var player = $(this).attr('type');
       var selection = !$(this).hasClass('selected');
-      gamePlay.selectAvatar(player,selection,true);
-      if(yourGameID !== -1)
-        socket.emit('selection',{player:player,selection:players[player].selected,gameID:yourGameID});
+      gamePlay.selectAvatar(player, selection, true);
+      if (yourGameID !== -1)
+        socket.emit('selection', {player: player, selection: players[player].selected, gameID: yourGameID});
     });
-
-    $(document).keyup(function(e){
-       if($('.game-select').is(':visible') && posn !== -1){
-         var success = function(data){
-           posn = data.status;
-           if(posn === -1){
+    $(document).keyup(function (e) {
+      if ($('.game-select').is(':visible') && posn !== -1) {
+        var success = function (data) {
+          posn = data.status;
+          if (posn === -1) {
             $('.select-box.hide').removeClass('hide');
-             if(yourGameID !== -1)
-               socket.emit('unlockPlayers',{gameID:yourGameID});
-           }
-         }
-         var failure = function(data){
-           console.log(data)
-         }
-         gamePlay._sendAjaxRequest(urls.checkCheatCode,{'charCode': e.which, 'posn': posn},"POST",false,success,failure,"JSON","application/x-www-form-urlencoded; charset=UTF-8");
-       }
+            if (yourGameID !== -1)
+              socket.emit('unlockPlayers', {gameID: yourGameID});
+          }
+        }
+        var failure = function (data) {
+          console.log(data)
+        }
+        gamePlay._sendAjaxRequest(urls.checkCheatCode, {'charCode': e.which, 'posn': posn}, "POST", false, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
+      }
     });
-
-    $('.game-title').on('click','.js-gameEnter',function(){
+    $('.game-title').on('click', '.js-gameEnter', function () {
       $(this).fadeOut();
-      setTimeout(function(){
+      setTimeout(function () {
         $('.continue-button .boxes').fadeIn();
-      },300);
+      }, 300);
     });
-
-    $('.game-title').on('click','.js-gamePlay',function(){
+    $('.game-title').on('click', '.js-gamePlay', function () {
       var gamePlayType = $(this).attr('type');
       $('.game-title').fadeOut();
-      setTimeout(function(){
-        $((gamePlayType === 'local')?'.game-select':'.game-mode').fadeIn();
-        if(gamePlayType === 'global'){
+      setTimeout(function () {
+        $((gamePlayType === 'local') ? '.game-select' : '.game-mode').fadeIn();
+        if (gamePlayType === 'global') {
           gamePlay.searchGameList();
         }
-      },500);
+      }, 500);
     });
-
-    $('.game-mode').on('click','.game-row .js-joinGame',function(){
+    $('.game-mode').on('click', '.game-row .js-joinGame', function () {
       var gameID = $(this).attr('type');
-      var success = function(data){
+      var success = function (data) {
         console.log(data);
         $('.game-mode').fadeOut();
-        setTimeout(function(){
+        setTimeout(function () {
           $('.game-select .continue-button').hide();
           $('.game-select').fadeIn();
-        },500);
+        }, 500);
         yourGameID = gameID;
         gamePlay.setCountdown($('.countdown .count'));
-        socket.emit('countdown',{gameID:yourGameID});
+        socket.emit('countdown', {gameID: yourGameID});
       }
-      var failure = function(data){
+      var failure = function (data) {
         console.log(data)
       }
-      gamePlay._sendAjaxRequest(urls.joinGame,{_id:gameID},"POST",false,success,failure,"JSON","application/x-www-form-urlencoded; charset=UTF-8");
+      gamePlay._sendAjaxRequest(urls.joinGame, {_id: gameID}, "POST", false, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
     });
-
-    $('.game-select').on('click','.continue-button',function(){
+    $('.game-select').on('click', '.continue-button', function () {
       $('.game-select').fadeOut();
-      setTimeout(function(){
+      setTimeout(function () {
         gamePlay.initGameBox();
         $('.game-box').fadeIn();
-      },500);
+      }, 500);
     });
-
-    socket.on('selection',function(data){
-      if(players[data.player].selected != data.selection && data.gameID === yourGameID){
+    socket.on('selection', function (data) {
+      if (players[data.player].selected != data.selection && data.gameID === yourGameID) {
         gamePlay.selectAvatar(data.player, data.selection, false);
       }
     });
-
-    socket.on('dice',function(data){
-     if(players[data.player].selected && !players[data.player].isYours && data.gameID === yourGameID){
-       gamePlay.diceMove(data.player, data.dice);
-     }
+    socket.on('dice', function (data) {
+      if (players[data.player].selected && !players[data.player].isYours && data.gameID === yourGameID) {
+        gamePlay.diceMove(data.player, data.dice);
+      }
     });
-
-    socket.on('unlockPlayers',function(data){
-      if(data.gameID === yourGameID){
+    socket.on('unlockPlayers', function (data) {
+      if (data.gameID === yourGameID) {
         $('.select-box.hide').removeClass('hide');
       }
     });
-
-    socket.on('newGame',function(data){
-      if(data.status === 0 && $('.game-mode').is(':visible')){
+    socket.on('newGame', function (data) {
+      if (data.status === 0 && $('.game-mode').is(':visible')) {
         gamePlay.searchGameList();
       }
     });
-
-    socket.on('countdown',function(data){
-      if(data.gameID == yourGameID){
+    socket.on('countdown', function (data) {
+      if (data.gameID == yourGameID) {
         count = 20;
       }
     });
   },
-  setCountdown : function(element) {
-  (function loop() {
-    element.html(count);
-    console.log(count);
-    if (count--) {
-      setTimeout(loop, 1000);
-    }else{
-      var callback = function(){
-        console.log(yourPlayers);
-        if(yourPlayers.length > 0 && $('.select-box.selected').length > 1){
-          $('.game-select').fadeOut();
-          setTimeout(function(){
-            gamePlay.initGameBox();
-            $('.game-box').fadeIn();
-          },2000);
-        }else{
-          setTimeout(function(){
-            location.href = location.href;
-          },2000);
-        }
-      };
-      gamePlay.updateGameOccupied();
-      gamePlay.findYours(callback);
-    }
-  })();
-}
-
+  setCountdown: function (element) {
+    (function loop() {
+      element.html(count);
+      console.log(count);
+      if (count--) {
+        setTimeout(loop, 1000);
+      } else {
+        var callback = function () {
+          console.log(yourPlayers);
+          if (yourPlayers.length > 0 && $('.select-box.selected').length > 1) {
+            $('.game-select').fadeOut();
+            setTimeout(function () {
+              gamePlay.initGameBox();
+              $('.game-box').fadeIn();
+            }, 2000);
+          } else {
+            setTimeout(function () {
+              location.href = location.href;
+            }, 2000);
+          }
+        };
+        gamePlay.updateGameOccupied();
+        gamePlay.findYours(callback);
+      }
+    })();
+  }
 };

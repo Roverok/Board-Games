@@ -1,10 +1,9 @@
-
 /*
  * GET home page.
  */
 
 var urls = require('./app/enums/urlConstants').urls;
-module.exports = function(app){
+module.exports = function (app) {
   var gameController = require('./app/controllers/gameController');
   app.get(urls.WEB.SNAKES_N_LADDERS, gameController.showSnakeAndLadders);
   app.get(urls.API.FETCH_PLAYER_LIST, gameController.fetchGamePlayers);
@@ -30,5 +29,4 @@ module.exports = function(app){
   app.get(urls.ADMIN.SHOW_MODAL, adminController.showModel);
   app.get(urls.ADMIN.SHOW_MODAL_SCHEMA, adminController.showModelSchema);
   app.get(urls.ADMIN.SAVE_MODAL_SCHEMA, adminController.saveModelSchema);
-
 };

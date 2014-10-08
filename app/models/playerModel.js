@@ -7,11 +7,11 @@ var player = function () {
     won: 0,
     selected: false,
     isYours: false,
-    isHidden : false
+    isHidden: false
   };
   this.fill = function (info) {
-    for(var prop in this.data) {
-      if(typeof this.data[prop] !== 'undefined' && typeof info[prop] !== 'undefined') {
+    for (var prop in this.data) {
+      if (typeof this.data[prop] !== 'undefined' && typeof info[prop] !== 'undefined') {
         this.data[prop] = info[prop];
       }
     }

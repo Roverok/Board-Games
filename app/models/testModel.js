@@ -9,8 +9,8 @@ var image = function () {
     height: null
   };
   this.fill = function (info) {
-    for(var prop in this.data) {
-      if(this.data[prop] !== 'undefined') {
+    for (var prop in this.data) {
+      if (this.data[prop] !== 'undefined') {
         this.data[prop] = info[prop];
       }
     }
