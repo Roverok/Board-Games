@@ -20,7 +20,9 @@ exports.urls = {
     UPDATE_GAME: API_VERSION.v1 + '/game/update',
     JOIN_GAME: API_VERSION.v1 + '/game/join',
     FETCH_GAME_LIST: API_VERSION.v1 + '/game/list',
-    CHECK_CHEAT_CODE: API_VERSION.v1 + '/game/cheat'
+    CHECK_CHEAT_CODE: API_VERSION.v1 + '/game/cheat',
+    TOGGLE_PLAYER_IN_GAME: API_VERSION.v1 + '/gamePlayer/toggle',
+    FETCH_PLAYER_IN_GAME: API_VERSION.v1 + '/gamePlayer/list'
   },
   WEB: {
     SNAKES_N_LADDERS: '/snakes-n-ladders',

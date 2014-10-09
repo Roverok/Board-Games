@@ -344,7 +344,7 @@ var gamePlay = {
     var failure = function (data) {
       console.log(data)
     }
-    gamePlay._sendAjaxRequest(urls.fetchPlayerList, "", "GET", false, success, failure, "JSON", "application/json; charset=utf-8");
+    gamePlay._sendAjaxRequest(urls.fetchPlayerList, "", "GET", false, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
   },
   selectAvatar: function (player, selection, isYours) {
     count = 20;
@@ -400,7 +400,23 @@ var gamePlay = {
       console.log(data)
     }
     $('#gameList, #noGameList').addClass('loading');
-    gamePlay._sendAjaxRequest(urls.fetchGameList, "", "GET", false, success, failure, "JSON", "application/json; charset=utf-8");
+    gamePlay._sendAjaxRequest(urls.fetchGameList, "", "GET", false, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
+  },
+  fetchPlayersInGame : function(options){
+    if(options.gameID === yourGameID){
+      var success = function(data){
+        $.each(data,function(i,obj){
+          $('.select-box[type=' + obj.playerID + ']').addClass('selected');
+          $('.select-box[type=' + obj.playerID + ']').find('.player-name').addClass('text-color-' + obj.playerID);
+          $('.select-box[type=' + obj.playerID + ']').find('.player-who').html('(Rival)');
+          players[obj.playerID].selected = true;
+        });
+      }
+      var failure = function(data){
+        console.log(data);
+      }
+      gamePlay._sendAjaxRequest(urls.fetchPlayersInGame, {gameID:yourGameID}, "GET", true, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
+    }
   },
   initSnakeLadderGame: function () {
     var socket = io();
@@ -442,9 +458,20 @@ var gamePlay = {
     $('.select-box').click(function () {
       var player = $(this).attr('type');
       var selection = !$(this).hasClass('selected');
+      if((yourGameID !== -1) && (selection || (!selection && players[player].isYours))){
+        var success = function (data) {
+          console.log(data);
+        }
+        var failure = function (data) {
+          console.log(data)
+        }
+        gamePlay._sendAjaxRequest(urls.togglePlayerInGame, {gameID:yourGameID, playerID:player, type:selection?'add':'remove'}, "POST", true, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
+      }
       gamePlay.selectAvatar(player, selection, true);
-      if (yourGameID !== -1)
+      if (yourGameID !== -1){
         socket.emit('selection', {player: player, selection: players[player].selected, gameID: yourGameID});
+        socket.emit('countdown', {gameID: yourGameID});
+      }
     });
     $(document).keyup(function (e) {
       if ($('.game-select').is(':visible') && posn !== -1) {
@@ -452,8 +479,11 @@ var gamePlay = {
           posn = data.status;
           if (posn === -1) {
             $('.select-box.hide').removeClass('hide');
-            if (yourGameID !== -1)
+            if (yourGameID !== -1){
+              count = 20;
               socket.emit('unlockPlayers', {gameID: yourGameID});
+              socket.emit('countdown', {gameID: yourGameID});
+            }
           }
         }
         var failure = function (data) {
@@ -490,12 +520,14 @@ var gamePlay = {
         }, 500);
         yourGameID = gameID;
         gamePlay.setCountdown($('.time-count'));
+        gamePlay.fetchPlayersInGame({'gameID':gameID});
         socket.emit('countdown', {gameID: yourGameID});
       }
       var failure = function (data) {
         console.log(data)
       }
       gamePlay._sendAjaxRequest(urls.joinGame, {_id: gameID}, "POST", false, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
+
     });
     $('.game-select').on('click', '.continue-button', function () {
       $('.game-select').fadeOut();
@@ -539,14 +571,14 @@ var gamePlay = {
       } else {
         var callback = function () {
           if (yourPlayers.length > 0 && $('.select-box.selected').length > 1) {
-            element.html('Player Selected! Launching the Game...');
+            element.html('Launching the Game...');
             $('.game-select').fadeOut();
             setTimeout(function () {
               gamePlay.initGameBox();
               $('.game-box').fadeIn();
             }, 2000);
           } else {
-            element.html('No Player Selected! Back to the Title Page...');
+            element.html('Cancelling the Game...');
             setTimeout(function () {
               location.href = location.href;
             }, 2000);

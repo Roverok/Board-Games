@@ -41,7 +41,6 @@ exports.fetchGameList = function (req, res) {
   gameService.fetchGameList(success, failure, options);
 };
 
-
 exports.addGameToList = function (req, res) {
   var options = {'isOccupied': false};
   var body = req.body;
@@ -65,6 +64,42 @@ exports.addGameToList = function (req, res) {
   }
   console.log(options);
   gameService.fetchGameList(searchSuccess, failure, options);
+};
+
+exports.togglePlayerInGame = function (req, res) {
+  var options = {};
+  var body = req.body;
+  var playerInGame;
+  if (typeof body !== 'undefined') {
+    for (var prop in body) {
+      if(prop === 'type'){
+        playerInGame = body[prop];
+      }else{
+        options[prop] = body[prop];
+      }
+    }
+  }
+  var failure = function () {
+    res.status(500).json({status: 'failure'});
+  }
+  var success = function (result) {
+    res.json(result);
+  }
+  if(playerInGame === 'add')
+    gameService.addPlayerToGame(success, failure, options);
+  else
+    gameService.removePlayerFromGame(options, success, failure);
+};
+
+exports.fetchPlayersInGame = function (req, res) {
+  var gameID = req.query.gameID;
+  var success = function (result) {
+    res.json(result)
+  }
+  var failure = function () {
+    res.status(500).json({status: 'failure'});
+  }
+  gameService.fetchPlayersInGame({'gameID': gameID}, success, failure)
 };
 
 exports.updateGameOccupied = function (req, res) {
@@ -132,7 +167,6 @@ exports.joinGame = function (req, res) {
   console.log(options);
   gameService.fetchGameList(searchSuccess, failure, options);
 };
-
 
 exports.checkCheatCode = function (req, res) {
   var charCode = req.body.charCode;

@@ -1,8 +1,7 @@
 var gamePlayer = function () {
   this.data = {
-    gameId: null,
-    playerId: null,
-    id: null
+    gameID: null,
+    playerID: null
   };
   this.fill = function (info) {
     for (var prop in this.data) {

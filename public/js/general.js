@@ -6,7 +6,9 @@ var urls = {
   'joinGame': '/api/v1/game/join',
   'updateGame': '/api/v1/game/update',
   'updatePlayerPlayed': '/api/v1/player/played/update',
-  'updatePlayerWon': '/api/v1/player/won/update'
+  'updatePlayerWon': '/api/v1/player/won/update',
+  'togglePlayerInGame': '/api/v1/gamePlayer/toggle',
+  'fetchPlayersInGame': '/api/v1/gamePlayer/list'
 };
 
 var msg = {

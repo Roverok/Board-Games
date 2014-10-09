@@ -32,7 +32,6 @@ var imageSchema = new Schema({
 });
 
 var gamePlayerSchema = new Schema({
-  id: String,
   gameID: String,
   playerID: String
 });

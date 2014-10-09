@@ -1,5 +1,6 @@
 var adminSchema = require('../schemas/adminSchema'),
-    gameModel = require('../models/gameModel');
+    gameModel = require('../models/gameModel'),
+    gamePlayerModel = require('../models/gamePlayerModel');
 
 exports.fetchGamePlayers = function (query, projection, successCallback, errCallback) {
   adminSchema.playerSchema.find(query, projection)
@@ -52,6 +53,39 @@ exports.updateGame = function (query, incParameter, setParameter, successCallbac
           errCallback;
         } else {
           successCallback({status: 0});
+        }
+      });
+};
+
+exports.addPlayerToGame = function (successCallback, errCallback, gamePlayerData) {
+  var record = new adminSchema.gamePlayerSchema(gamePlayerModel(gamePlayerData).getInformation());
+  record.save(function (err) {
+    if (err) {
+      errCallback;
+    }
+  });
+  successCallback({status: 'Adding Done'});
+};
+
+exports.removePlayerFromGame = function (query, successCallback, errCallback) {
+  adminSchema.gamePlayerSchema.findOne(query, function (err,result) {
+    if (err) {
+      errCallback;
+    } else {
+      result.remove();
+      successCallback({status: 'Removing Done'});
+    }
+  });
+};
+
+exports.fetchPlayersInGame = function (query, projection, successCallback, errCallback) {
+  adminSchema.gamePlayerSchema.find(query, projection)
+      .exec(function (err, gamePlayers) {
+        console.log(gamePlayers);
+        if (err) {
+          errCallback;
+        } else {
+          successCallback(gamePlayers);
         }
       });
 };

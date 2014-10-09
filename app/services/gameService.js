@@ -23,3 +23,15 @@ exports.updatePlayerMatch = function (query, successCallback, failureCallback) {
 exports.updatePlayerWin = function (query, successCallback, failureCallback) {
   gameConnection.updatePlayer(query, {'won': 1}, successCallback, failureCallback);
 };
+
+exports.addPlayerToGame = function (successCallback, failureCallback, dataOptions) {
+  gameConnection.addPlayerToGame(successCallback, failureCallback, dataOptions);
+};
+
+exports.removePlayerFromGame = function (query, successCallback, failureCallback) {
+  gameConnection.removePlayerFromGame(query, successCallback, failureCallback);
+};
+
+exports.fetchPlayersInGame = function (query, successCallback, failureCallback) {
+  gameConnection.fetchPlayersInGame(query, {"_id": 0, "__v": 0}, successCallback, failureCallback);
+};

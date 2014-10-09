@@ -14,6 +14,8 @@ module.exports = function (app) {
   app.post(urls.API.ADD_NEW_GAME, gameController.addGameToList);
   app.post(urls.API.JOIN_GAME, gameController.joinGame);
   app.post(urls.API.CHECK_CHEAT_CODE, gameController.checkCheatCode);
+  app.post(urls.API.TOGGLE_PLAYER_IN_GAME, gameController.togglePlayerInGame);
+  app.get(urls.API.FETCH_PLAYER_IN_GAME, gameController.fetchPlayersInGame);
 
   var testController = require('./app/controllers/testController');
   app.get(urls.WEB.TEST_SCHEMA, testController.showSchema);
