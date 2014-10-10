@@ -6,7 +6,6 @@ var express = require('express'),
     path = require('path'),
     cloudinary = require('cloudinary'),
     http = require('http'),
-    db = require('./db'),
     app = express();
 
 // all environments
@@ -25,6 +24,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
+
+require('./db');
 
 require('./routes')(app);
 

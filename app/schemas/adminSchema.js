@@ -33,8 +33,10 @@ var imageSchema = new Schema({
 
 var gamePlayerSchema = new Schema({
   gameID: String,
-  playerID: String
+  playerID: String,
+  dateCreated: Date
 });
+gamePlayerSchema.index({ dateCreated: 1 }, { expireAfterSeconds: 3600 });
 
 module.exports = {
   'gameSchema': mongoose.model('game', gameSchema),
