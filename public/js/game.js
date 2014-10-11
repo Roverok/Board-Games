@@ -303,10 +303,8 @@ var gamePlay = {
   },
   findNextOpponent: function (currentPlayer) {
     for (var i = 0; i < competitors.length; i++) {
-      console.log(i, competitors.length);
       if (competitors[i] === currentPlayer) {
         var j = (i + 1) % competitors.length;
-        console.log(i, j);
         return competitors[j];
       }
     }
@@ -317,9 +315,7 @@ var gamePlay = {
         yourPlayers.push(i);
       }
     });
-    console.log(yourPlayers);
     if (typeof callback !== 'undefined') {
-      console.log(callback)
       callback();
     }
   },
@@ -397,7 +393,6 @@ var gamePlay = {
     }
     var failure = function (data) {
       $('#gameList, #noGameList').removeClass('loading');
-      console.log(data)
     }
     $('#gameList, #noGameList').addClass('loading');
     gamePlay._sendAjaxRequest(urls.fetchGameList, "", "GET", false, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
@@ -438,7 +433,6 @@ var gamePlay = {
         }
         var failure = function (data) {
           nameEle.removeClass('loading');
-          console.log(data)
         }
         nameEle.addClass('loading');
         gamePlay._sendAjaxRequest(urls.addNewGame, {name: name}, "POST", true, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
@@ -511,7 +505,6 @@ var gamePlay = {
     $('.game-mode').on('click', '.game-row .js-joinGame', function () {
       var gameID = $(this).attr('type');
       var success = function (data) {
-        console.log(data);
         $('.game-mode').fadeOut();
         setTimeout(function () {
           $('.game-select .continue-button').hide();
@@ -565,7 +558,6 @@ var gamePlay = {
   setCountdown: function (element) {
     (function loop() {
       element.html('Time Left : '+count + ' seconds');
-      console.log(count);
       if (count--) {
         setTimeout(loop, 1000);
       } else {
