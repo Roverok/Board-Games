@@ -2,7 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a2efcccd-9583-4adc-90c2-440561e6b69e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/game.js" afterPath="$PROJECT_DIR$/public/js/game.js" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-battle-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-battle-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-battle-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-loser-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-loser-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-result-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-result-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-result-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-winner-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-winner-2.jpg" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/less/modals.less" afterPath="$PROJECT_DIR$/public/less/modals.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Board-Games.iws" />
@@ -67,28 +79,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="urlConstants.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/enums/urlConstants.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="8" selection-start="644" selection-end="644" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="782">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="game.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="game.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="483" column="21" selection-start="17555" selection-end="17566" vertical-scroll-proportion="0.33333334" vertical-offset="8108" max-vertical-offset="10013">
+            <state line="276" column="16" selection-start="9109" selection-end="9121" vertical-scroll-proportion="-4.12" vertical-offset="4589" max-vertical-offset="10013">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gameSelect.jade" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/includes/gameSelect.jade">
+      <file leaf-file-name="game.less" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/less/game.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="64" selection-start="310" selection-end="310" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="425">
+            <state line="366" column="36" selection-start="7756" selection-end="7756" vertical-scroll-proportion="-2.3333333" vertical-offset="6103" max-vertical-offset="8687">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="modals.less" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/less/modals.less">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="199" column="1" selection-start="3779" selection-end="3779" vertical-scroll-proportion="0.682243" vertical-offset="3164" max-vertical-offset="3485">
               <folding />
             </state>
           </provider>
@@ -182,7 +194,6 @@
         <option value="$PROJECT_DIR$/views/admin/index.jade" />
         <option value="$PROJECT_DIR$/views/home.jade" />
         <option value="$PROJECT_DIR$/public/less/variables.less" />
-        <option value="$PROJECT_DIR$/public/less/modals.less" />
         <option value="$PROJECT_DIR$/app/controllers/testController.js" />
         <option value="$PROJECT_DIR$/public/less/game.less" />
         <option value="$PROJECT_DIR$/public/js/general.js" />
@@ -198,6 +209,7 @@
         <option value="$PROJECT_DIR$/db.js" />
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/public/js/game.js" />
+        <option value="$PROJECT_DIR$/public/less/modals.less" />
       </list>
     </option>
   </component>
@@ -235,6 +247,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -372,6 +385,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Board-Games" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Board-Games" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="memes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Board-Games" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Board-Games" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -590,7 +643,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -626,6 +678,11 @@
     <property name="LayoutCode.rearrangeEntriesJSON" value="false" />
     <property name="LayoutCode.rearrangeEntriesJavaScript" value="false" />
     <property name="FullScreen" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes" />
+    </key>
   </component>
   <component name="RunManager" selected="Node.js.server.js">
     <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails" singleton="true">
@@ -861,22 +918,22 @@
       <workItem from="1412850179649" duration="1297000" />
       <workItem from="1412907150264" duration="1662000" />
       <workItem from="1413037350637" duration="1105000" />
+      <workItem from="1413100000763" duration="4059000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22765000" />
+    <option name="totallyTimeSpent" value="26824000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32879046" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -891,19 +948,20 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32879046" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32879046" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -942,16 +1000,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="13" selection-start="64" selection-end="64" vertical-scroll-proportion="0.32" vertical-offset="42" max-vertical-offset="136" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="3" selection-start="247" selection-end="247" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="323" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/index.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="23" selection-start="23" selection-end="23" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170" />
@@ -1013,11 +1061,6 @@
         <state line="28" column="0" selection-start="764" selection-end="764" vertical-scroll-proportion="-7.3461537" vertical-offset="285" max-vertical-offset="2669" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/less/modals.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="199" column="1" selection-start="3721" selection-end="3721" vertical-scroll-proportion="-15.846154" vertical-offset="2971" max-vertical-offset="3485" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/bootstrap.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="663" column="11" selection-start="18134" selection-end="18134" vertical-scroll-proportion="0.0" vertical-offset="11067" max-vertical-offset="36363" />
@@ -1073,11 +1116,6 @@
     <entry file="file://$PROJECT_DIR$/public/less/base.less">
       <provider selected="true" editor-type-id="text-editor">
         <state line="178" column="0" selection-start="2003" selection-end="2003" vertical-scroll-proportion="0.35019454" vertical-offset="2846" max-vertical-offset="6681" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/less/game.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="37" selection-start="525" selection-end="525" vertical-scroll-proportion="-3.3333333" vertical-offset="340" max-vertical-offset="8687" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/includes/gameBox.jade">
@@ -1224,9 +1262,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/less/game.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="366" column="36" selection-start="7756" selection-end="7756" vertical-scroll-proportion="-2.3333333" vertical-offset="6103" max-vertical-offset="8687">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="483" column="21" selection-start="17555" selection-end="17566" vertical-scroll-proportion="0.33333334" vertical-offset="8108" max-vertical-offset="10013">
+        <state line="276" column="16" selection-start="9109" selection-end="9121" vertical-scroll-proportion="-4.12" vertical-offset="4589" max-vertical-offset="10013">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/less/modals.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="199" column="1" selection-start="3779" selection-end="3779" vertical-scroll-proportion="0.682243" vertical-offset="3164" max-vertical-offset="3485">
           <folding />
         </state>
       </provider>
