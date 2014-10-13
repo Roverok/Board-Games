@@ -2,19 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a2efcccd-9583-4adc-90c2-440561e6b69e" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-battle-1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-battle-2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-battle-3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-loser-1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-loser-2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-result-1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-result-2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-result-3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-winner-1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-winner-2.jpg" afterPath="" />
+      <change type="MOVED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\meme-4-battle-2.png" afterPath="$PROJECT_DIR$/public/images/memes/meme-4-battle-2.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/memes/meme-2-battle-winner-2.jpg" afterPath="$PROJECT_DIR$/public/images/memes/meme-2-battle-winner-2.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/memes/meme-3-battle-result-1.jpg" afterPath="$PROJECT_DIR$/public/images/memes/meme-3-battle-result-1.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/memes/meme-3-battle-winner-1.jpg" afterPath="$PROJECT_DIR$/public/images/memes/meme-3-battle-winner-1.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/memes/meme-4-battle-winner-2.jpg" afterPath="$PROJECT_DIR$/public/images/memes/meme-4-battle-winner-2.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/game.js" afterPath="$PROJECT_DIR$/public/js/game.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/modals/memeModal.jade" afterPath="$PROJECT_DIR$/views/modals/memeModal.jade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/less/modals.less" afterPath="$PROJECT_DIR$/public/less/modals.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/style.css" afterPath="$PROJECT_DIR$/public/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Board-Games.iws" />
@@ -79,10 +75,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="game.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="game.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="276" column="16" selection-start="9109" selection-end="9121" vertical-scroll-proportion="-4.12" vertical-offset="4589" max-vertical-offset="10013">
+            <state line="241" column="82" selection-start="7516" selection-end="7516" vertical-scroll-proportion="0.6374502" vertical-offset="3777" max-vertical-offset="10047">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="memeModal.jade" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/modals/memeModal.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="153">
               <folding />
             </state>
           </provider>
@@ -91,16 +96,16 @@
       <file leaf-file-name="game.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/less/game.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="366" column="36" selection-start="7756" selection-end="7756" vertical-scroll-proportion="-2.3333333" vertical-offset="6103" max-vertical-offset="8687">
+            <state line="366" column="19" selection-start="7756" selection-end="7756" vertical-scroll-proportion="0.0" vertical-offset="6103" max-vertical-offset="8687">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modals.less" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="modals.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/less/modals.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="199" column="1" selection-start="3779" selection-end="3779" vertical-scroll-proportion="0.682243" vertical-offset="3164" max-vertical-offset="3485">
+            <state line="508" column="45" selection-start="9515" selection-end="9515" vertical-scroll-proportion="-7.1153846" vertical-offset="8451" max-vertical-offset="9690">
               <folding />
             </state>
           </provider>
@@ -120,17 +125,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state line="31" column="34" selection-start="1395" selection-end="1395" vertical-scroll-proportion="0.0" vertical-offset="363" max-vertical-offset="731">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gameConnection.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/connections/gameConnection.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="2" selection-start="2645" selection-end="2645" vertical-scroll-proportion="0.0" vertical-offset="1281" max-vertical-offset="1649">
-              <folding>
-                <marker date="1412825284010" expanded="true" signature="1790:2013" placeholder="{...}" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -165,7 +159,7 @@
       <file leaf-file-name="adminSchema.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/schemas/adminSchema.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="13" selection-start="726" selection-end="726" vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="884">
+            <state line="38" column="13" selection-start="726" selection-end="726" vertical-scroll-proportion="0.0" vertical-offset="646" max-vertical-offset="884">
               <folding />
             </state>
           </provider>
@@ -189,7 +183,6 @@
         <option value="$PROJECT_DIR$/views/index.jade" />
         <option value="$PROJECT_DIR$/views/test/index.jade" />
         <option value="$PROJECT_DIR$/views/test/index2.jade" />
-        <option value="$PROJECT_DIR$/views/modals/memeModal.jade" />
         <option value="$PROJECT_DIR$/views/includes/gamebox.jade" />
         <option value="$PROJECT_DIR$/views/admin/index.jade" />
         <option value="$PROJECT_DIR$/views/home.jade" />
@@ -208,6 +201,7 @@
         <option value="$PROJECT_DIR$/app/schemas/adminSchema.js" />
         <option value="$PROJECT_DIR$/db.js" />
         <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/views/modals/memeModal.jade" />
         <option value="$PROJECT_DIR$/public/js/game.js" />
         <option value="$PROJECT_DIR$/public/less/modals.less" />
       </list>
@@ -248,6 +242,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -642,7 +637,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -918,12 +912,13 @@
       <workItem from="1412850179649" duration="1297000" />
       <workItem from="1412907150264" duration="1662000" />
       <workItem from="1413037350637" duration="1105000" />
-      <workItem from="1413100000763" duration="4059000" />
+      <workItem from="1413100000763" duration="11919000" />
+      <workItem from="1413180083920" duration="8515000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26824000" />
+    <option name="totallyTimeSpent" value="43199000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -948,20 +943,20 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32879046" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32879046" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -1000,6 +995,20 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="0" selection-start="1007" selection-end="1007" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="765">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/schemas/adminSchema.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="13" selection-start="726" selection-end="726" vertical-scroll-proportion="0.0" vertical-offset="646" max-vertical-offset="884">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/index.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="23" selection-start="23" selection-end="23" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170" />
@@ -1013,11 +1022,6 @@
     <entry file="file://$PROJECT_DIR$/views/test/index2.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="16" selection-start="134" selection-end="134" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/modals/memeModal.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="8" selection-start="186" selection-end="186" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/layouts/default.jade">
@@ -1201,17 +1205,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/enums/urlConstants.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="8" selection-start="644" selection-end="644" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="782">
-          <folding />
-        </state>
+        <state line="20" column="8" selection-start="644" selection-end="644" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="782" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/connections/gameConnection.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="91" column="2" selection-start="2645" selection-end="2645" vertical-scroll-proportion="0.0" vertical-offset="1281" max-vertical-offset="1649">
-          <folding>
-            <marker date="1412825284010" expanded="true" signature="1790:2013" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1264,21 +1264,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/less/game.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="366" column="36" selection-start="7756" selection-end="7756" vertical-scroll-proportion="-2.3333333" vertical-offset="6103" max-vertical-offset="8687">
+        <state line="366" column="19" selection-start="7756" selection-end="7756" vertical-scroll-proportion="0.0" vertical-offset="6103" max-vertical-offset="8687">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/game.js">
+    <entry file="file://$PROJECT_DIR$/views/modals/memeModal.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="276" column="16" selection-start="9109" selection-end="9121" vertical-scroll-proportion="-4.12" vertical-offset="4589" max-vertical-offset="10013">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="347">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/less/modals.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="199" column="1" selection-start="3779" selection-end="3779" vertical-scroll-proportion="0.682243" vertical-offset="3164" max-vertical-offset="3485">
+        <state line="508" column="45" selection-start="9515" selection-end="9515" vertical-scroll-proportion="-7.1153846" vertical-offset="8451" max-vertical-offset="9690">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="241" column="82" selection-start="7516" selection-end="7516" vertical-scroll-proportion="0.6374502" vertical-offset="3777" max-vertical-offset="10047">
           <folding />
         </state>
       </provider>

@@ -13,13 +13,13 @@ var ladders = [
   [62, 80]
 ];
 var memeMessage = {
-  'image-battle': [
+  'battle': [
     {
       'top': ' Vs ',
       'bottom': 'Let the Battle Begin'
     }
   ],
-  'image-winner': [
+  'winner': [
     {
       'top': 'My Client ',
       'bottom': 'Has Conquered Snakes N\' Ladders'
@@ -29,7 +29,7 @@ var memeMessage = {
       'bottom': 'Hail To The King Of Snakes N\' Ladders'
     }
   ],
-  'image-loser': [
+  'loser': [
     {
       'top': 'Hard Luck ',
       'bottom': 'Better Luck Next Time'
@@ -39,7 +39,7 @@ var memeMessage = {
       'bottom': 'Hey Maa!! Mata Ji!! You Lost'
     }
   ],
-  'image-result': [
+  'result': [
     {
       'top': 'Game Over',
       'bottom': 'Eat Sleep Dominate Repeat'
@@ -144,12 +144,12 @@ var gamePlay = {
         if (players[player].isYours) {
           gamePlay.updatePlayerWin(player);
         }
-        gamePlay.generateMeme(player, player2, 'image-result');
+        gamePlay.generateMeme([player, player2], 'result');
         setTimeout(function () {
-          gamePlay.generateMeme(player, player2, 'image-winner');
+          gamePlay.generateMeme([player, player2], 'winner');
         }, 4000);
         setTimeout(function () {
-          gamePlay.generateMeme(player, player2, 'image-loser');
+          gamePlay.generateMeme([player, player2], 'loser');
         }, 8000);
         setTimeout(function () {
           location.href = location.href
@@ -221,29 +221,31 @@ var gamePlay = {
    5000);
    });
    },*/
-  generateMeme: function (winner, loser, imageCase) {
-    $('.winner').attr('type', winner);
-    $('.winner .player-avatar').attr('type', 'happy');
-    $('.loser').attr('type', loser);
-    $('.loser .player-avatar').attr('type', imageCase == 'image-battle' ? 'happy' : 'sad');
-    var topMemeMessage = '';
-    var bottomMemeMessage = '';
-    if (imageCase === 'image-battle') {
-      topMemeMessage = players[winner].name + memeMessage[imageCase][0].top + players[loser].name;
-      bottomMemeMessage = memeMessage[imageCase][0].bottom;
-    } else if (imageCase === 'image-result') {
-      topMemeMessage = memeMessage[imageCase][randomNumber - 1].top;
-      bottomMemeMessage = memeMessage[imageCase][randomNumber - 1].bottom;
+  generateMeme: function (players, imageCase) {
+    console.log(players);
+    $('.meme-image .game-player').remove();
+    $.each(players,function(i,player){
+      var playerIcon = '<div class="game-player p'+ (i+1) +'" type="'+ player+'">' +
+                          '<div class="player-avatar" type="'+ ((imageCase == 'battle' || i == 0) ? 'happy' : 'sad') +'"></div>' +
+                       '</div>';
+      $('.meme-image').append(playerIcon);
+    });
+    var memeMessage = '';
+
+    /*if (imageCase === 'battle') {
+      memeMessage = memeMessage[imageCase][0].bottom;
+    } else if (imageCase === 'result') {
+      memeMessage = memeMessage[imageCase][randomNumber - 1].bottom;
     } else {
-      topMemeMessage = memeMessage[imageCase][randomNumber - 1].top + (imageCase === 'image-winner' ? players[winner].name : players[loser].name);
-      bottomMemeMessage = memeMessage[imageCase][randomNumber - 1].bottom;
-    }
-    $('.game-message.top').html(topMemeMessage);
-    $('.game-message.bottom').html(bottomMemeMessage);
-    $('#memeModal').attr('type', imageCase + '-' + randomNumber).modal('show');
-    setTimeout(function () {
+      memeMessage = memeMessage[imageCase][randomNumber - 1].bottom;
+    }*/
+
+    $('.game-message').html(memeMessage);
+//    $('#memeModal').attr('type', 'image-' + (imageCase === 'battle' ? players.length : competitors.length) + '-' + imageCase + '-' + randomNumber).modal('show');
+    $('#memeModal').attr('type', 'image-' + players.length + '-' + imageCase + '-' + randomNumber).modal('show');
+    /*setTimeout(function () {
       $('#memeModal').modal('hide');
-    }, 3000);
+    }, 3000);*/
   },
   updatePlayerPlay: function () {
     var playerIDs = yourPlayers.join(',');
@@ -299,7 +301,7 @@ var gamePlay = {
     });
     $('.game-box .score-box').css('height', 400 / competitors.length + 'px');
     gamePlay.updatePlayerPlay();
-    gamePlay.generateMeme(competitors[0], competitors[1], 'image-battle');
+    gamePlay.generateMeme(competitors, 'battle');
   },
   findNextOpponent: function (currentPlayer) {
     for (var i = 0; i < competitors.length; i++) {
