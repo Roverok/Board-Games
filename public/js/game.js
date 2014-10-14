@@ -145,15 +145,24 @@ var gamePlay = {
           gamePlay.updatePlayerWin(player);
         }
         gamePlay.generateMeme([player, player2], 'result');
+        var playerCount = 0;
         setTimeout(function () {
-          gamePlay.generateMeme([player, player2], 'winner');
+          gamePlay.generateMeme([player], 'winner');
         }, 4000);
-        setTimeout(function () {
-          gamePlay.generateMeme([player, player2], 'loser');
-        }, 8000);
+        playerCount = 1;
+        $.each(competitors,function(i, rival){
+          if(players[rival].isYours && players[rival].position != 99){
+            playerCount += 1;
+            setTimeout(function () {
+              gamePlay.generateMeme([rival], 'loser');
+              competitors.splice(i,1);
+            }, playerCount*4000);
+          }
+        });
+        playerCount += 1;
         setTimeout(function () {
           location.href = location.href
-        }, 12000);
+        }, playerCount*4000);
       }
     }, 2000);
   },
@@ -222,30 +231,29 @@ var gamePlay = {
    });
    },*/
   generateMeme: function (players, imageCase) {
-    console.log(players);
     $('.meme-image .game-player').remove();
     $.each(players,function(i,player){
       var playerIcon = '<div class="game-player p'+ (i+1) +'" type="'+ player+'">' +
-                          '<div class="player-avatar" type="'+ ((imageCase == 'battle' || i == 0) ? 'happy' : 'sad') +'"></div>' +
+                          '<div class="player-avatar" type="'+ ((imageCase == 'loser' || (imageCase == 'result' && i == 1)) ? 'sad' : 'happy') +'"></div>' +
                        '</div>';
       $('.meme-image').append(playerIcon);
     });
-    var memeMessage = '';
+    var gameMessage = '';
 
-    /*if (imageCase === 'battle') {
-      memeMessage = memeMessage[imageCase][0].bottom;
+    if (imageCase === 'battle') {
+      gameMessage = memeMessage[imageCase][0].bottom;
     } else if (imageCase === 'result') {
-      memeMessage = memeMessage[imageCase][randomNumber - 1].bottom;
+      gameMessage = memeMessage[imageCase][randomNumber - 1].bottom;
     } else {
-      memeMessage = memeMessage[imageCase][randomNumber - 1].bottom;
-    }*/
+      gameMessage = memeMessage[imageCase][randomNumber - 1].bottom;
+    }
 
-    $('.game-message').html(memeMessage);
-//    $('#memeModal').attr('type', 'image-' + (imageCase === 'battle' ? players.length : competitors.length) + '-' + imageCase + '-' + randomNumber).modal('show');
-    $('#memeModal').attr('type', 'image-' + players.length + '-' + imageCase + '-' + randomNumber).modal('show');
-    /*setTimeout(function () {
+    $('.game-message').html(gameMessage);
+    $('#memeModal').attr('type', 'image-' + (imageCase === 'battle' ? players.length : competitors.length) + '-' + imageCase + '-' + randomNumber).modal('show');
+//    $('#memeModal').attr('type', 'image-' + players.length + '-' + imageCase + '-' + randomNumber).modal('show');
+    setTimeout(function () {
       $('#memeModal').modal('hide');
-    }, 3000);*/
+    }, 3000);
   },
   updatePlayerPlay: function () {
     var playerIDs = yourPlayers.join(',');
