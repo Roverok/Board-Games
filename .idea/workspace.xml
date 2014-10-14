@@ -2,9 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a2efcccd-9583-4adc-90c2-440561e6b69e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/game.js" afterPath="$PROJECT_DIR$/public/js/game.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/less/modals.less" afterPath="$PROJECT_DIR$/public/less/modals.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/style.css" afterPath="$PROJECT_DIR$/public/css/style.css" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\1246317051498_f.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\1705123-mortal_combat2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\2382938-goku_vs_superman.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\25227.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\3886992-0262301161-scorp.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\MK9_edited_Scorpion_vs_Subzero_by_MKTrident.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\World-Heavyweight-Champion-Dolph-Ziggler-Vs-Alberto-Del-Rio-and-Jack-Swagger-in-a-Triple-Threat-Match-at-Extreme-Rules.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\WrestleMania-126.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\big-show-vs-batista.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\hqdefault.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\kitana_and_mileena_mortal_kombat_cosplay_by_nemu013-d5oe1vn.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\maxresdefault (1).jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\meme-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\meme-2-battle-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\meme-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\meme-3-battle-winner-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\meme-battle-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\meme-battle-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\meme-loser-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\meme-result-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\meme-result-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\meme-winner-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\mortal-kombat-scorpion-vs-johnny-cage.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\mortal_kombat___ninja_tag_team_by_scorpionmkd-d3j35n3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\mortal_kombat_female_ninjas_by_batmannightwing768-d6nwclx.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\rey156u.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Ashish Bardhan\IdeaProjects\Personal\Board-Games\public\images\memes\temp\tekken-tekken-32263801-1920-1080.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Board-Games.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,7 +97,7 @@
       <file leaf-file-name="game.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="7" selection-start="759" selection-end="759" vertical-scroll-proportion="0.28478965" vertical-offset="609" max-vertical-offset="10183">
+            <state line="41" column="12" selection-start="764" selection-end="764" vertical-scroll-proportion="0.28478965" vertical-offset="609" max-vertical-offset="10183">
               <folding />
             </state>
           </provider>
@@ -906,12 +932,12 @@
       <workItem from="1412907150264" duration="1662000" />
       <workItem from="1413037350637" duration="1105000" />
       <workItem from="1413100000763" duration="11919000" />
-      <workItem from="1413180083920" duration="14261000" />
+      <workItem from="1413180083920" duration="14483000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48945000" />
+    <option name="totallyTimeSpent" value="49167000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1278,7 +1304,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="7" selection-start="759" selection-end="759" vertical-scroll-proportion="0.28478965" vertical-offset="609" max-vertical-offset="10183">
+        <state line="41" column="12" selection-start="764" selection-end="764" vertical-scroll-proportion="0.28478965" vertical-offset="609" max-vertical-offset="10183">
           <folding />
         </state>
       </provider>
