@@ -98,7 +98,7 @@ var gamePlay = {
     }
     if (fromY % 2 == 1)
       distX = -distX;
-    distY = (distY < 0 ? '-' : '+') + '=' + (55 * (distY > 0 ? distY : -distY)) + 'px';
+    distY = (distY < 0 ? '-' : '+') + '=' + (54 * (distY > 0 ? distY : -distY)) + 'px';
     distX = (distX < 0 ? '-' : '+') + '=' + (56 * (distX > 0 ? distX : -distX)) + 'px';
     $('.game-board .game-player[type=' + player + ']').animate({bottom: distY, left: distX}, speed, (typeof callback != undefined) ? callback : null);
   },
@@ -163,6 +163,9 @@ var gamePlay = {
         setTimeout(function () {
           location.href = location.href
         }, playerCount*4000);
+      } else {
+        count = 10;
+        gamePlay.setGamePlayCountdown();
       }
     }, 2000);
   },
@@ -284,6 +287,7 @@ var gamePlay = {
     gamePlay._sendAjaxRequest(urls.updatePlayerWon, {player: player}, "GET", true, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
   },
   initGameBox: function () {
+    count = 10;
     randomNumber = Math.floor((Math.random() * 2) + 1);
     if (yourGameID === -1)
       gamePlay.findYours();
@@ -310,6 +314,7 @@ var gamePlay = {
     $('.game-box .score-box').css('height', 400 / competitors.length + 'px');
     gamePlay.updatePlayerPlay();
     gamePlay.generateMeme(competitors, 'battle');
+    setTimeout(gamePlay.setGamePlayCountdown,3000);
   },
   findNextOpponent: function (currentPlayer) {
     for (var i = 0; i < competitors.length; i++) {
@@ -453,6 +458,7 @@ var gamePlay = {
     $('.js-rollDice').click(function () {
       var player = $(this).attr('player');
       if ($(this).attr('disabled') !== 'disabled' && players[player].isYours) {
+        count = -1;
         var dice = Math.floor((Math.random() * 6) + 1);
         if (yourGameID !== -1)
           socket.emit('dice', {player: player, dice: dice, gameID: yourGameID});
@@ -522,7 +528,7 @@ var gamePlay = {
           $('.game-select').fadeIn();
         }, 500);
         yourGameID = gameID;
-        gamePlay.setCountdown($('.time-count'));
+        gamePlay.setSelectionCountdown($('.time-count'));
         gamePlay.fetchPlayersInGame({'gameID':gameID});
         socket.emit('countdown', {gameID: yourGameID});
       }
@@ -565,7 +571,7 @@ var gamePlay = {
       }
     });
   },
-  setCountdown: function (element) {
+  setSelectionCountdown: function (element) {
     (function loop() {
       element.html('Time Left : '+count + ' seconds');
       if (count--) {
@@ -588,6 +594,18 @@ var gamePlay = {
         };
         gamePlay.updateGameOccupied();
         gamePlay.findYours(callback);
+      }
+    })();
+  },
+  setGamePlayCountdown: function () {
+    (function loop() {
+      if (count > 0) {
+        count -= 1;
+        setTimeout(loop, 1000);
+      } else if (count == 0){
+        $('.js-rollDice').trigger('click');
+      } else {
+        return false;
       }
     })();
   }
