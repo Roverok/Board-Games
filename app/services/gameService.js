@@ -4,6 +4,10 @@ exports.fetchGamePlayers = function (successCallback, failureCallback) {
   gameConnection.fetchGamePlayers({}, {"_id": 0, "__v": 0}, successCallback, failureCallback);
 };
 
+exports.fetchMemeMessages = function (successCallback, failureCallback) {
+  gameConnection.fetchMemeMessages({}, {"_id": 0, "__v": 0}, successCallback, failureCallback);
+};
+
 exports.fetchGameList = function (successCallback, failureCallback, queryOptions) {
   gameConnection.fetchGameList(queryOptions, {"__v": 0}, successCallback, failureCallback);
 };

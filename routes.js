@@ -7,6 +7,7 @@ module.exports = function (app) {
   var gameController = require('./app/controllers/gameController');
   app.get(urls.WEB.SNAKES_N_LADDERS, gameController.showSnakeAndLadders);
   app.get(urls.API.FETCH_PLAYER_LIST, gameController.fetchGamePlayers);
+  app.get(urls.API.FETCH_MEME_MESSAGE_LIST, gameController.fetchMemeMessages);
   app.get(urls.API.UPDATE_PLAYER_PLAYED, gameController.updatePlayerMatch);
   app.get(urls.API.UPDATE_PLAYER_WON, gameController.updatePlayerWin);
   app.get(urls.API.FETCH_GAME_LIST, gameController.fetchGameList);

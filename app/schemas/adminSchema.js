@@ -31,6 +31,11 @@ var imageSchema = new Schema({
   height: Number
 });
 
+var memeMessageSchema = new Schema({
+  type : String,
+  playerCount : Object
+});
+
 var gamePlayerSchema = new Schema({
   gameID: String,
   playerID: String,
@@ -42,5 +47,6 @@ module.exports = {
   'gameSchema': mongoose.model('game', gameSchema),
   'imageSchema': mongoose.model('image', imageSchema),
   'playerSchema': mongoose.model('player', playerSchema),
-  'gamePlayerSchema': mongoose.model('gamePlayer', gamePlayerSchema)
+  'gamePlayerSchema': mongoose.model('gamePlayer', gamePlayerSchema),
+  'memeMessageSchema': mongoose.model('memeMessage', memeMessageSchema)
 };

@@ -14,6 +14,17 @@ exports.fetchGamePlayers = function (query, projection, successCallback, errCall
       });
 };
 
+exports.fetchMemeMessages = function (query, projection, successCallback, errCallback) {
+  adminSchema.memeMessageSchema.find(query, projection)
+      .exec(function (err, memeMessages) {
+        if (err) {
+          errCallback;
+        } else {
+          successCallback(memeMessages);
+        }
+      });
+};
+
 exports.fetchGameList = function (query, projection, successCallback, errCallback) {
   adminSchema.gameSchema.find(query, projection).sort({'dateCreated': -1})
       .exec(function (err, gameList) {

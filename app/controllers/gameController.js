@@ -3,8 +3,8 @@
  */
 
 var adminSchema = require('../schemas/adminSchema'),
-    gameService = require('../services/gameService')
-cheatCodes = require('../dataSamples/codeDataSample');
+    gameService = require('../services/gameService'),
+    cheatCodes = require('../dataSamples/codeDataSample');
 
 exports.showSnakeAndLadders = function (req, res) {
   adminSchema.playerSchema.find()
@@ -28,6 +28,16 @@ exports.fetchGamePlayers = function (req, res) {
     res.status(500).json({status: 'failure'});
   }
   gameService.fetchGamePlayers(success, failure);
+};
+
+exports.fetchMemeMessages = function (req, res) {
+  var success = function (memeMessages) {
+    res.json(memeMessages);
+  }
+  var failure = function () {
+    res.status(500).json({status: 'failure'});
+  }
+  gameService.fetchMemeMessages(success, failure);
 };
 
 exports.fetchGameList = function (req, res) {

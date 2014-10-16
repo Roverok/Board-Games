@@ -53,11 +53,11 @@ exports.showModel = function (req, res) {
 };
 
 exports.saveModelSchema = function (req, res) {
-  var dataSample = require('../dataSamples/playerDataSample');
-  var testModel = require('../models/playerModel');
+  var dataSample = require('../dataSamples/memeMessageDataSample');
+  var testModel = require('../models/memeMessageModel');
 
   for (var i in dataSample) {
-    var record = new adminSchema.playerSchema(testModel(dataSample[i]).getInformation());
+    var record = new adminSchema.memeMessageSchema(testModel(dataSample[i]).getInformation());
     record.save(function (err) {
       if (err) {
         console.log(err);
@@ -71,7 +71,7 @@ exports.saveModelSchema = function (req, res) {
 };
 
 exports.showModelSchema = function (req, res) {
-  adminSchema.playerSchema.find()
+  adminSchema.memeMessageSchema.find()
       .setOptions({sort: 'id'})
       .exec(function (err, results) {
         if (err) {

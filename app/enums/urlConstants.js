@@ -14,6 +14,7 @@ exports.urls = {
   },
   API: {
     FETCH_PLAYER_LIST: API_VERSION.v1 + '/player/list',
+    FETCH_MEME_MESSAGE_LIST: API_VERSION.v1 + '/memeMessage/list',
     UPDATE_PLAYER_PLAYED: API_VERSION.v1 + '/player/played/update',
     UPDATE_PLAYER_WON: API_VERSION.v1 + '/player/won/update',
     ADD_NEW_GAME: API_VERSION.v1 + '/game/add',

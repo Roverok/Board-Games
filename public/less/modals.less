@@ -22,8 +22,11 @@
       width: 100%;
       font-size: 40px;
       position: absolute;
+      z-index: 5;
       .meme-font;
-      bottom: 10px;
+      &.bottom{
+        bottom: 0px;
+      }
     }
   }
 }
@@ -69,7 +72,7 @@
       }
     }
     .game-message {
-      font-size: 50px !important;
+      font-size: 30px !important;
     }
   }
 }
@@ -117,7 +120,7 @@
       }
     }
     .game-message {
-      font-size: 50px !important;
+      font-size: 30px !important;
     }
   }
 }
@@ -141,7 +144,7 @@
       }
     }
     .game-message {
-      font-size: 45px !important;
+      font-size: 50px !important;
     }
   }
 }
@@ -166,7 +169,7 @@
       }
     }
     .game-message {
-      font-size: 50px !important;
+      font-size: 45px !important;
     }
   }
 }
@@ -200,7 +203,7 @@
       }
     }
     .game-message {
-      font-size: 30px !important;
+      font-size: 40px !important;
     }
   }
 }
@@ -218,7 +221,7 @@
       }
     }
     .game-message {
-      font-size: 35px !important;
+      font-size: 30px !important;
     }
   }
 }
@@ -234,9 +237,6 @@
         width: 120px !important;
         height: 120px !important;
       }
-    }
-    .game-message {
-      font-size: 30px !important;
     }
   }
 }
@@ -270,7 +270,7 @@
       }
     }
     .game-message {
-      font-size: 30px !important;
+      font-size: 45px !important;
     }
   }
 }
@@ -316,6 +316,9 @@
         left: 100px;
         width: 120px !important;
         height: 120px !important;
+      }
+      .game-message {
+        font-size: 35px !important;
       }
     }
   }
@@ -374,14 +377,21 @@
 
 [type=image-2-battle-1] {
   .modal-body {
-    height: 350px;
+    height: 325px;
     .meme-image {
       background: url('../images/memes/2-battle-1.jpg');
       .p1 {
         left: 75px;
+        width: 90px !important;
+        height: 90px !important;
       }
       .p2 {
-        right: 35px;
+        right: 65px;
+        width: 90px !important;
+        height: 90px !important;
+      }
+      .game-message{
+        font-size: 30px !important;
       }
     }
   }
@@ -403,6 +413,9 @@
         right: 110px;
         width: 120px !important;
         height: 120px !important;
+      }
+      .game-message{
+        font-size: 30px !important;
       }
     }
   }
@@ -431,6 +444,9 @@
         width: 120px !important;
         height: 120px !important;
       }
+      .game-message{
+        font-size: 30px !important;
+      }
     }
   }
 }
@@ -458,6 +474,9 @@
         width: 120px !important;
         height: 120px !important;
       }
+      .game-message{
+        font-size: 30px !important;
+      }
     }
   }
 }
@@ -484,6 +503,7 @@
         top: 25px;
         width: 140px !important;
         height: 140px !important;
+        z-index: 2;
       }
       .p4 {
         right: 5px;
@@ -511,6 +531,7 @@
         left: 150px;
         width: 120px !important;
         height: 120px !important;
+        z-index: 2;
       }
       .p3 {
         top: 10px;

@@ -12,44 +12,7 @@ var ladders = [
   [49, 92],
   [62, 80]
 ];
-var memeMessage = {
-  'battle': [
-    {
-      'top': ' Vs ',
-      'bottom': 'Let the Battle Begin'
-    }
-  ],
-  'winner': [
-    {
-      'top': 'My Client ',
-      'bottom': 'Has Conquered Snakes N\' Ladders'
-    },
-    {
-      'top': 'Congratulations ',
-      'bottom': 'Hail To The King Of Snakes N\' Ladders'
-    }
-  ],
-  'loser': [
-    {
-      'top': 'Hard Luck ',
-      'bottom': 'Better Luck Next Time'
-    },
-    {
-      'top': 'Hard Luck ',
-      'bottom': 'Hey Maa!! Mata Ji!! You Lost'
-    }
-  ],
-  'result': [
-    {
-      'top': 'Game Over',
-      'bottom': 'Eat Sleep Dominate Repeat'
-    },
-    {
-      'top': 'Game Over',
-      'bottom': 'Flawless Victory'
-    }
-  ]
-};
+var memeMessage = {};
 var randomNumber = 1;
 var competitors = [];
 var yourPlayers = [];
@@ -212,49 +175,28 @@ var gamePlay = {
     }
     return;
   },
-  /*animateAvatars  : function(){
-   $(function(){
-   $('#android-slide img:gt(0)').hide();
-   setInterval(function(){
-   $('#android-slide :first-child').fadeOut(500)
-   .next('img').fadeIn(500)
-   .end().appendTo('#android-slide');},
-   5000);
-   $('#ios-slide img:gt(0)').hide();
-   setInterval(function(){
-   $('#ios-slide :first-child').fadeOut(500)
-   .next('img').fadeIn(500)
-   .end().appendTo('#ios-slide');},
-   5000);
-   $('#windows-slide img:gt(0)').hide();
-   setInterval(function(){
-   $('#windows-slide :first-child').fadeOut(500)
-   .next('img').fadeIn(500)
-   .end().appendTo('#windows-slide');},
-   5000);
-   });
-   },*/
-  generateMeme: function (players, imageCase) {
+  generateMeme: function (playerList, imageCase) {
     $('.meme-image .game-player').remove();
-    $.each(players,function(i,player){
+    $.each(playerList,function(i,player){
       var playerIcon = '<div class="game-player p'+ (i+1) +'" type="'+ player+'">' +
                           '<div class="player-avatar" type="'+ ((imageCase == 'loser' || (imageCase == 'result' && i == 1)) ? 'sad' : 'happy') +'"></div>' +
                        '</div>';
       $('.meme-image').append(playerIcon);
     });
-    var gameMessage = '';
+    var topGameMessage = '', bottomGameMessage = '';
 
     if (imageCase === 'battle') {
-      gameMessage = memeMessage[imageCase][0].bottom;
-    } else if (imageCase === 'result') {
-      gameMessage = memeMessage[imageCase][randomNumber - 1].bottom;
+      topGameMessage = memeMessage[imageCase][playerList.length][0].top;
+      bottomGameMessage = memeMessage[imageCase][playerList.length][0].bottom;
     } else {
-      gameMessage = memeMessage[imageCase][randomNumber - 1].bottom;
+      topGameMessage = memeMessage[imageCase][competitors.length][randomNumber - 1].top + ((imageCase !== 'result') ? players[playerList[0]].name : '');
+      bottomGameMessage = memeMessage[imageCase][competitors.length][randomNumber - 1].bottom;
     }
 
-    $('.game-message').html(gameMessage);
-    $('#memeModal').attr('type', 'image-' + (imageCase === 'battle' ? players.length : competitors.length) + '-' + imageCase + '-' + randomNumber).modal('show');
-//    $('#memeModal').attr('type', 'image-' + players.length + '-' + imageCase + '-' + randomNumber).modal('show');
+    $('.game-message.top').html(topGameMessage);
+    $('.game-message.bottom').html(bottomGameMessage);
+    $('#memeModal').attr('type', 'image-' + (imageCase === 'battle' ? playerList.length : competitors.length) + '-' + imageCase + '-' + randomNumber).modal('show');
+//    $('#memeModal').attr('type', 'image-' + playerList.length + '-' + imageCase + '-' + randomNumber).modal('show');
     setTimeout(function () {
       $('#memeModal').modal('hide');
     }, 3000);
@@ -342,7 +284,7 @@ var gamePlay = {
       }
     });
   },
-  initGamePlayers: function () {
+  fetchGamePlayers: function () {
     var success = function (data) {
       $.each(data, function (index, obj) {
         players[obj.id] = new Object();
@@ -357,6 +299,17 @@ var gamePlay = {
       console.log(data)
     }
     gamePlay._sendAjaxRequest(urls.fetchPlayerList, "", "GET", false, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
+  },
+  fetchMemeMessages: function () {
+    var success = function (data) {
+      $.each(data, function (index, obj) {
+        memeMessage[obj.type] = obj.playerCount;
+      });
+    }
+    var failure = function (data) {
+      console.log(data)
+    }
+    gamePlay._sendAjaxRequest(urls.fetchMemeMessageList, "", "GET", false, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
   },
   selectAvatar: function (player, selection, isYours) {
     count = 20;
@@ -431,7 +384,8 @@ var gamePlay = {
   },
   initSnakeLadderGame: function () {
     var socket = io();
-    gamePlay.initGamePlayers();
+    gamePlay.fetchGamePlayers();
+    gamePlay.fetchMemeMessages();
     $('.js-submitGame').click(function () {
       var nameEle = $('[name=gameName]');
       var name = nameEle.val();
