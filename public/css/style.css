@@ -598,16 +598,14 @@ ul.roman {
   text-align: center;
 }
 .dice-box .dice-button {
-  font-size: 20px;
-  width: 75px;
-  padding: 10px 15px;
+  font-size: 40px;
   color: #ffffff;
-  background-color: #c7c7c7;
-  border: 1px solid #d8d8d8;
-  border-radius: 5px;
   margin: 10px auto;
   cursor: pointer;
   text-align: center;
+}
+.dice-box .dice-button:hover {
+  color: #ffff00;
 }
 .score-box {
   margin-top: 15px;

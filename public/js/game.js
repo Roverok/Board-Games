@@ -141,6 +141,7 @@ var gamePlay = {
       }
       $('.js-rollDice').attr('disabled', false);
       if (players[player].position == 99) {
+        count = -1;
         if (players[player].isYours) {
           gamePlay.updatePlayerWin(player);
         }
