@@ -164,7 +164,7 @@ var gamePlay = {
           location.href = location.href
         }, playerCount*4000);
       } else {
-        count = 10;
+        count = players[(dice == 6) ? player : player2].isYours ? 10 : -1;
         gamePlay.setGamePlayCountdown();
       }
     }, 2000);
@@ -287,7 +287,6 @@ var gamePlay = {
     gamePlay._sendAjaxRequest(urls.updatePlayerWon, {player: player}, "GET", true, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
   },
   initGameBox: function () {
-    count = 10;
     randomNumber = Math.floor((Math.random() * 2) + 1);
     if (yourGameID === -1)
       gamePlay.findYours();
@@ -308,6 +307,7 @@ var gamePlay = {
         if ($('.js-rollDice').attr('player') === undefined) {
           $('.js-rollDice').attr('player', i);
           $('.player-message.text-color-' + i).removeClass('hide');
+          count = players[i].isYours ? 10 : -1;
         }
       }
     });
@@ -480,7 +480,6 @@ var gamePlay = {
       gamePlay.selectAvatar(player, selection, true);
       if (yourGameID !== -1){
         socket.emit('selection', {player: player, selection: players[player].selected, gameID: yourGameID});
-        socket.emit('countdown', {gameID: yourGameID});
       }
     });
     $(document).keyup(function (e) {
@@ -492,7 +491,7 @@ var gamePlay = {
             if (yourGameID !== -1){
               count = 20;
               socket.emit('unlockPlayers', {gameID: yourGameID});
-              socket.emit('countdown', {gameID: yourGameID});
+              socket.emit('selectCountdown', {gameID: yourGameID});
             }
           }
         }
@@ -530,7 +529,8 @@ var gamePlay = {
         yourGameID = gameID;
         gamePlay.setSelectionCountdown($('.time-count'));
         gamePlay.fetchPlayersInGame({'gameID':gameID});
-        socket.emit('countdown', {gameID: yourGameID});
+        socket.emit('selectCountdown', {gameID: yourGameID});
+        socket.emit('gameCountdown', {gameID: yourGameID});
       }
       var failure = function (data) {
         console.log(data)
@@ -565,7 +565,12 @@ var gamePlay = {
         gamePlay.searchGameList();
       }
     });
-    socket.on('countdown', function (data) {
+    socket.on('selectCountdown', function (data) {
+      if (data.gameID == yourGameID) {
+        count = 20;
+      }
+    });
+    socket.on('gameCountdown', function (data) {
       if (data.gameID == yourGameID) {
         count = 20;
       }
