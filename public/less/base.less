@@ -44,10 +44,6 @@ a, a:visited {
   color: @text-color-special;
 }
 
-p {
-
-}
-
 img {
   max-width: 100%
 }
@@ -82,28 +78,8 @@ img {
   color: @text-color-darker;
 }
 
-.text-blue/*, .text-gen-int*/ {
+.text-blue {
   color: @text-color-special;
-}
-
-.text-high-int {
-  color: @text-color-high-int;
-}
-
-.text-med-int {
-  color: @text-color-med-int;
-}
-
-.text-low-int {
-  color: @text-color-low-int;
-}
-
-.text-lil-int {
-  color: @text-color-lil-int;
-}
-
-.text-no-int {
-  color: @text-color-no-int;
 }
 
 .text-white {
@@ -170,19 +146,12 @@ img {
   font-size: @font-size-xlarge
 }
 
-/*
-.nowrap{
-  .ellipsis()
-}
-*/
-
 .hide {
   display: none;
 }
 
 .row {
-  margin-top: @margin-medium;
-  @margin-bottom: @margin-medium;
+  margin: @margin-medium 0;
 }
 
 .err-txt {
@@ -193,16 +162,6 @@ img {
 
 .err-brdr {
   border: @border-width-base @border-style-base @border-color-error !important;
-}
-
-/*
-.brdr-base{
-  .border-base();
-}
-*/
-
-.srch-rslt-brdr {
-  border: @border-width-base @border-style-base @border-color-base !important;
 }
 
 .brdr-bottom-base {
@@ -227,17 +186,6 @@ img {
 
 .block-center {
   margin: 0px auto;
-}
-
-/*class to group a set of elements*/
-.content-block {
-  margin-top: @margin-xxlarge;
-  margin-bottom: @margin-xxlarge;
-  &.bordered {
-    border-top: @border-width-base @border-color-light @border-style-base;
-    border-bottom: @border-width-base @border-color-light @border-style-base;
-    padding: @padding-medium 0;
-  }
 }
 
 .main-content {
