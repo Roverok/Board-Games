@@ -18,17 +18,17 @@ module.exports = function (app) {
   app.get(urls.API.FETCH_PLAYER_IN_GAME, gameController.fetchPlayersInGame);
 
   var testController = require('./app/controllers/testController');
-  app.get(urls.WEB.TEST_SCHEMA, testController.showSchema);
-  app.get(urls.WEB.TEST_SCHEMA2, testController.saveSchema);
-  app.get(urls.WEB.TEST_MODAL, testController.showModel);
-  app.get(urls.WEB.TEST_MODAL_SCHEMA, testController.showModelSchema);
-  app.get(urls.WEB.TEST_MODAL_SCHEMA2, testController.saveModelSchema);
-  app.get(urls.WEB.TEST_GET, testController.testList);
+  app.get(urls.TEST.SHOW_SCHEMA, testController.showSchema);
+  app.get(urls.TEST.SAVE_SCHEMA, testController.saveSchema);
+  app.get(urls.TEST.SHOW_MODEL, testController.showModel);
+  app.get(urls.TEST.SHOW_MODEL_SCHEMA, testController.showModelSchema);
+  app.get(urls.TEST.SAVE_MODEL_SCHEMA, testController.saveModelSchema);
+  app.get(urls.TEST.GET_LIST, testController.testList);
 
   var adminController = require('./app/controllers/adminController');
   app.get(urls.ADMIN.SHOW_SCHEMA, adminController.showSchema);
   app.get(urls.ADMIN.SAVE_SCHEMA, adminController.saveSchema);
-  app.get(urls.ADMIN.SHOW_MODAL, adminController.showModel);
-  app.get(urls.ADMIN.SHOW_MODAL_SCHEMA, adminController.showModelSchema);
-  app.get(urls.ADMIN.SAVE_MODAL_SCHEMA, adminController.saveModelSchema);
+  app.get(urls.ADMIN.SHOW_MODEL, adminController.showModel);
+  app.get(urls.ADMIN.SHOW_MODEL_SCHEMA, adminController.showModelSchema);
+  app.get(urls.ADMIN.SAVE_MODEL_SCHEMA, adminController.saveModelSchema);
 };

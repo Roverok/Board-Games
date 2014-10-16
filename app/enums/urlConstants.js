@@ -8,9 +8,9 @@ exports.urls = {
   ADMIN: {
     SHOW_SCHEMA: '/admin/show-schema-test',
     SAVE_SCHEMA: '/admin/save-schema-test',
-    SHOW_MODAL_SCHEMA: '/admin/show-modal-schema-test',
-    SAVE_MODAL_SCHEMA: '/admin/save-modal-schema-test',
-    SHOW_MODAL: '/admin/show-modal'
+    SHOW_MODEL_SCHEMA: '/admin/show-model-schema-test',
+    SAVE_MODEL_SCHEMA: '/admin/save-model-schema-test',
+    SHOW_MODEL: '/admin/show-model'
   },
   API: {
     FETCH_PLAYER_LIST: API_VERSION.v1 + '/player/list',
@@ -25,16 +25,15 @@ exports.urls = {
     FETCH_PLAYER_IN_GAME: API_VERSION.v1 + '/gamePlayer/list'
   },
   WEB: {
-    SNAKES_N_LADDERS: '/snakes-n-ladders',
-    TEST_SCHEMA: '/schema-test',
-    TEST_SCHEMA2: '/schema-test-2',
-    TEST_MODAL_SCHEMA: '/modal-schema-test',
-    TEST_MODAL_SCHEMA2: '/modal-schema-test-2',
-    TEST_MODAL: '/modal-test',
-    TEST_GET: '/t/get'
+    SNAKES_N_LADDERS: '/snakes-n-ladders'
   },
-
-  VIEW: {
+  TEST: {
+    SHOW_SCHEMA: '/test/show-schema-test',
+    SAVE_SCHEMA: '/test/save-schema-test',
+    SHOW_MODEL_SCHEMA: '/test/show-model-schema-test',
+    SAVE_MODEL_SCHEMA: '/test/save-model-schema-test',
+    SHOW_MODEL: '/test/show-model',
+    GET_LIST: '/test/get'
   }
 }
 
