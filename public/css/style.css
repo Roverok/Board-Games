@@ -198,11 +198,6 @@ img {
   width: 1200px;
   margin: 0px auto;
 }
-@media screen and (max-width: 630px) {
-  .main-content > .content {
-    width: 600px;
-  }
-}
 .bkgrnd-p-1 {
   background-color: #ff0000;
 }
@@ -679,100 +674,6 @@ ul.roman {
 .mini-score-box {
   display: none;
 }
-@media screen and (max-width: 630px) {
-  .game-title {
-    height: 525px;
-  }
-  .game-mode-box {
-    margin-bottom: 15px;
-  }
-  .game-mode-box input[type=text] {
-    font-size: 20px;
-    width: 350px;
-  }
-  .game-mode-box input[type=text].loading {
-    background-image: url(../images/gifs/loader-small.gif);
-  }
-  .game-mode-box .continue-button {
-    font-size: 35px;
-  }
-  .game-mode-box table {
-    width: 85%;
-  }
-  .game-mode-box table tr {
-    font-size: 20px;
-  }
-  .continue-button {
-    margin: 25px 0;
-    font-size: 50px;
-  }
-  .player-message {
-    top: 30px;
-  }
-  .select-title {
-    font-size: 60px !important;
-  }
-  .continue-button .box.half-box {
-    font-size: 40px;
-  }
-  .game-box .box.half-box:last-child {
-    display: none;
-  }
-  .game-box .box.half-box:first-child {
-    width: inherit;
-  }
-  .game-box .box.half-box:first-child .dice-box {
-    display: block;
-    margin-bottom: 10px;
-  }
-  .game-box .box.half-box:first-child .dice-box .dice-show {
-    margin: 0 auto;
-  }
-  .mini-score-box {
-    display: block;
-    margin-top: 25px;
-  }
-  .mini-score-box .mini-score-board {
-    display: inline-block;
-    border-radius: 10px;
-    position: relative;
-    padding: 5px 10px;
-    width: 245px;
-    margin: 25px 0;
-    font-size: 15px;
-    color: #ffffff;
-  }
-  .mini-score-box .mini-score-board:nth-child(odd) {
-    margin-left: 15px;
-    margin-right: 5px;
-    text-align: right;
-  }
-  .mini-score-box .mini-score-board:nth-child(odd) .game-player {
-    left: 5px;
-  }
-  .mini-score-box .mini-score-board:nth-child(odd) .player-message {
-    left: 70px;
-  }
-  .mini-score-box .mini-score-board:nth-child(even) {
-    margin-right: 15px;
-    margin-left: 5px;
-    text-align: left;
-  }
-  .mini-score-box .mini-score-board:nth-child(even) .game-player {
-    right: 5px;
-  }
-  .mini-score-box .mini-score-board:nth-child(even) .player-message {
-    right: 70px;
-  }
-  .mini-score-box .mini-score-board .game-player {
-    width: 60px;
-    height: 60px;
-    top: -20px;
-  }
-  .mini-score-box .mini-score-board .game-player .player-avatar {
-    background-position-y: 60% !important;
-  }
-}
 #memeModal {
   background: #52c9f4;
 }
@@ -1231,4 +1132,103 @@ ul.roman {
   top: 5px;
   width: 120px !important;
   height: 120px !important;
+}
+@media screen and (max-width: 630px) {
+  .main-content > .content {
+    width: 600px;
+  }
+}
+@media screen and (max-width: 630px) {
+  .game-title {
+    height: 525px;
+  }
+  .game-mode-box {
+    margin-bottom: 15px;
+  }
+  .game-mode-box input[type=text] {
+    font-size: 20px;
+    width: 350px;
+  }
+  .game-mode-box input[type=text].loading {
+    background-image: url(../../images/gifs/loader-small.gif);
+  }
+  .game-mode-box .continue-button {
+    font-size: 35px;
+  }
+  .game-mode-box table {
+    width: 85%;
+  }
+  .game-mode-box table tr {
+    font-size: 20px;
+  }
+  .continue-button {
+    margin: 25px 0;
+    font-size: 50px;
+  }
+  .player-message {
+    top: 30px;
+  }
+  .select-title {
+    font-size: 60px !important;
+  }
+  .continue-button .box.half-box {
+    font-size: 40px;
+  }
+  .game-box .box.half-box:last-child {
+    display: none;
+  }
+  .game-box .box.half-box:first-child {
+    width: inherit;
+  }
+  .game-box .box.half-box:first-child .dice-box {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .game-box .box.half-box:first-child .dice-box .dice-show {
+    margin: 0 auto;
+  }
+  .mini-score-box {
+    display: block;
+    margin-top: 25px;
+  }
+  .mini-score-box .mini-score-board {
+    display: inline-block;
+    border-radius: 10px;
+    position: relative;
+    padding: 5px 10px;
+    width: 245px;
+    margin: 25px 0;
+    font-size: 15px;
+    color: #ffffff;
+  }
+  .mini-score-box .mini-score-board:nth-child(odd) {
+    margin-left: 15px;
+    margin-right: 5px;
+    text-align: right;
+  }
+  .mini-score-box .mini-score-board:nth-child(odd) .game-player {
+    left: 5px;
+  }
+  .mini-score-box .mini-score-board:nth-child(odd) .player-message {
+    left: 70px;
+  }
+  .mini-score-box .mini-score-board:nth-child(even) {
+    margin-right: 15px;
+    margin-left: 5px;
+    text-align: left;
+  }
+  .mini-score-box .mini-score-board:nth-child(even) .game-player {
+    right: 5px;
+  }
+  .mini-score-box .mini-score-board:nth-child(even) .player-message {
+    right: 70px;
+  }
+  .mini-score-box .mini-score-board .game-player {
+    width: 60px;
+    height: 60px;
+    top: -20px;
+  }
+  .mini-score-box .mini-score-board .game-player .player-avatar {
+    background-position-y: 60% !important;
+  }
 }
