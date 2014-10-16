@@ -87,6 +87,17 @@ var gamePlay = {
     gamePlay.moveAvatar(player, ladder[0], ladder[1], 800, callback);
     players[player].position = ladder[1];
   },
+  removePlayersFromGame: function(){
+    $.each(yourPlayers, function(i,player){
+      var success = function (data) {
+        console.log(data);
+      }
+      var failure = function (data) {
+        console.log(data)
+      }
+      gamePlay._sendAjaxRequest(urls.togglePlayerInGame, {gameID:yourGameID, playerID:player, type:'remove'}, "POST", true, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
+    });
+  },
   diceMove: function (player, dice) {
     var player2 = gamePlay.findNextOpponent(player);
     var diceMsgElement = $('.dice-show .message');
@@ -107,6 +118,9 @@ var gamePlay = {
         count = -1;
         if (players[player].isYours) {
           gamePlay.updatePlayerWin(player);
+        }
+        if(yourGameID !== -1){
+          gamePlay.removePlayersFromGame();
         }
         gamePlay.generateMeme([player, player2], 'result');
         var playerCount = 0;
@@ -485,7 +499,6 @@ var gamePlay = {
         gamePlay.setSelectionCountdown($('.time-count'));
         gamePlay.fetchPlayersInGame({'gameID':gameID});
         socket.emit('selectCountdown', {gameID: yourGameID});
-        socket.emit('gameCountdown', {gameID: yourGameID});
       }
       var failure = function (data) {
         console.log(data)
