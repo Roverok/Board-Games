@@ -380,6 +380,16 @@ var gamePlay = {
     $('#gameList, #noGameList').addClass('loading');
     gamePlay._sendAjaxRequest(urls.fetchGameList, "", "GET", false, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
   },
+  addAutoPlayerToGame : function(){
+    console.log('Booya');
+    $.each(players,function(id,player){
+      if(! player.selected){
+        console.log('Strike'+ id);
+        $('.select-box[type='+ id +']').trigger('click');
+        return false;
+      }
+    });
+  },
   fetchPlayersInGame : function(options){
     if(options.gameID === yourGameID){
       var success = function(data){
@@ -389,6 +399,7 @@ var gamePlay = {
           $('.select-box[type=' + obj.playerID + ']').find('.player-who').html('(Rival)');
           players[obj.playerID].selected = true;
         });
+        gamePlay.addAutoPlayerToGame();
       }
       var failure = function(data){
         console.log(data);
@@ -444,7 +455,8 @@ var gamePlay = {
         var failure = function (data) {
           console.log(data)
         }
-        gamePlay._sendAjaxRequest(urls.togglePlayerInGame, {gameID:yourGameID, playerID:player, type:selection?'add':'remove'}, "POST", true, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
+        var playerCount = $('.select-box.selected').length;
+        gamePlay._sendAjaxRequest(urls.togglePlayerInGame, {gameID:yourGameID, playerID:player, type:selection?'add':'remove', playerCount:playerCount}, "POST", true, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
       }
       gamePlay.selectAvatar(player, selection, true);
       if (yourGameID !== -1){
@@ -489,16 +501,20 @@ var gamePlay = {
     $('.game-mode').on('click', '.game-row .js-joinGame', function () {
       var gameID = $(this).attr('type');
       var success = function (data) {
-        $('.game-mode').fadeOut();
-        setTimeout(function () {
-          $('.game-select .continue-button').hide();
-          $('.time-count').show();
-          $('.game-select').fadeIn();
-        }, 500);
-        yourGameID = gameID;
-        gamePlay.setSelectionCountdown($('.time-count'));
-        gamePlay.fetchPlayersInGame({'gameID':gameID});
-        socket.emit('selectCountdown', {gameID: yourGameID});
+        if(data.status == 0){
+          $('.game-mode').fadeOut();
+          setTimeout(function () {
+            $('.game-select .continue-button').hide();
+            $('.time-count').show();
+            $('.game-select').fadeIn();
+          }, 500);
+          yourGameID = gameID;
+          gamePlay.setSelectionCountdown($('.time-count'));
+          gamePlay.fetchPlayersInGame({'gameID':gameID});
+          socket.emit('selectCountdown', {gameID: yourGameID});
+        } else {
+         console.log(data);
+        }
       }
       var failure = function (data) {
         console.log(data)

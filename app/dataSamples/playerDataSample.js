@@ -27,10 +27,10 @@ module.exports = [
     "name": "Ashbee",
     "id": 'p-7',
     "isHidden": true
-  }/*,
+  },
    {
    "name": "Ashish",
    "id": 'p-8',
    "isHidden" : true
-   }*/
+   }
 ];

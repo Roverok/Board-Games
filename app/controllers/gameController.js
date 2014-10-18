@@ -79,12 +79,14 @@ exports.addGameToList = function (req, res) {
 exports.togglePlayerInGame = function (req, res) {
   var options = {};
   var body = req.body;
-  var playerInGame;
+  var playerInGameType, playerCount;
   if (typeof body !== 'undefined') {
     for (var prop in body) {
       if(prop === 'type'){
-        playerInGame = body[prop];
-      }else{
+        playerInGameType = body[prop];
+      } else if(prop === 'playerCount'){
+        playerCount = body[prop];
+      } else {
         options[prop] = body[prop];
       }
     }
@@ -92,13 +94,17 @@ exports.togglePlayerInGame = function (req, res) {
   var failure = function () {
     res.status(500).json({status: 'failure'});
   }
-  var success = function (result) {
+  var successGameUpdate = function(result){
     res.json(result);
+
   }
-  if(playerInGame === 'add')
-    gameService.addPlayerToGame(success, failure, options);
+  var successPlayerToggle = function (result) {
+    gameService.updateGame({'_id': options.gameID}, {'playerCount' : playerInGameType == 'add' ? 1 : -1}, {'isOccupied': playerInGameType == 'add' && playerCount == 3}, successGameUpdate, failure);
+  }
+  if(playerInGameType === 'add')
+    gameService.addPlayerToGame(successPlayerToggle, failure, options);
   else
-    gameService.removePlayerFromGame(options, success, failure);
+    gameService.removePlayerFromGame(options, successPlayerToggle, failure);
 };
 
 exports.fetchPlayersInGame = function (req, res) {
@@ -120,7 +126,7 @@ exports.updateGameOccupied = function (req, res) {
   var failure = function () {
     res.status(500).json({status: 'failure'});
   }
-  gameService.updateGame({'_id': gameID}, {'isOccupied': true}, success, failure)
+  gameService.updateGame({'_id': gameID}, {}, {'isOccupied': true}, success, failure)
 };
 
 exports.updatePlayerMatch = function (req, res) {
@@ -166,12 +172,13 @@ exports.joinGame = function (req, res) {
     if (games.length == 0) {
       res.json({status: 1, errMsg: 'This game has been occupied'});
     } else {
+      res.json({status: 0});
+      /*res.json(result);
       console.log(games);
       var setOptions = {};
       if (games[0].playerCount == 3)
         setOptions['isOccupied'] = true;
-      console.log(setOptions);
-      gameService.updateGame(options, setOptions, addSuccess, failure);
+      gameService.updateGame(options, {'playerCount': 1}, setOptions, addSuccess, failure);*/
     }
   }
   console.log(options);

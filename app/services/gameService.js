@@ -12,8 +12,8 @@ exports.fetchGameList = function (successCallback, failureCallback, queryOptions
   gameConnection.fetchGameList(queryOptions, {"__v": 0}, successCallback, failureCallback);
 };
 
-exports.updateGame = function (query, setOptions, successCallback, failureCallback) {
-  gameConnection.updateGame(query, {'playerCount': 1}, setOptions, successCallback, failureCallback);
+exports.updateGame = function (query, incOptions, setOptions, successCallback, failureCallback) {
+  gameConnection.updateGame(query, incOptions, setOptions, successCallback, failureCallback);
 };
 
 exports.addNewGame = function (successCallback, failureCallback, dataOptions) {

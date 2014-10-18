@@ -1,7 +1,3 @@
-/*
- * GET users listing.
- */
-
 var adminSchema = require('../schemas/adminSchema');
 
 exports.showSchema = function (req, res) {
@@ -55,7 +51,6 @@ exports.showModel = function (req, res) {
 exports.saveModelSchema = function (req, res) {
   var dataSample = require('../dataSamples/memeMessageDataSample');
   var testModel = require('../models/memeMessageModel');
-
   for (var i in dataSample) {
     var record = new adminSchema.memeMessageSchema(testModel(dataSample[i]).getInformation());
     record.save(function (err) {

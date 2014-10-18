@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a2efcccd-9583-4adc-90c2-440561e6b69e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/adminController.js" afterPath="$PROJECT_DIR$/app/controllers/adminController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/game.js" afterPath="$PROJECT_DIR$/public/js/game.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/gameController.js" afterPath="$PROJECT_DIR$/app/controllers/gameController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/services/gameService.js" afterPath="$PROJECT_DIR$/app/services/gameService.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dataSamples/playerDataSample.js" afterPath="$PROJECT_DIR$/app/dataSamples/playerDataSample.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Board-Games.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,82 +71,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="game.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="game.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="121" column="11" selection-start="4276" selection-end="4276" vertical-scroll-proportion="0.33333334" vertical-offset="1954" max-vertical-offset="10030">
+            <state line="387" column="73" selection-start="14544" selection-end="14544" vertical-scroll-proportion="-4.76" vertical-offset="6460" max-vertical-offset="10302">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="memeMessageDataSample.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/dataSamples/memeMessageDataSample.js">
+      <file leaf-file-name="routes.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="101" column="25" selection-start="2312" selection-end="2312" vertical-scroll-proportion="0.0" vertical-offset="1513" max-vertical-offset="1887">
+            <state line="13" column="59" selection-start="679" selection-end="679" vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="646">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.less" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/less/style.less">
+      <file leaf-file-name="gameSelect.jade" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/includes/gameSelect.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="33" selection-start="20" selection-end="20" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="187">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="memeModal.jade" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/modals/memeModal.jade">
+      <file leaf-file-name="default.jade" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/layouts/default.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="6" selection-start="63" selection-end="76" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
+            <state line="7" column="59" selection-start="265" selection-end="265" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modals.less" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/less/modals.less">
+      <file leaf-file-name="adminController.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/adminController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="277" column="17" selection-start="5241" selection-end="5252" vertical-scroll-proportion="-1.9215686" vertical-offset="4611" max-vertical-offset="9435">
+            <state line="3" column="66" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1479">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adminSchema.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/schemas/adminSchema.js">
+      <file leaf-file-name="db.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/db.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="2" selection-start="1126" selection-end="1126" vertical-scroll-proportion="0.0" vertical-offset="639" max-vertical-offset="986">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gameService.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/services/gameService.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="29" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gameConnection.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/connections/gameConnection.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="16" selection-start="713" selection-end="713" vertical-scroll-proportion="0.0" vertical-offset="163" max-vertical-offset="1836">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gameSocket.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/connections/utils/gameSocket.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="5" selection-start="561" selection-end="561" vertical-scroll-proportion="0.0" vertical-offset="61" max-vertical-offset="442">
+            <state line="2" column="0" selection-start="91" selection-end="91" vertical-scroll-proportion="0.09798271" vertical-offset="0" max-vertical-offset="476">
               <folding />
             </state>
           </provider>
@@ -150,7 +128,34 @@
       <file leaf-file-name="gameController.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/gameController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="49" selection-start="2461" selection-end="2461" vertical-scroll-proportion="0.0" vertical-offset="1411" max-vertical-offset="3332">
+            <state line="123" column="30" selection-start="3457" selection-end="3457" vertical-scroll-proportion="-6.16" vertical-offset="1903" max-vertical-offset="3451">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gameService.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/services/gameService.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="69" selection-start="659" selection-end="659" vertical-scroll-proportion="0.0" vertical-offset="116" max-vertical-offset="799">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gameConnection.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/connections/gameConnection.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="65" column="24" selection-start="1980" selection-end="1980" vertical-scroll-proportion="0.0" vertical-offset="983" max-vertical-offset="1836">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="playerDataSample.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/dataSamples/playerDataSample.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="57" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0" vertical-offset="329" max-vertical-offset="697">
               <folding />
             </state>
           </provider>
@@ -175,14 +180,11 @@
         <option value="$PROJECT_DIR$/views/test/index.jade" />
         <option value="$PROJECT_DIR$/views/test/index2.jade" />
         <option value="$PROJECT_DIR$/views/includes/gamebox.jade" />
-        <option value="$PROJECT_DIR$/views/home.jade" />
         <option value="$PROJECT_DIR$/app/controllers/testController.js" />
         <option value="$PROJECT_DIR$/app/models/gamePlayerModel.js" />
-        <option value="$PROJECT_DIR$/views/includes/gameSelect.jade" />
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/app/connections/utils/gameSocket.js" />
         <option value="$PROJECT_DIR$/views/includes/gameBox.jade" />
-        <option value="$PROJECT_DIR$/db.js" />
         <option value="$PROJECT_DIR$/public/less/game-small.less" />
         <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/public/less/base-small.less" />
@@ -193,17 +195,21 @@
         <option value="$PROJECT_DIR$/app/models/memeMessageModel.js" />
         <option value="$PROJECT_DIR$/app/schemas/adminSchema.js" />
         <option value="$PROJECT_DIR$/views/admin/index.jade" />
-        <option value="$PROJECT_DIR$/app/controllers/adminController.js" />
         <option value="$PROJECT_DIR$/public/js/general.js" />
         <option value="$PROJECT_DIR$/app/enums/urlConstants.js" />
         <option value="$PROJECT_DIR$/routes.js" />
-        <option value="$PROJECT_DIR$/app/controllers/gameController.js" />
-        <option value="$PROJECT_DIR$/app/services/gameService.js" />
         <option value="$PROJECT_DIR$/app/connections/gameConnection.js" />
         <option value="$PROJECT_DIR$/views/modals/memeModal.jade" />
         <option value="$PROJECT_DIR$/app/dataSamples/memeMessageDataSample.js" />
         <option value="$PROJECT_DIR$/public/less/modals.less" />
+        <option value="$PROJECT_DIR$/app/services/gameService.js" />
+        <option value="$PROJECT_DIR$/app/dataSamples/playerDataSample.js" />
+        <option value="$PROJECT_DIR$/views/home.jade" />
+        <option value="$PROJECT_DIR$/views/includes/gameSelect.jade" />
+        <option value="$PROJECT_DIR$/app/controllers/gameController.js" />
         <option value="$PROJECT_DIR$/public/js/game.js" />
+        <option value="$PROJECT_DIR$/app/controllers/adminController.js" />
+        <option value="$PROJECT_DIR$/db.js" />
       </list>
     </option>
   </component>
@@ -241,6 +247,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -527,8 +535,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -813,19 +819,40 @@
       <workItem from="1413180083920" duration="21975000" />
       <workItem from="1413398622041" duration="5939000" />
       <workItem from="1413455276399" duration="1295000" />
-      <workItem from="1413481940424" duration="17041000" />
+      <workItem from="1413481940424" duration="17557000" />
+      <workItem from="1413631240901" duration="10370000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80934000" />
+    <option name="totallyTimeSpent" value="91820000" />
+  </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -838,25 +865,25 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32879046" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32879046" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -930,11 +957,6 @@
         <state line="20" column="18" selection-start="659" selection-end="659" vertical-scroll-proportion="0.0" vertical-offset="95" max-vertical-offset="442" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/home.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="23" selection-start="128" selection-end="128" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/mongoose/lib/model.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1423" column="23" selection-start="40207" selection-end="40207" vertical-scroll-proportion="0.0" vertical-offset="23745" max-vertical-offset="44319" />
@@ -1002,13 +1024,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/layouts/default.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="45" selection-start="231" selection-end="231" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/testController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="8" selection-start="90" selection-end="90" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1462">
@@ -1016,23 +1031,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="91" selection-end="91" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/includes/gameBox.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="4" selection-start="278" selection-end="278" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/includes/gameSelect.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
           <folding />
         </state>
       </provider>
@@ -1079,13 +1080,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/dataSamples/playerDataSample.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="4" selection-start="386" selection-end="386" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="697">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/dataSamples/testDataSample.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="2" selection-start="971" selection-end="971" vertical-scroll-proportion="0.0" vertical-offset="231" max-vertical-offset="578">
@@ -1095,9 +1089,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/dataSamples/codeDataSample.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="3" selection-start="22" selection-end="40" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="136">
-          <folding />
-        </state>
+        <state line="1" column="3" selection-start="22" selection-end="40" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="136" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/memeMessageModel.js">
@@ -1109,55 +1101,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/admin/index.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="22" selection-start="142" selection-end="142" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
-          <folding>
-            <marker date="1413493439229" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1413493439229" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1413493439229" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/adminController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="19" selection-start="2188" selection-end="2188" vertical-scroll-proportion="0.0" vertical-offset="1115" max-vertical-offset="1530">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/general.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="2" selection-start="514" selection-end="514" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/enums/urlConstants.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="17" selection-start="425" selection-end="425" vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="782">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="71" selection-start="398" selection-end="398" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/schemas/adminSchema.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="2" selection-start="1126" selection-end="1126" vertical-scroll-proportion="0.0" vertical-offset="639" max-vertical-offset="986">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/services/gameService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="29" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
-          <folding />
-        </state>
+        <state line="7" column="22" selection-start="142" selection-end="142" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/less/style.less">
@@ -1174,20 +1118,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/connections/gameConnection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="16" selection-start="713" selection-end="713" vertical-scroll-proportion="0.0" vertical-offset="163" max-vertical-offset="1836">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/gameController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="49" selection-start="2461" selection-end="2461" vertical-scroll-proportion="0.0" vertical-offset="1411" max-vertical-offset="3332">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/dataSamples/memeMessageDataSample.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="101" column="25" selection-start="2312" selection-end="2312" vertical-scroll-proportion="0.0" vertical-offset="1513" max-vertical-offset="1887">
@@ -1197,21 +1127,117 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/less/modals.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="277" column="17" selection-start="5241" selection-end="5252" vertical-scroll-proportion="-1.9215686" vertical-offset="4611" max-vertical-offset="9435">
+        <state line="277" column="17" selection-start="5241" selection-end="5252" vertical-scroll-proportion="0.18317758" vertical-offset="4611" max-vertical-offset="9435">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/connections/utils/gameSocket.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="5" selection-start="561" selection-end="561" vertical-scroll-proportion="0.0" vertical-offset="61" max-vertical-offset="442">
+        <state line="19" column="5" selection-start="561" selection-end="561" vertical-scroll-proportion="0.57575756" vertical-offset="0" max-vertical-offset="561">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/home.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="25" selection-end="25" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
+          <folding>
+            <marker date="1413636688155" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1413636688155" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1413636688155" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1413636688155" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/includes/gameSelect.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/connections/gameConnection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="24" selection-start="1980" selection-end="1980" vertical-scroll-proportion="0.0" vertical-offset="983" max-vertical-offset="1836">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/general.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="2" selection-start="266" selection-end="266" vertical-scroll-proportion="0.3314121" vertical-offset="4" max-vertical-offset="391">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/enums/urlConstants.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="4" selection-start="657" selection-end="657" vertical-scroll-proportion="0.3314121" vertical-offset="225" max-vertical-offset="782">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="59" selection-start="679" selection-end="679" vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="646">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/gameController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="123" column="30" selection-start="3457" selection-end="3457" vertical-scroll-proportion="-6.16" vertical-offset="1903" max-vertical-offset="3451">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/services/gameService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="69" selection-start="659" selection-end="659" vertical-scroll-proportion="0.0" vertical-offset="116" max-vertical-offset="799">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="11" selection-start="4276" selection-end="4276" vertical-scroll-proportion="0.33333334" vertical-offset="1954" max-vertical-offset="10030">
+        <state line="387" column="73" selection-start="14544" selection-end="14544" vertical-scroll-proportion="-4.76" vertical-offset="6460" max-vertical-offset="10302">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/dataSamples/playerDataSample.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="57" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0" vertical-offset="329" max-vertical-offset="697">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/schemas/adminSchema.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="2" selection-start="1126" selection-end="1126" vertical-scroll-proportion="0.6080692" vertical-offset="639" max-vertical-offset="986">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/layouts/default.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="59" selection-start="265" selection-end="265" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/adminController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="66" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1479">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="91" selection-end="91" vertical-scroll-proportion="0.09798271" vertical-offset="0" max-vertical-offset="476">
           <folding />
         </state>
       </provider>
