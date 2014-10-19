@@ -72,7 +72,6 @@ exports.addGameToList = function (req, res) {
       res.json({status: 1, errMsg: 'This name has already been taken'});
     }
   }
-  console.log(options);
   gameService.fetchGameList(searchSuccess, failure, options);
 };
 
@@ -181,7 +180,6 @@ exports.joinGame = function (req, res) {
       gameService.updateGame(options, {'playerCount': 1}, setOptions, addSuccess, failure);*/
     }
   }
-  console.log(options);
   gameService.fetchGameList(searchSuccess, failure, options);
 };
 

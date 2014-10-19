@@ -92,7 +92,6 @@ exports.removePlayerFromGame = function (query, successCallback, errCallback) {
 exports.fetchPlayersInGame = function (query, projection, successCallback, errCallback) {
   adminSchema.gamePlayerSchema.find(query, projection)
       .exec(function (err, gamePlayers) {
-        console.log(gamePlayers);
         if (err) {
           errCallback;
         } else {

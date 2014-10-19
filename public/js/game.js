@@ -485,22 +485,17 @@ var gamePlay = {
       }
     });
     $(window).bind("beforeunload",function(e){
-      e.preventDefault;
-      console.log('Holla Holla');
       if(userReload && yourGameID !== -1 && $('.game-select, .game-box').is(':visible')){
         var playerCount = $('.select-box.selected').length;
         $.each(players,function(playerID,player){
-          console.log(player.selected);
           if(player.selected && player.isYours){
             var success = function(){
-              console.log('socket->'+playerID+' using '+ $('.game-select').is(':visible')?'removeSelectedRival':'removePlayRival');
               socket.emit($('.game-select').is(':visible')?'removeSelectedRival':'removePlayRival',{gameID:yourGameID, playerID:playerID});
               playerCount -= 1;
             }
             var failure = function(data){
               console.log(data);
             }
-            console.log('delete->'+playerID);
             gamePlay._sendAjaxRequest(urls.togglePlayerInGame, {gameID:yourGameID, playerID:playerID, type:'remove', playerCount:playerCount}, "POST", false, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
           }
         });
@@ -579,7 +574,6 @@ var gamePlay = {
       }
     });
     socket.on('removeSelectedRival', function (data) {
-      console.log(data);
       if (data.gameID == yourGameID && $('.game-select').is(':visible') && players[data.playerID].selected && (!players[data.playerID].isYours)) {
         $('.select-box[type=' + data.playerID + ']').removeClass('selected');
         $('.select-box[type=' + data.playerID + ']').find('.player-name').removeClass('text-color-' + data.playerID);
@@ -589,7 +583,6 @@ var gamePlay = {
       }
     });
     socket.on('removePlayRival', function (data) {
-      console.log(data);
       if (data.gameID == yourGameID && $('.game-box').is(':visible') && players[data.playerID].selected && (!players[data.playerID].isYours)) {
         $.each(competitors,function(i, rival){
           if(rival === data.playerID){
@@ -607,7 +600,6 @@ var gamePlay = {
         });
         if($('.score-box').length == 1){
           userReload = false;
-          console.log(yourPlayers);
           if(yourGameID !== -1){
             gamePlay.updatePlayerWin(yourPlayers[0]);
             gamePlay.removePlayersFromGame();
