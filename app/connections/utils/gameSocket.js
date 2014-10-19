@@ -17,5 +17,11 @@ module.exports = function (io) {
     socket.on('selectCountdown', function (msg) {
       io.emit('selectCountdown', msg);
     });
+    socket.on('removeSelectedRival', function (msg) {
+      io.emit('removeSelectedRival', msg);
+    });
+    socket.on('removePlayRival', function (msg) {
+      io.emit('removePlayRival', msg);
+    });
   });
 }

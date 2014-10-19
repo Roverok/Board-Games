@@ -20,6 +20,7 @@ var yourGameID = -1;
 var players = {};
 var posn = 0;
 var count = 20;
+var userReload = true;
 
 function displayAlertMessage(obj, alertMsg) {
   var element = $(obj)
@@ -139,6 +140,7 @@ var gamePlay = {
         });
         playerCount += 1;
         setTimeout(function () {
+          userReload = false;
           location.href = location.href
         }, playerCount*4000);
       } else {
@@ -203,13 +205,13 @@ var gamePlay = {
       topGameMessage = memeMessage[imageCase][playerList.length][0].top;
       bottomGameMessage = memeMessage[imageCase][playerList.length][0].bottom;
     } else {
-      topGameMessage = memeMessage[imageCase][competitors.length][randomNumber - 1].top + ((imageCase !== 'result') ? players[playerList[0]].name : '');
-      bottomGameMessage = memeMessage[imageCase][competitors.length][randomNumber - 1].bottom;
+      topGameMessage = memeMessage[imageCase][competitors.length >= 2 ? competitors.length : '2'][randomNumber - 1].top + ((imageCase !== 'result') ? players[playerList[0]].name : '');
+      bottomGameMessage = memeMessage[imageCase][competitors.length >= 2 ? competitors.length : '2'][randomNumber - 1].bottom;
     }
 
     $('.game-message.top').html(topGameMessage);
     $('.game-message.bottom').html(bottomGameMessage);
-    $('#memeModal').attr('type', 'image-' + (imageCase === 'battle' ? playerList.length : competitors.length) + '-' + imageCase + '-' + randomNumber).modal('show');
+    $('#memeModal').attr('type', 'image-' + (imageCase === 'battle' ? playerList.length : (competitors.length >= 2 ? competitors.length : '2')) + '-' + imageCase + '-' + randomNumber).modal('show');
 //    $('#memeModal').attr('type', 'image-' + playerList.length + '-' + imageCase + '-' + randomNumber).modal('show');
     setTimeout(function () {
       $('#memeModal').modal('hide');
@@ -260,7 +262,7 @@ var gamePlay = {
             '</div>';
         $('.game-board').append(gameBoard);
         $('.mini-score-box').append(miniScoreBoard);
-        $('.box.half-box:last-child').append(scoreBoard);
+        $('.game-score').append(scoreBoard);
         if ($('.js-rollDice').attr('player') === undefined) {
           $('.js-rollDice').attr('player', i);
           $('.player-message.text-color-' + i).removeClass('hide');
@@ -280,6 +282,7 @@ var gamePlay = {
         return competitors[j];
       }
     }
+    return competitors[0];
   },
   findYours: function (callback) {
     $.each(players, function (i, obj) {
@@ -326,21 +329,22 @@ var gamePlay = {
     gamePlay._sendAjaxRequest(urls.fetchMemeMessageList, "", "GET", false, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
   },
   selectAvatar: function (player, selection, isYours) {
+    var playerEle = $('.select-box[type=' + player + ']');
     count = 20;
     if (selection) {
       if ($('.select-box.selected').length < 4) {
-        $('.select-box[type=' + player + ']').addClass('selected');
-        $('.select-box[type=' + player + ']').find('.player-name').addClass('text-color-' + player);
-        $('.select-box[type=' + player + ']').find('.player-who').html(isYours ? '(You)' : '(Rival)');
+        playerEle.addClass('selected');
+        playerEle.find('.player-name').addClass('text-color-' + player);
+        playerEle.find('.player-who').html(isYours ? '(You)' : '(Rival)');
         players[player].selected = true;
         if (isYours)
           players[player].isYours = true;
       }
     } else {
       if (players[player].isYours || !isYours) {
-        $('.select-box[type=' + player + ']').removeClass('selected');
-        $('.select-box[type=' + player + ']').find('.player-name').removeClass('text-color-' + player);
-        $('.select-box[type=' + player + ']').find('.player-who').html('');
+        playerEle.removeClass('selected');
+        playerEle.find('.player-name').removeClass('text-color-' + player);
+        playerEle.find('.player-who').html('');
         players[player].selected = false;
         if (isYours)
           players[player].isYours = false;
@@ -380,11 +384,9 @@ var gamePlay = {
     $('#gameList, #noGameList').addClass('loading');
     gamePlay._sendAjaxRequest(urls.fetchGameList, "", "GET", false, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
   },
-  addAutoPlayerToGame : function(){
-    console.log('Booya');
+  selectDefaultGamePlayer : function(){
     $.each(players,function(id,player){
       if(! player.selected){
-        console.log('Strike'+ id);
         $('.select-box[type='+ id +']').trigger('click');
         return false;
       }
@@ -399,7 +401,7 @@ var gamePlay = {
           $('.select-box[type=' + obj.playerID + ']').find('.player-who').html('(Rival)');
           players[obj.playerID].selected = true;
         });
-        gamePlay.addAutoPlayerToGame();
+        gamePlay.selectDefaultGamePlayer();
       }
       var failure = function(data){
         console.log(data);
@@ -482,6 +484,28 @@ var gamePlay = {
         gamePlay._sendAjaxRequest(urls.checkCheatCode, {'charCode': e.which, 'posn': posn}, "POST", false, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
       }
     });
+    $(window).bind("beforeunload",function(e){
+      e.preventDefault;
+      console.log('Holla Holla');
+      if(userReload && yourGameID !== -1 && $('.game-select, .game-box').is(':visible')){
+        var playerCount = $('.select-box.selected').length;
+        $.each(players,function(playerID,player){
+          console.log(player.selected);
+          if(player.selected && player.isYours){
+            var success = function(){
+              console.log('socket->'+playerID+' using '+ $('.game-select').is(':visible')?'removeSelectedRival':'removePlayRival');
+              socket.emit($('.game-select').is(':visible')?'removeSelectedRival':'removePlayRival',{gameID:yourGameID, playerID:playerID});
+              playerCount -= 1;
+            }
+            var failure = function(data){
+              console.log(data);
+            }
+            console.log('delete->'+playerID);
+            gamePlay._sendAjaxRequest(urls.togglePlayerInGame, {gameID:yourGameID, playerID:playerID, type:'remove', playerCount:playerCount}, "POST", false, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
+          }
+        });
+      }
+    });
     $('.game-title').on('click', '.js-gameEnter', function () {
       $(this).fadeOut();
       setTimeout(function () {
@@ -554,9 +578,47 @@ var gamePlay = {
         count = 20;
       }
     });
-    socket.on('gameCountdown', function (data) {
-      if (data.gameID == yourGameID) {
+    socket.on('removeSelectedRival', function (data) {
+      console.log(data);
+      if (data.gameID == yourGameID && $('.game-select').is(':visible') && players[data.playerID].selected && (!players[data.playerID].isYours)) {
+        $('.select-box[type=' + data.playerID + ']').removeClass('selected');
+        $('.select-box[type=' + data.playerID + ']').find('.player-name').removeClass('text-color-' + data.playerID);
+        $('.select-box[type=' + data.playerID + ']').find('.player-who').html('');
         count = 20;
+        players[data.playerID].selected = false;
+      }
+    });
+    socket.on('removePlayRival', function (data) {
+      console.log(data);
+      if (data.gameID == yourGameID && $('.game-box').is(':visible') && players[data.playerID].selected && (!players[data.playerID].isYours)) {
+        $.each(competitors,function(i, rival){
+          if(rival === data.playerID){
+            competitors.splice(i,1);
+            $('.game-board .game-player[type='+rival+']').remove();
+            $('.mini-score-board[type='+rival+']').remove();
+            $('.score-board[type='+rival+']').parent().remove();
+            count = 10;
+            players[rival].selected = false;
+            var newPlayer = gamePlay.findNextOpponent(rival);
+            $('.player-message.text-color-' + newPlayer).fadeIn();
+            $('.js-rollDice').attr('player',newPlayer);
+            return false;
+          }
+        });
+        if($('.score-box').length == 1){
+          userReload = false;
+          console.log(yourPlayers);
+          if(yourGameID !== -1){
+            gamePlay.updatePlayerWin(yourPlayers[0]);
+            gamePlay.removePlayersFromGame();
+          }
+          setTimeout(function () {
+            gamePlay.generateMeme(yourPlayers, 'winner');
+          }, 2000);
+          setTimeout(function () {
+            location.href = location.href;
+          }, 6000);
+        }
       }
     });
   },
@@ -577,6 +639,7 @@ var gamePlay = {
           } else {
             element.html('Cancelling the Game...');
             setTimeout(function () {
+              userReload = false;
               location.href = location.href;
             }, 2000);
           }
