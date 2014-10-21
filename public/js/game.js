@@ -409,8 +409,13 @@ var gamePlay = {
       gamePlay._sendAjaxRequest(urls.fetchPlayersInGame, {gameID:yourGameID}, "GET", true, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
     }
   },
+  gameLayoutBackground: function () {
+    randomNumber = Math.floor((Math.random() * 6) + 1);
+    $('.game-layout').addClass('bkgrnd-game-'+randomNumber);
+  },
   initSnakeLadderGame: function () {
     var socket = io();
+    gamePlay.gameLayoutBackground();
     gamePlay.fetchGamePlayers();
     gamePlay.fetchMemeMessages();
     $('.js-submitGame').click(function () {

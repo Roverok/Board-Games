@@ -176,6 +176,24 @@ img {
 .bkgrnd-p-8 {
   background-color: #aa44ee;
 }
+.bkgrnd-game-1 {
+  background-color: #bbddee !important;
+}
+.bkgrnd-game-2 {
+  background-color: #ee99aa !important;
+}
+.bkgrnd-game-3 {
+  background-color: #ddccff !important;
+}
+.bkgrnd-game-4 {
+  background-color: #ffccff !important;
+}
+.bkgrnd-game-5 {
+  background-color: #ffff88 !important;
+}
+.bkgrnd-game-6 {
+  background-color: #ddffcc !important;
+}
 .bkground-light {
   background-color: #fafafa;
 }
@@ -257,7 +275,6 @@ ul.roman {
 }
 .game-layout {
   border-radius: 25px;
-  background: #aaddaa;
   padding: 15px;
 }
 .game-title {
