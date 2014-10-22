@@ -104,7 +104,7 @@ var gamePlay = {
     var diceMsgElement = $('.dice-show .message');
     diceMsgElement.html('').removeClass().fadeOut();
     $('.dice-show').addClass('animate');
-    $('.js-rollDice').attr('disabled', true);
+    $('.js-rollDice').addClass('selected').attr('disabled', true);
     setTimeout(function () {
       diceMsgElement.addClass('message bkgrnd-' + player).html(dice).fadeIn();
       $('.dice-show').removeClass('animate');
@@ -114,7 +114,7 @@ var gamePlay = {
         $('.player-message.text-color-' + player).fadeOut();
         $('.player-message.text-color-' + player2).fadeIn();
       }
-      $('.js-rollDice').attr('disabled', false);
+      $('.js-rollDice').removeClass('selected').attr('disabled', false);
       if (players[player].position == 99) {
         count = -1;
         if (players[player].isYours) {
@@ -334,7 +334,6 @@ var gamePlay = {
     if (selection) {
       if ($('.select-box.selected').length < 4) {
         playerEle.addClass('selected');
-        playerEle.find('.player-name').addClass('text-color-' + player);
         playerEle.find('.player-who').html(isYours ? '(You)' : '(Rival)');
         players[player].selected = true;
         if (isYours)
@@ -343,7 +342,6 @@ var gamePlay = {
     } else {
       if (players[player].isYours || !isYours) {
         playerEle.removeClass('selected');
-        playerEle.find('.player-name').removeClass('text-color-' + player);
         playerEle.find('.player-who').html('');
         players[player].selected = false;
         if (isYours)
@@ -520,6 +518,8 @@ var gamePlay = {
         if (gamePlayType === 'global') {
           gamePlay.searchGameList();
         }
+        $('.continue-button .js-gameEnter').show();
+        $('.continue-button .boxes').hide();
       }, 500);
     });
     $('.game-mode').on('click', '.game-row .js-joinGame', function () {

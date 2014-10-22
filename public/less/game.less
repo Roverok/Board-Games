@@ -38,6 +38,7 @@
     background-repeat: no-repeat;
     border: @border-width-thick @border-style-base @border-color-white;
     border-radius: 10px;
+    vertical-align: @text-middle;
     .text-white;
     &.loading {
       background-image: url(../images/gifs/loader-medium.gif);
@@ -54,13 +55,21 @@
     &:-ms-input-placeholder {
       .text-white;
     }
+    &:focus{
+      box-shadow: none;
+      -webkit-box-shadow: none;
+      outline: 0;
+    }
   }
   .alert-msg {
     margin-top: @margin-base;
     .text-white;
   }
+  .create-game-box .continue-button {
+    width: 150px;
+  }
   .continue-button {
-    font-size: 40px;
+    font-size: 45px;
     margin: 0 0 0 @margin-large;
     vertical-align: @text-middle;
   }
@@ -75,11 +84,12 @@
       td {
         border-bottom: @border-width-base @border-style-base @border-color-white;
         padding: @padding-base 0;
+        width: 33%;
+        height: 70px;
         &:first-child {
           .text-left;
         }
         .continue-button {
-          font-size: inherit;
           .text-right;
         }
       }
@@ -119,25 +129,12 @@
     &:hover {
       .game-player {
         .player-avatar {
-          //          background-position-x: 100% !important;
-          opacity: 0.2;
+          opacity: 0.1;
         }
         .player-record {
-          position: absolute;
-          width: inherit;
-          .display-block;
-          .text-center;
-          padding: @padding-xxlarge*2 0;
-          .title {
-            font-size: 30px;
-          }
-          .rec {
-            font-size: 50px;
-          }
+          visibility:visible;
+          opacity:1;
         }
-      }
-      .player-name {
-        color: #ffff00;
       }
     }
     &.selected {
@@ -147,7 +144,8 @@
         -webkit-filter: grayscale(100%);
         filter: gray;
         filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");*/
-        opacity: 0.2;
+        .bkground-lighter;
+        opacity: 0.1;
       }
     }
     .game-player {
@@ -161,7 +159,21 @@
         background-position-y: 60% !important;
       }
       .player-record {
-        display: none;
+        visibility: hidden;
+        opacity:0;
+        .display-transition;
+        position: absolute;
+        width: inherit;
+        .text-center;
+        .bkground-white;
+        border-radius: inherit;
+        padding: @padding-xxlarge*2 0;
+        .title {
+          font-size: 30px;
+        }
+        .rec {
+          font-size: 50px;
+        }
       }
     }
     .player-name {
@@ -172,6 +184,9 @@
         margin-left: @margin-base;
       }
     }
+  }
+  .continue-button{
+    height: 100px;
   }
 }
 
@@ -184,7 +199,7 @@
     .display-inline;
     cursor: pointer;
     &:hover {
-      color: #ffff00;
+      .zoom-text;
     }
   }
   .box {
@@ -299,7 +314,7 @@
   .dice-show {
     width: 100px;
     min-height: 65px;
-    margin: @margin-large auto;
+    margin: @margin-medium auto;
     border: 2px solid;
     border-radius: 5px;
     background-color: #ffffff;
@@ -318,11 +333,13 @@
   .dice-button {
     font-size: 40px;
     .text-white;
-    margin: @margin-medium auto;
-    cursor: pointer;
     .text-center;
-    &:hover {
-      color: #ffff00;
+    .button {
+      .display-inline;
+      cursor: pointer;
+      &:hover {
+        .zoom-text;
+      }
     }
   }
 }
