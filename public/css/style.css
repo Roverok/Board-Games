@@ -179,20 +179,38 @@ img {
 .bkgrnd-game-1 {
   background-color: #bbdddd !important;
 }
+.bkgrnd-game-1 .loading {
+  background-image: url(../images/gifs/loader-game-1.gif) !important;
+}
 .bkgrnd-game-2 {
   background-color: #aaccaa !important;
+}
+.bkgrnd-game-2 .loading {
+  background-image: url(../images/gifs/loader-game-2.gif) !important;
 }
 .bkgrnd-game-3 {
   background-color: #ddaaff !important;
 }
+.bkgrnd-game-3 .loading {
+  background-image: url(../images/gifs/loader-game-3.gif) !important;
+}
 .bkgrnd-game-4 {
   background-color: #ffaaff !important;
+}
+.bkgrnd-game-4 .loading {
+  background-image: url(../images/gifs/loader-game-4.gif) !important;
 }
 .bkgrnd-game-5 {
   background-color: #ffff77 !important;
 }
+.bkgrnd-game-5 .loading {
+  background-image: url(../images/gifs/loader-game-5.gif) !important;
+}
 .bkgrnd-game-6 {
   background-color: #ffaa55 !important;
+}
+.bkgrnd-game-6 .loading {
+  background-image: url(../images/gifs/loader-game-6.gif) !important;
 }
 .bkground-light {
   background-color: #fafafa;
@@ -337,9 +355,6 @@ ul.roman {
   vertical-align: middle;
   color: #ffffff;
 }
-.game-mode-box input[type=text].loading {
-  background-image: url(../images/gifs/loader-medium.gif);
-}
 .game-mode-box input[type=text]::-webkit-input-placeholder {
   color: #ffffff;
 }
@@ -402,10 +417,6 @@ ul.roman {
   margin: 0px auto;
   color: #ffffff;
   font-size: 25px;
-}
-.game-mode-box #gameList.loading,
-.game-mode-box #noGameList.loading {
-  background: url(../images/gifs/loader-medium.gif) no-repeat center;
 }
 .game-select {
   text-align: center;
@@ -1185,9 +1196,7 @@ ul.roman {
   .game-mode-box input[type=text] {
     font-size: 20px;
     width: 350px;
-  }
-  .game-mode-box input[type=text].loading {
-    background-image: url(../../images/gifs/loader-small.gif);
+    background-size: 32px;
   }
   .game-mode-box .create-game-box .continue-button {
     width: 100px;
@@ -1199,7 +1208,7 @@ ul.roman {
     width: 85%;
   }
   .game-mode-box table tr {
-    font-size: 20px;
+    font-size: 25px !important;
   }
   .continue-button {
     margin: 25px 0;

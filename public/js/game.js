@@ -356,7 +356,6 @@ var gamePlay = {
   },
   searchGameList: function () {
     var success = function (data) {
-      $('#gameList, #noGameList').removeClass('loading');
       if (data.length > 0) {
         $('#gameList tr.game-row').remove();
         $.each(data, function (index, obj) {
@@ -377,10 +376,9 @@ var gamePlay = {
       }
     }
     var failure = function (data) {
-      $('#gameList, #noGameList').removeClass('loading');
+      console.log(data);
     }
-    $('#gameList, #noGameList').addClass('loading');
-    gamePlay._sendAjaxRequest(urls.fetchGameList, "", "GET", false, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
+    gamePlay._sendAjaxRequest(urls.fetchGameList, "", "GET", true, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
   },
   selectDefaultGamePlayer : function(){
     $.each(players,function(id,player){
