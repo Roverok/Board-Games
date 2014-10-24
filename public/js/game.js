@@ -27,7 +27,7 @@ function displayAlertMessage(obj, alertMsg) {
   element.html(alertMsg).fadeIn();
   setTimeout(function () {
     element.fadeOut();
-  }, 2000)
+  }, 4000)
 }
 
 var gamePlay = {
@@ -141,7 +141,7 @@ var gamePlay = {
         playerCount += 1;
         setTimeout(function () {
           userReload = false;
-          location.href = location.href
+          gamePlay.initGameTitle();
         }, playerCount*4000);
       } else {
         count = players[(dice == 6) ? player : player2].isYours ? 10 : -1;
@@ -200,7 +200,6 @@ var gamePlay = {
       $('.meme-image').append(playerIcon);
     });
     var topGameMessage = '', bottomGameMessage = '';
-
     if (imageCase === 'battle') {
       topGameMessage = memeMessage[imageCase][playerList.length][0].top;
       bottomGameMessage = memeMessage[imageCase][playerList.length][0].bottom;
@@ -208,7 +207,6 @@ var gamePlay = {
       topGameMessage = memeMessage[imageCase][competitors.length >= 2 ? competitors.length : '2'][randomNumber - 1].top + ((imageCase !== 'result') ? players[playerList[0]].name : '');
       bottomGameMessage = memeMessage[imageCase][competitors.length >= 2 ? competitors.length : '2'][randomNumber - 1].bottom;
     }
-
     $('.game-message.top').html(topGameMessage);
     $('.game-message.bottom').html(bottomGameMessage);
     $('#memeModal').attr('type', 'image-' + (imageCase === 'battle' ? playerList.length : (competitors.length >= 2 ? competitors.length : '2')) + '-' + imageCase + '-' + randomNumber).modal('show');
@@ -225,7 +223,10 @@ var gamePlay = {
     var failure = function (data) {
       console.log(data)
     }
-    gamePlay._sendAjaxRequest(urls.updatePlayerPlayed, {players: playerIDs}, "GET", false, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
+    for(var i in yourPlayers){
+      players[yourPlayers[i]].played += 1;
+    }
+    gamePlay._sendAjaxRequest(urls.updatePlayerPlayed, {players: playerIDs}, "GET", true, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
   },
   updateGameOccupied: function () {
     var success = function (data) {
@@ -234,7 +235,7 @@ var gamePlay = {
     var failure = function (data) {
       console.log(data)
     }
-    gamePlay._sendAjaxRequest(urls.updateGame, {gameID: yourGameID}, "GET", false, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
+    gamePlay._sendAjaxRequest(urls.updateGame, {gameID: yourGameID}, "GET", true, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
   },
   updatePlayerWin: function (player) {
     var success = function (data) {
@@ -243,7 +244,33 @@ var gamePlay = {
     var failure = function (data) {
       console.log(data)
     }
+    players[player].won += 1;
     gamePlay._sendAjaxRequest(urls.updatePlayerWon, {player: player}, "GET", true, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
+  },
+  initGameTitle: function () {
+    if($('.game-box').is(':visible')){
+      competitors.length = yourPlayers.length = 0;
+      $('.game-board .game-player').remove();
+      $('.js-rollDice').removeAttr('player');
+      $('.dice-show .message').removeClass().addClass('message').html('');
+      $('.mini-score-board').remove();
+      $('.score-board').parent().remove();
+      $('.game-box').fadeOut();
+    }
+    $.each(players,function(i,player){
+      player.position = 0;
+      player.selected = player.isYours = false;
+    });
+    $('.game-select .select-box').removeClass('selected').find('.player-who').hide().html('');
+    $('.time-count').hide();
+    $('.game-select .continue-button').hide();
+    $('.game-title .continue-button').show();
+    if($('.game-select').is(':visible')){
+      $('.game-select').fadeOut();
+    }
+    posn = 0;
+    yourGameID = -1;
+    $('.game-title').fadeIn();
   },
   initGameBox: function () {
     randomNumber = Math.floor((Math.random() * 2) + 1);
@@ -334,7 +361,7 @@ var gamePlay = {
     if (selection) {
       if ($('.select-box.selected').length < 4) {
         playerEle.addClass('selected');
-        playerEle.find('.player-who').html(isYours ? '(You)' : '(Rival)');
+        playerEle.find('.player-who').show().html(isYours ? ' (You)' : ' (Rival)');
         players[player].selected = true;
         if (isYours)
           players[player].isYours = true;
@@ -342,16 +369,16 @@ var gamePlay = {
     } else {
       if (players[player].isYours || !isYours) {
         playerEle.removeClass('selected');
-        playerEle.find('.player-who').html('');
+        playerEle.find('.player-who').html('').hide();
         players[player].selected = false;
         if (isYours)
           players[player].isYours = false;
       }
     }
     if ($('.select-box.selected').length >= 2) {
-      $('.continue-button').removeClass('hide');
+      $('.continue-button').show();
     } else {
-      $('.continue-button').addClass('hide');
+      $('.continue-button').hide();
     }
   },
   searchGameList: function () {
@@ -394,7 +421,7 @@ var gamePlay = {
         $.each(data,function(i,obj){
           $('.select-box[type=' + obj.playerID + ']').addClass('selected');
           $('.select-box[type=' + obj.playerID + ']').find('.player-name').addClass('text-color-' + obj.playerID);
-          $('.select-box[type=' + obj.playerID + ']').find('.player-who').html('(Rival)');
+          $('.select-box[type=' + obj.playerID + ']').find('.player-who').html(' (Rival)').show();
           players[obj.playerID].selected = true;
         });
         gamePlay.selectDefaultGamePlayer();
@@ -542,7 +569,6 @@ var gamePlay = {
         console.log(data)
       }
       gamePlay._sendAjaxRequest(urls.joinGame, {_id: gameID}, "POST", false, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
-
     });
     $('.game-select').on('click', '.continue-button', function () {
       $('.game-select').fadeOut();
@@ -580,7 +606,7 @@ var gamePlay = {
       if (data.gameID == yourGameID && $('.game-select').is(':visible') && players[data.playerID].selected && (!players[data.playerID].isYours)) {
         $('.select-box[type=' + data.playerID + ']').removeClass('selected');
         $('.select-box[type=' + data.playerID + ']').find('.player-name').removeClass('text-color-' + data.playerID);
-        $('.select-box[type=' + data.playerID + ']').find('.player-who').html('');
+        $('.select-box[type=' + data.playerID + ']').find('.player-who').html('').hide();
         count = 20;
         players[data.playerID].selected = false;
       }
@@ -611,7 +637,7 @@ var gamePlay = {
             gamePlay.generateMeme(yourPlayers, 'winner');
           }, 2000);
           setTimeout(function () {
-            location.href = location.href;
+            gamePlay.initGameTitle();
           }, 6000);
         }
       }
@@ -633,9 +659,10 @@ var gamePlay = {
             }, 2000);
           } else {
             element.html('Cancelling the Game...');
+            $('.select-box.selected').trigger('click');
             setTimeout(function () {
               userReload = false;
-              location.href = location.href;
+              gamePlay.initGameTitle();
             }, 2000);
           }
         };
