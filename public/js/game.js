@@ -256,6 +256,7 @@ var gamePlay = {
       $('.mini-score-board').remove();
       $('.score-board').parent().remove();
       $('.game-box').fadeOut();
+      $('.modal-backdrop').remove();
     }
     $.each(players,function(i,player){
       player.position = 0;
@@ -265,8 +266,12 @@ var gamePlay = {
     $('.time-count').hide();
     $('.game-select .continue-button').hide();
     $('.game-title .continue-button').show();
+    $('.game-select .back-button').show();
     if($('.game-select').is(':visible')){
       $('.game-select').fadeOut();
+    }
+    if($('.game-mode').is(':visible')){
+      $('.game-mode').fadeOut();
     }
     posn = 0;
     yourGameID = -1;
@@ -554,6 +559,7 @@ var gamePlay = {
           $('.game-mode').fadeOut();
           setTimeout(function () {
             $('.game-select .continue-button').hide();
+            $('.game-select .back-button').hide();
             $('.time-count').show();
             $('.game-select').fadeIn();
           }, 500);
@@ -641,6 +647,9 @@ var gamePlay = {
           }, 6000);
         }
       }
+    });
+    $('.js-goBack').click(function(){
+      gamePlay.initGameTitle();
     });
   },
   setSelectionCountdown: function (element) {

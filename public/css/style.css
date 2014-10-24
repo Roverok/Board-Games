@@ -483,6 +483,21 @@ ul.roman {
 .game-select .continue-button {
   height: 100px;
 }
+.back-button {
+  text-align: left;
+  font-size: 25px;
+  height: 30px;
+  margin: 0 5px -40px;
+  color: #ffffff;
+  cursor: pointer;
+}
+.back-button .button {
+  display: inline-block;
+}
+.back-button .button:hover {
+  -webkit-animation: zoom-text linear 0.25s infinite alternate;
+  animation: zoom-text linear 0.25s infinite alternate;
+}
 .continue-button {
   text-align: center;
   color: #fafafa;
