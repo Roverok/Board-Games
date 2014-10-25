@@ -25,15 +25,15 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-require('./db');
+require('./app/connections/utils/dbConnection');
 
 require('./routes')(app);
 
-require('./app/connections/utils/imageCloud')(cloudinary);
+//require('./app/connections/utils/imageCloudConnection')(cloudinary);
 
 var server = http.createServer(app).listen(app.get('port'), function () {
   console.log('Express server listening on port ' + app.get('port'));
 });
 
 var io = require('socket.io').listen(server);
-require('./app/connections/utils/gameSocket')(io);
+require('./app/connections/utils/gameSocketConnection')(io);
