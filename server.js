@@ -25,7 +25,9 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-require('./app/connections/utils/dbConnection');
+var config = require('./app/appConfig');
+
+require('./app/connections/utils/dbConnection')(config);
 
 require('./routes')(app);
 
