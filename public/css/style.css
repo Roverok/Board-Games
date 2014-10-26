@@ -319,10 +319,10 @@ ul.roman {
   border-radius: 25px;
   padding: 15px;
 }
-.game-title {
+#game-title {
   height: 575px;
 }
-.game-title .image-box {
+#game-title .image-box {
   background: url('../images/banners/snakes-and-ladders-banner.png') no-repeat center;
   background-size: contain;
   height: 400px;
@@ -418,26 +418,26 @@ ul.roman {
   color: #ffffff;
   font-size: 25px;
 }
-.game-select {
+#game-select {
   text-align: center;
 }
-.game-select .select-box {
+#game-select .select-box {
   display: inline-block;
   height: 320px;
   width: 250px;
   cursor: pointer;
 }
-.game-select .select-box.hide {
+#game-select .select-box.hide {
   display: none;
 }
-.game-select .select-box:hover .game-player .player-avatar {
+#game-select .select-box:hover .game-player .player-avatar {
   opacity: 0.1;
 }
-.game-select .select-box:hover .game-player .player-record {
+#game-select .select-box:hover .game-player .player-record {
   visibility: visible;
   opacity: 1;
 }
-.game-select .select-box.selected .player-avatar {
+#game-select .select-box.selected .player-avatar {
   /*-moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
         -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
         -webkit-filter: grayscale(100%);
@@ -446,7 +446,7 @@ ul.roman {
   background-color: #fcfcfc;
   opacity: 0.1;
 }
-.game-select .select-box .game-player {
+#game-select .select-box .game-player {
   margin: 20px auto;
   position: static;
   width: 200px;
@@ -454,10 +454,10 @@ ul.roman {
   border: 6px solid;
   background-color: #ffffff;
 }
-.game-select .select-box .game-player .player-avatar {
+#game-select .select-box .game-player .player-avatar {
   background-position-y: 60% !important;
 }
-.game-select .select-box .game-player .player-record {
+#game-select .select-box .game-player .player-record {
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.5s linear, visibility 0.5s linear;
@@ -469,18 +469,18 @@ ul.roman {
   border-radius: inherit;
   padding: 50px 0;
 }
-.game-select .select-box .game-player .player-record .title {
+#game-select .select-box .game-player .player-record .title {
   font-size: 30px;
 }
-.game-select .select-box .game-player .player-record .rec {
+#game-select .select-box .game-player .player-record .rec {
   font-size: 50px;
 }
-.game-select .select-box .player-name {
+#game-select .select-box .player-name {
   color: #fff;
   margin: 15px 0;
   font-size: 30px;
 }
-.game-select .continue-button {
+#game-select .continue-button {
   height: 100px;
 }
 .back-button {
@@ -526,10 +526,10 @@ ul.roman {
 .boxes .box.half-box {
   width: 50%;
 }
-.game-box .boxes .box {
+#game-box .boxes .box {
   font-size: 14px;
 }
-.game-box .boxes .box:first-child .dice-box {
+#game-box .boxes .box:first-child .dice-box {
   display: none;
 }
 .player-message {
@@ -1199,7 +1199,7 @@ ul.roman {
   }
 }
 @media screen and (max-width: 630px) {
-  .game-title {
+  #game-title {
     height: 525px;
   }
   .game-mode-box {
@@ -1229,7 +1229,7 @@ ul.roman {
   .player-message {
     top: 30px;
   }
-  .game-select .continue-button {
+  #game-select .continue-button {
     height: 80px;
   }
   .select-title {
@@ -1238,17 +1238,17 @@ ul.roman {
   .continue-button .box.half-box {
     font-size: 40px;
   }
-  .game-box .box.half-box:last-child {
+  #game-box .box.half-box:last-child {
     display: none;
   }
-  .game-box .box.half-box:first-child {
+  #game-box .box.half-box:first-child {
     width: inherit;
   }
-  .game-box .box.half-box:first-child .dice-box {
+  #game-box .box.half-box:first-child .dice-box {
     display: block;
     margin-bottom: 10px;
   }
-  .game-box .box.half-box:first-child .dice-box .dice-show {
+  #game-box .box.half-box:first-child .dice-box .dice-show {
     margin: 0 auto;
   }
   .mini-score-box {

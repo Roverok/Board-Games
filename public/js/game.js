@@ -248,34 +248,35 @@ var gamePlay = {
     gamePlay._sendAjaxRequest(urls.updatePlayerWon, {player: player}, "GET", true, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
   },
   initGameTitle: function () {
-    if($('.game-box').is(':visible')){
+    if($('#game-box').is(':visible')){
       competitors.length = yourPlayers.length = 0;
       $('.game-board .game-player').remove();
       $('.js-rollDice').removeAttr('player');
       $('.dice-show .message').removeClass().addClass('message').html('');
       $('.mini-score-board').remove();
       $('.score-board').parent().remove();
-      $('.game-box').fadeOut();
+      $('#game-box').fadeOut();
       $('.modal-backdrop').remove();
+      gamePlay.gameLayoutBackground();
     }
     $.each(players,function(i,player){
       player.position = 0;
       player.selected = player.isYours = false;
     });
-    $('.game-select .select-box').removeClass('selected').find('.player-who').hide().html('');
+    $('#game-select .select-box').removeClass('selected').find('.player-who').hide().html('');
     $('.time-count').hide();
-    $('.game-select .continue-button').hide();
-    $('.game-title .continue-button').show();
-    $('.game-select .back-button').show();
-    if($('.game-select').is(':visible')){
-      $('.game-select').fadeOut();
+    $('#game-select .continue-button').hide();
+    $('#game-title .continue-button').show();
+    $('#game-select .back-button').show();
+    if($('#game-select').is(':visible')){
+      $('#game-select').fadeOut();
     }
-    if($('.game-mode').is(':visible')){
-      $('.game-mode').fadeOut();
+    if($('#game-mode').is(':visible')){
+      $('#game-mode').fadeOut();
     }
     posn = 0;
     yourGameID = -1;
-    $('.game-title').fadeIn();
+    $('#game-title').fadeIn();
   },
   initGameBox: function () {
     randomNumber = Math.floor((Math.random() * 2) + 1);
@@ -302,7 +303,7 @@ var gamePlay = {
         }
       }
     });
-    $('.game-box .score-box').css('height', 400 / competitors.length + 'px');
+    $('#game-box .score-box').css('height', 400 / competitors.length + 'px');
     gamePlay.updatePlayerPlay();
     gamePlay.generateMeme(competitors, 'battle');
     setTimeout(gamePlay.setGamePlayCountdown,3000);
@@ -439,7 +440,8 @@ var gamePlay = {
   },
   gameLayoutBackground: function () {
     randomNumber = Math.floor((Math.random() * 6) + 1);
-    $('.game-layout').addClass('bkgrnd-game-'+randomNumber);
+    $('.game-layout').removeClass().addClass('game-layout bkgrnd-game-'+randomNumber);
+    $('.game-layout:not(#game-title)').hide();
   },
   initSnakeLadderGame: function () {
     var socket = io();
@@ -499,7 +501,7 @@ var gamePlay = {
       }
     });
     $(document).keyup(function (e) {
-      if ($('.game-select').is(':visible') && posn !== -1) {
+      if ($('#game-select').is(':visible') && posn !== -1) {
         var success = function (data) {
           posn = data.status;
           if (posn === -1) {
@@ -518,12 +520,12 @@ var gamePlay = {
       }
     });
     $(window).bind("beforeunload",function(e){
-      if(userReload && yourGameID !== -1 && $('.game-select, .game-box').is(':visible')){
+      if(userReload && yourGameID !== -1 && $('#game-select, #game-box').is(':visible')){
         var playerCount = $('.select-box.selected').length;
         $.each(players,function(playerID,player){
           if(player.selected && player.isYours){
             var success = function(){
-              socket.emit($('.game-select').is(':visible')?'removeSelectedRival':'removePlayRival',{gameID:yourGameID, playerID:playerID});
+              socket.emit($('#game-select').is(':visible')?'removeSelectedRival':'removePlayRival',{gameID:yourGameID, playerID:playerID});
               playerCount -= 1;
             }
             var failure = function(data){
@@ -534,17 +536,17 @@ var gamePlay = {
         });
       }
     });
-    $('.game-title').on('click', '.js-gameEnter', function () {
+    $('#game-title').on('click', '.js-gameEnter', function () {
       $(this).fadeOut();
       setTimeout(function () {
         $('.continue-button .boxes').fadeIn();
       }, 300);
     });
-    $('.game-title').on('click', '.js-gamePlay', function () {
+    $('#game-title').on('click', '.js-gamePlay', function () {
       var gamePlayType = $(this).attr('type');
-      $('.game-title').fadeOut();
+      $('#game-title').fadeOut();
       setTimeout(function () {
-        $((gamePlayType === 'local') ? '.game-select' : '.game-mode').fadeIn();
+        $((gamePlayType === 'local') ? '#game-select' : '#game-mode').fadeIn();
         if (gamePlayType === 'global') {
           gamePlay.searchGameList();
         }
@@ -552,16 +554,16 @@ var gamePlay = {
         $('.continue-button .boxes').hide();
       }, 500);
     });
-    $('.game-mode').on('click', '.game-row .js-joinGame', function () {
+    $('#game-mode').on('click', '.game-row .js-joinGame', function () {
       var gameID = $(this).attr('type');
       var success = function (data) {
         if(data.status == 0){
-          $('.game-mode').fadeOut();
+          $('#game-mode').fadeOut();
           setTimeout(function () {
-            $('.game-select .continue-button').hide();
-            $('.game-select .back-button').hide();
+            $('#game-select .continue-button').hide();
+            $('#game-select .back-button').hide();
             $('.time-count').show();
-            $('.game-select').fadeIn();
+            $('#game-select').fadeIn();
           }, 500);
           yourGameID = gameID;
           gamePlay.setSelectionCountdown($('.time-count'));
@@ -576,11 +578,11 @@ var gamePlay = {
       }
       gamePlay._sendAjaxRequest(urls.joinGame, {_id: gameID}, "POST", false, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
     });
-    $('.game-select').on('click', '.continue-button', function () {
-      $('.game-select').fadeOut();
+    $('#game-select').on('click', '.continue-button', function () {
+      $('#game-select').fadeOut();
       setTimeout(function () {
         gamePlay.initGameBox();
-        $('.game-box').fadeIn();
+        $('#game-box').fadeIn();
       }, 500);
     });
     socket.on('selection', function (data) {
@@ -599,7 +601,7 @@ var gamePlay = {
       }
     });
     socket.on('newGame', function (data) {
-      if (data.status === 0 && $('.game-mode').is(':visible')) {
+      if (data.status === 0 && $('#game-mode').is(':visible')) {
         gamePlay.searchGameList();
       }
     });
@@ -609,7 +611,7 @@ var gamePlay = {
       }
     });
     socket.on('removeSelectedRival', function (data) {
-      if (data.gameID == yourGameID && $('.game-select').is(':visible') && players[data.playerID].selected && (!players[data.playerID].isYours)) {
+      if (data.gameID == yourGameID && $('#game-select').is(':visible') && players[data.playerID].selected && (!players[data.playerID].isYours)) {
         $('.select-box[type=' + data.playerID + ']').removeClass('selected');
         $('.select-box[type=' + data.playerID + ']').find('.player-name').removeClass('text-color-' + data.playerID);
         $('.select-box[type=' + data.playerID + ']').find('.player-who').html('').hide();
@@ -618,7 +620,7 @@ var gamePlay = {
       }
     });
     socket.on('removePlayRival', function (data) {
-      if (data.gameID == yourGameID && $('.game-box').is(':visible') && players[data.playerID].selected && (!players[data.playerID].isYours)) {
+      if (data.gameID == yourGameID && $('#game-box').is(':visible') && players[data.playerID].selected && (!players[data.playerID].isYours)) {
         $.each(competitors,function(i, rival){
           if(rival === data.playerID){
             competitors.splice(i,1);
@@ -661,10 +663,10 @@ var gamePlay = {
         var callback = function () {
           if (yourPlayers.length > 0 && $('.select-box.selected').length > 1) {
             element.html('Launching the Game...');
-            $('.game-select').fadeOut();
+            $('#game-select').fadeOut();
             setTimeout(function () {
               gamePlay.initGameBox();
-              $('.game-box').fadeIn();
+              $('#game-box').fadeIn();
             }, 2000);
           } else {
             element.html('Cancelling the Game...');

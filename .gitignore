@@ -3,3 +3,4 @@
 .idea/
 node_modules/
 public/images/memes/temp/
+devConfig.js
