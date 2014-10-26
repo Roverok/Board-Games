@@ -21,6 +21,7 @@ var players = {};
 var posn = 0;
 var count = 20;
 var userReload = true;
+var socket;
 
 function displayAlertMessage(obj, alertMsg) {
   var element = $(obj)
@@ -130,6 +131,7 @@ var gamePlay = {
         }, 4000);
         playerCount = 1;
         $.each(competitors,function(i, rival){
+          $('[type='+rival+'] .rec').html((players[rival].won/players[rival].played*100).toFixed(2) + ' %');
           if(players[rival].isYours && players[rival].position != 99){
             playerCount += 1;
             setTimeout(function () {
@@ -223,8 +225,8 @@ var gamePlay = {
     var failure = function (data) {
       console.log(data)
     }
-    for(var i in yourPlayers){
-      players[yourPlayers[i]].played += 1;
+    for(var i in competitors){
+      players[competitors[i]].played += 1;
     }
     gamePlay._sendAjaxRequest(urls.updatePlayerPlayed, {players: playerIDs}, "GET", true, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
   },
@@ -245,6 +247,7 @@ var gamePlay = {
       console.log(data)
     }
     players[player].won += 1;
+    socket.emit('playerWin', {player: player, gameID: yourGameID});
     gamePlay._sendAjaxRequest(urls.updatePlayerWon, {player: player}, "GET", true, success, failure, "JSON", "application/x-www-form-urlencoded; charset=UTF-8");
   },
   initGameTitle: function () {
@@ -444,7 +447,7 @@ var gamePlay = {
     $('.game-layout:not(#game-title)').hide();
   },
   initSnakeLadderGame: function () {
-    var socket = io();
+    socket = io();
     gamePlay.gameLayoutBackground();
     gamePlay.fetchGamePlayers();
     gamePlay.fetchMemeMessages();
@@ -593,6 +596,11 @@ var gamePlay = {
     socket.on('dice', function (data) {
       if (players[data.player].selected && !players[data.player].isYours && data.gameID === yourGameID) {
         gamePlay.diceMove(data.player, data.dice);
+      }
+    });
+    socket.on('playerWin', function (data) {
+      if (players[data.player].selected && !players[data.player].isYours && data.gameID === yourGameID) {
+        players[data.player].won += 1;
       }
     });
     socket.on('unlockPlayers', function (data) {
