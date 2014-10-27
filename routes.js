@@ -32,4 +32,7 @@ module.exports = function (app) {
   app.get(urls.ADMIN.SHOW_MODEL, adminController.showModel);
   app.get(urls.ADMIN.SHOW_MODEL_SCHEMA, adminController.showModelSchema);
   app.get(urls.ADMIN.SAVE_MODEL_SCHEMA, adminController.saveModelSchema);
+  app.get(urls.ADMIN.SAVE_MEME_MODEL_SCHEMA, adminController.saveMemeModelSchema);
+  app.get(urls.ADMIN.SAVE_PLAYER_MODEL_SCHEMA, adminController.savePlayerModelSchema);
+
 };

@@ -10,6 +10,8 @@ exports.urls = {
     SAVE_SCHEMA: '/admin/save-schema-test',
     SHOW_MODEL_SCHEMA: '/admin/show-model-schema-test',
     SAVE_MODEL_SCHEMA: '/admin/save-model-schema-test',
+    SAVE_PLAYER_MODEL_SCHEMA: '/admin/player/save-model-schema-test',
+    SAVE_MEME_MODEL_SCHEMA: '/admin/meme/save-model-schema-test',
     SHOW_MODEL: '/admin/show-model'
   },
   API: {
