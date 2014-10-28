@@ -24,7 +24,7 @@ module.exports = function (app) {
   app.get(urls.TEST.SHOW_MODEL, testController.showModel);
   app.get(urls.TEST.SHOW_MODEL_SCHEMA, testController.showModelSchema);
   app.get(urls.TEST.SAVE_MODEL_SCHEMA, testController.saveModelSchema);
-  app.get(urls.TEST.GET_LIST, testController.testList);
+  app.get(urls.TEST.GET_LIST, testController.testSampleList);
 
   var adminController = require('./app/controllers/adminController');
   app.get(urls.ADMIN.SHOW_SCHEMA, adminController.showSchema);

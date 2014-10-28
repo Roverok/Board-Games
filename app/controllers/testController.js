@@ -4,7 +4,7 @@
 
 var testSchema = require('../schemas/testSchema');
 
-exports.testList = function (req, res) {
+exports.testSampleList = function (req, res) {
   res.send("respond with a test resource");
 }
 
