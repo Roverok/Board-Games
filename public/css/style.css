@@ -327,7 +327,7 @@ ul.roman {
   background-size: contain;
   height: 400px;
 }
-.select-title {
+.section-title {
   margin: 25px 0;
   font-size: 75px;
   text-align: center;
@@ -1232,7 +1232,7 @@ ul.roman {
   #game-select .continue-button {
     height: 80px;
   }
-  .select-title {
+  .section-title {
     font-size: 60px !important;
   }
   .continue-button .box.half-box {
