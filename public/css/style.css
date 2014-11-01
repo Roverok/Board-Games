@@ -457,6 +457,13 @@ ul.roman {
 #game-select .select-box .game-player .player-avatar {
   background-position-y: 60% !important;
 }
+#game-select .select-box .game-player .player-who {
+  position: absolute;
+  padding: 70px 0px;
+  text-align: center;
+  width: inherit;
+  font-size: 50px;
+}
 #game-select .select-box .game-player .player-record {
   visibility: hidden;
   opacity: 0;

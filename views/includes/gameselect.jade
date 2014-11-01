@@ -6,6 +6,7 @@
   each player in players
     .select-box(type='#{player.id}', class=player.isHidden?'hide':'')
       .game-player(type='#{player.id}')
+        .player-who
         .player-record
           .rec
             //-| #{player.won} - #{player.played-player.won}
@@ -17,6 +18,5 @@
           .title WINS
         .player-avatar
       .player-name(class='text-color-#{player.id}') #{player.name}
-        span.player-who
   .continue-button.hide
     .button Start The Game

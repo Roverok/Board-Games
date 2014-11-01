@@ -270,6 +270,7 @@ var gamePlay = {
     $('.time-count').hide();
     $('#game-select .continue-button').hide();
     $('#game-title .continue-button').show();
+    $('#game-mode .continue-button').show();
     $('#game-select .back-button').show();
     if($('#game-select').is(':visible')){
       $('#game-select').fadeOut();
@@ -370,7 +371,7 @@ var gamePlay = {
     if (selection) {
       if ($('.select-box.selected').length < 4) {
         playerEle.addClass('selected');
-        playerEle.find('.player-who').show().html(isYours ? ' (You)' : ' (Rival)');
+        playerEle.find('.player-who').show().html(isYours ? 'You' : 'Rival');
         players[player].selected = true;
         if (isYours)
           players[player].isYours = true;
@@ -430,7 +431,7 @@ var gamePlay = {
         $.each(data,function(i,obj){
           $('.select-box[type=' + obj.playerID + ']').addClass('selected');
           $('.select-box[type=' + obj.playerID + ']').find('.player-name').addClass('text-color-' + obj.playerID);
-          $('.select-box[type=' + obj.playerID + ']').find('.player-who').html(' (Rival)').show();
+          $('.select-box[type=' + obj.playerID + ']').find('.player-who').html('Rival').show();
           players[obj.playerID].selected = true;
         });
         gamePlay.selectDefaultGamePlayer();
