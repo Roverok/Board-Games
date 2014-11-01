@@ -83,7 +83,9 @@ exports.removePlayerFromGame = function (query, successCallback, errCallback) {
     if (err) {
       errCallback;
     } else {
-      result.remove();
+      if(result !== null){
+        result.remove();
+      }
       successCallback({status: 'Removing Done'});
     }
   });
